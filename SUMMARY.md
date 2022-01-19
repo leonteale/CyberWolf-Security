@@ -17,6 +17,7 @@
 
 ## Services
 
+* [SSH](services/ssh.md)
 * [Jenkins (Groovy script)](services/jenkins-groovy-script.md)
 * [RDP](services/rdp.md)
 * [SMB](services/smb/README.md)
@@ -55,10 +56,6 @@
 * [Linux](privilege-escalation/linux/README.md)
   * [Tools](privilege-escalation/linux/tools.md)
   * [Perform a core dump](privilege-escalation/linux/perform-a-core-dump.md)
-
-***
-
-* [Page 2](page-2.md)
 
 ## FAQ
 
