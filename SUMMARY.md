@@ -56,6 +56,7 @@
 * [Linux](privilege-escalation/linux/README.md)
   * [Tools](privilege-escalation/linux/tools.md)
   * [Perform a core dump](privilege-escalation/linux/perform-a-core-dump.md)
+  * [Useful commands](privilege-escalation/linux/useful-commands.md)
 
 ## FAQ
 
