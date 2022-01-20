@@ -50,6 +50,8 @@
 * [Subdomain brute forcing](web-application/subdomain-brute-forcing.md)
 * [JWT Tokens](web-application/jwt-tokens.md)
 * [GIT](web-application/git.md)
+* [Cross-Site Scripting (XSS)](web-application/cross-site-scripting-xss/README.md)
+  * [Page 1](web-application/cross-site-scripting-xss/page-1.md)
 
 ## Privilege escalation
 
@@ -72,6 +74,7 @@
 ## Certifications
 
 * [CEH](certifications/ceh.md)
+* [CPSA](certifications/cpsa.md)
 
 ## FAQ
 

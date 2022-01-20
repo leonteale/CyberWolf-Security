@@ -1,4 +1,4 @@
-# Page 4
+# Tools
 
 Check for any embedded strings of text within an image
 
