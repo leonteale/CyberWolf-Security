@@ -64,7 +64,8 @@
 
 ## Labs / Resources
 
-* [Blue-Team](labs-resources/blue-team.md)
+* [Blue-Team](labs-resources/blue-team/README.md)
+  * [Labs](labs-resources/blue-team/labs.md)
 * [Red-Team](labs-resources/red-team.md)
 
 ## FAQ
