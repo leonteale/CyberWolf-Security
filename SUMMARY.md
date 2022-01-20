@@ -51,7 +51,8 @@
 * [JWT Tokens](web-application/jwt-tokens.md)
 * [GIT](web-application/git.md)
 * [Cross-Site Scripting (XSS)](web-application/cross-site-scripting-xss/README.md)
-  * [Embedded images](web-application/cross-site-scripting-xss/embedded-images.md)
+  * [Embedded images](web-application/cross-site-scripting-xss/page-1.md)
+  * [Payloads](web-application/cross-site-scripting-xss/payloads.md)
 
 ## Privilege escalation
 
