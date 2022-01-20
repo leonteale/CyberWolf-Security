@@ -58,11 +58,16 @@
   * [Perform a core dump](privilege-escalation/linux/perform-a-core-dump.md)
   * [Useful commands](privilege-escalation/linux/useful-commands.md)
 
+## Steganography
+
+* [Page 4](steganography/page-4.md)
+
 ## FAQ
 
 * [Install ALFA AWUS1900 on Kali](faq/install-alfa-awus1900-on-kali.md)
 * [Update and upgrade Linux](faq/update-and-upgrade-linux.md)
 
-## Steganography
+## Labs / Resources
 
-* [Page 4](steganography/page-4.md)
+* [Blue-Team](labs-resources/blue-team.md)
+* [Red-Team](labs-resources/red-team.md)
