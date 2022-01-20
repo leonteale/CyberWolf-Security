@@ -62,12 +62,12 @@
 
 * [Page 4](steganography/page-4.md)
 
-## FAQ
-
-* [Install ALFA AWUS1900 on Kali](faq/install-alfa-awus1900-on-kali.md)
-* [Update and upgrade Linux](faq/update-and-upgrade-linux.md)
-
 ## Labs / Resources
 
 * [Blue-Team](labs-resources/blue-team.md)
 * [Red-Team](labs-resources/red-team.md)
+
+## FAQ
+
+* [Install ALFA AWUS1900 on Kali](faq/install-alfa-awus1900-on-kali.md)
+* [Update and upgrade Linux](faq/update-and-upgrade-linux.md)
