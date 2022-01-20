@@ -18,7 +18,7 @@ List connected devices (-l for long output)
 adb devices -l
 ```
 
-adb forward
+#### adb forward
 
 list all forward socket connections
 
@@ -32,7 +32,7 @@ set up port forwarding
 adb forward tcp:6123 tcp:7123
 ```
 
-adb kill-server
+#### adb kill-server
 
 terminates the adb server process
 
@@ -73,10 +73,9 @@ adb devices
 ```
 
 List of devices attached\
-192.168.100.12:5555 device\
+192.168.100.12:5555 device
 
-
-adb usb
+#### adb usb
 
 Restarting in USB mode
 
@@ -154,7 +153,7 @@ always push APK to device and invoke Package Manager as separate steps
 adb install --no-streaming test.apk
 ```
 
-adb uninstall
+#### adb uninstall
 
 remove this app package from the device
 
@@ -168,7 +167,7 @@ Keep the data and cache directories around after package removal
 adb uninstall -k test.apk
 ```
 
-adb shell pm path
+#### adb shell pm path
 
 Print the path to the .apk of the given installed package name
 
@@ -176,7 +175,7 @@ Print the path to the .apk of the given installed package name
 adb shell pm path com.android.chrome
 ```
 
-adb shell pm clear
+#### adb shell pm clear
 
 Deletes all data associated with a package.
 
@@ -204,7 +203,7 @@ preserve file timestamp and mode.
 adb  pull -a /mnt/sdcard/Download/test.apk pc.apk
 ```
 
-adb push
+#### adb push
 
 copy local files/directories to Android device
 
@@ -218,7 +217,7 @@ only push files that are newer on the host than the Android device
 adb push --sync pc.apk /mnt/sdcard/Download/test.apk
 ```
 
-adb shell ls
+#### adb shell ls
 
 List Files and Directories
 
@@ -244,7 +243,7 @@ recursively list in subdirs
 adb shell ls -R /mnt/sdcard/Download
 ```
 
-adb shell cd
+#### adb shell cd
 
 change directory
 
@@ -252,7 +251,7 @@ change directory
 adb shell cd /mnt/sdcard/Download
 ```
 
-adb shell rm
+#### adb shell rm
 
 rm is a command-line utility for removing files, directories and symbolic links
 
@@ -284,7 +283,7 @@ Verbose
 adb shell rm -v /mnt/sdcard/Download/test.apk
 ```
 
-adb shell mkdir
+#### adb shell mkdir
 
 make directories
 
@@ -300,7 +299,7 @@ mkdir -m 777 /sdcard/tmp set permission mode
 mkdir -p /sdcard/tmp/sub1/sub2 create parent directories as needed
 ```
 
-adb shell touch
+#### adb shell touch
 
 the touch command is a standard command used in UNIX/Linux operating system which is used to create, change and modify timestamps of a file
 
@@ -308,7 +307,7 @@ the touch command is a standard command used in UNIX/Linux operating system whic
 adb shell touch /mnt/sdcard/Download/test.txt
 ```
 
-adb shell pwd
+#### adb shell pwd
 
 printing the current working directory
 
@@ -316,7 +315,7 @@ printing the current working directory
 adb shell pwd
 ```
 
-adb shell cp
+#### adb shell cp
 
 copy files and directories
 
@@ -332,7 +331,7 @@ STEP 2.
 
 cp /sdcard/test.txt /sdcard/demo.txt
 
-adb shell mv
+#### adb shell mv
 
 moves files or directories from one place to another
 
@@ -546,7 +545,7 @@ adb logcat *:F filter to only show Fatal level
 adb logcat *:S Silent, highest priority, on which nothing is ever printed
 ```
 
-#### adb logcat -b \<Buffer>
+adb logcat -b \<Buffer>
 
 ```
 adb logcat -b radio View the buffer that contains radio/telephony related messages.
@@ -592,7 +591,7 @@ Notes: The default value is 16. Requires the -f option.
 adb logcat -s Sets the default filter spec to silent.
 ```
 
-#### adb logcat -v \<format>
+adb logcat -v \<format>
 
 ```
 adb logcat -v brief Display priority/tag and PID of the process issuing the message (default format).
@@ -622,7 +621,7 @@ adb logcat -v threadtime Display the date, invocation time, priority, tag, and t
 adb logcat -v long Display all metadata fields and separate messages with b
 ```
 
-adb shell dumpsys
+#### adb shell dumpsys
 
 To dump all services
 
@@ -642,7 +641,7 @@ Get Android device battery info
 adb shell dumpsys battery
 ```
 
-adb shell dumpstate
+#### adb shell dumpstate
 
 dump Android device state.
 
