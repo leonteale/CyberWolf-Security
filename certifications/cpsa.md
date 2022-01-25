@@ -9,7 +9,7 @@ CREST has a good reputation and market in the UK Penetration Testing industry, a
 
 CPSA covers 10 domains, for each domain I will provide a link and/or notes of the additional resources I have used for each domain, make sure to go through all resources
 
-### &#x20;Software Skills and Assessment Management
+### Software Skills and Assessment Management
 
 This is basically a common-sense topic, non-technical, and you are expected to understand how to scope a Penetration Testing, the UK Law & Compliance that impact Penetration Testing activities and the concept of infrastructure testing, application testing, black box, grey box and white box formats of testing.
 
@@ -33,7 +33,7 @@ A section that pretty much talks about WHOIS and DNS, I would say this isn't a h
 
 Resource: Sign-up for [Cybrary](https://www.cybrary.it), go to the "Advanced Penetration Testing" course, then go to Module 4 "Information Gathering (part 2) Domain Name Services".
 
-### &#x20; Networking Equipment
+### Networking Equipment
 
 For this section the [3rd Edition - Network Security Assessment Know Your Network](https://www.amazon.co.uk/Network-Security-Assessment-Know-Your/dp/149191095X/ref=dp\_ob\_title\_bk) will pretty much give all that you need.
 
@@ -88,3 +88,12 @@ Resources: Go through [Pentesters Guide to Oracle Hacking](https://medium.com/@n
 * Learn acronyms e.g. what DNS stands for? It is very important that you try to remember **all** acronyms mentioned in the [3rd Edition - Network Security Assessment Know Your Network](https://www.amazon.co.uk/Network-Security-Assessment-Know-Your/dp/149191095X/ref=dp\_ob\_title\_bk)
 * Do not **skip** old technology, learn about old technologies such as X11, Finger and R\* Services
 * Do not rush through the domains and additional resources! Take your time, read, listen and make sure you understand each topic before proceeding to the next domain
+
+### Study resources
+
+#### Flashcards
+
+{% embed url="https://quizlet.com/search?query=cpsa&type=sets" %}
+
+{% embed url="https://quizlet.com/355066589/crest-cpsa-flash-cards" %}
+
