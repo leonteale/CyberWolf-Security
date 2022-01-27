@@ -24,6 +24,7 @@
   * [Connecting to SMB Shares](services/smb/connecting-to-smb-shares.md)
   * [Check for vulnerabilities](services/smb/check-for-vulnerabilities.md)
   * [SMB Relay](services/smb/smb-relay.md)
+  * [Create an SMB Share](services/smb/create-an-smb-share.md)
 * [MSSQL](services/mssql.md)
 * [IPMI](services/ipmi.md)
 * [Netbios](services/netbios.md)
