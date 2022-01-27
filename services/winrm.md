@@ -47,6 +47,12 @@ To use evil-winrm to connect to an **IPv6 address** create an entry inside _**/e
 evil-winrm -u <username> -H <Hash> -i <IP>
 ```
 
+### Winrs
+
+```
+winrs -r:192.168.1.105 -u:ignite.local\administrator -p:Ignite@987 ipconfig
+```
+
 ### Shodan
 
 * `port:5985 Microsoft-HTTPAPI`
