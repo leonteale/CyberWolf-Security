@@ -27,6 +27,7 @@
 * [MSSQL](services/mssql.md)
 * [IPMI](services/ipmi.md)
 * [Netbios](services/netbios.md)
+* [WinRM](services/winrm.md)
 
 ## Mobile Application
 
