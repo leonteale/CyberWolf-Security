@@ -55,6 +55,7 @@
 * [Cross-Site Scripting (XSS)](web-application/cross-site-scripting-xss/README.md)
   * [Embedded images](web-application/cross-site-scripting-xss/page-1.md)
   * [Payloads](web-application/cross-site-scripting-xss/payloads.md)
+* [WPScan](web-application/wpscan.md)
 
 ## Privilege escalation
 
