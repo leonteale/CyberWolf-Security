@@ -25,3 +25,10 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ~
 ~
 ```
+
+More intense scan
+
+```
+gobuster dir -u http://backdoor.htb/ -w /opt/useful/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 100 -e -x php,txt,html,bak,zip
+```
+
