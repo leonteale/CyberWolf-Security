@@ -56,6 +56,7 @@
   * [Embedded images](web-application/cross-site-scripting-xss/page-1.md)
   * [Payloads](web-application/cross-site-scripting-xss/payloads.md)
 * [WPScan](web-application/wpscan.md)
+* [Local File Inclusion (LFI)](web-application/local-file-inclusion-lfi.md)
 
 ## Privilege escalation
 
