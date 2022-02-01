@@ -80,6 +80,8 @@
 
 * [CEH](certifications/ceh.md)
 * [CPSA](certifications/cpsa.md)
+* [Study Material](certifications/study-material/README.md)
+  * [Encryption](certifications/study-material/encryption.md)
 
 ## FAQ
 
