@@ -97,3 +97,6 @@ Resources: Go through [Pentesters Guide to Oracle Hacking](https://medium.com/@n
 
 {% embed url="https://quizlet.com/355066589/crest-cpsa-flash-cards" %}
 
+#### Mock Exams
+
+{% embed url="https://www.udemy.com/course/crest-practitioner-security-analyst-cpsa-practice-tests" %}
