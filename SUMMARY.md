@@ -79,7 +79,8 @@
 ## Certifications
 
 * [CEH](certifications/ceh.md)
-* [CPSA](certifications/cpsa.md)
+* [Crest CPSA](certifications/crest-cpsa.md)
+* [Crest CRT](certifications/crest-crt.md)
 * [Study Material](certifications/study-material/README.md)
   * [Encryption](certifications/study-material/encryption.md)
 
