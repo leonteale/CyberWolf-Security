@@ -9,6 +9,7 @@
 * [Finding Domain Controllers and DHCP servers](misc/finding-domain-controllers-and-dhcp-servers.md)
 * [Useful Commands](misc/useful-commands.md)
 * [Google Dorks](misc/google-dorks.md)
+* [Proxy Chains](misc/proxy-chains.md)
 
 ## Wireless testing
 
