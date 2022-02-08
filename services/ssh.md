@@ -11,3 +11,11 @@ or you can user [sshng2john](https://raw.githubusercontent.com/stricture/hashsta
 ```
 pyhton sshng2john id_rsa
 ```
+
+### Copy SSH public file
+
+On your target machine:
+
+```
+echo "<your .ssh/key.pub>" > ~/.ssh/authorized_keys
+```
