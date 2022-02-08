@@ -8,8 +8,12 @@ description: udp/161
 
 ```
 snmpget -v 1 -c public IP version
-snmpwalk -v 1 -c public IP
 snmpbulkwalk -v 2 -c public IP
+```
+
+```
+apt-get install snmp
+snmpwalk -v 1 -c public IP
 snmpwalk -c public -v2c -On IP
 ```
 
