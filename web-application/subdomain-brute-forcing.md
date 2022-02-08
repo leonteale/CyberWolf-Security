@@ -27,6 +27,6 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ### WFUZZ
 
 ```
-wfuzz -w ~/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://shibboleth.htb/ -v -x -H "Host:FUZZ.shibboleth.htb" --hw 26
+wfuzz -w ~/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://shibboleth.htb/ -v -c -H "Host:FUZZ.shibboleth.htb" --hw 26
 ```
 
