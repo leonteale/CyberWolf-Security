@@ -14,11 +14,17 @@ We can add all the proxies we want in the preceding highlighted area and then sa
 
 uncomment “strict\_chain”
 
+Create your tunnel:
+
+```
+ssh -D 1234 user@host
+```
+
 example proxy chains:
 
 socks4 127.0.0.1 9050\
 socks5 127.0.0.1 9050\
-****socks5 127.0.0.1 1234 daniel HotelBabylon23
+****socks5 127.0.0.1 1234
 
 
 
