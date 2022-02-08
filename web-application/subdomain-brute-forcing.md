@@ -1,5 +1,7 @@
 # Subdomain brute forcing
 
+### GoBuster
+
 ```
 sudo gobuster vhost -u http://horizontall.htb -w ~/SecLists/Discovery/DNS/subdomains-top1million-110000.txt  1 ⨯
 
@@ -21,3 +23,10 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ~
 ~
 ```
+
+### WFUZZ
+
+```
+wfuzz -w ~/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://shibboleth.htb/ -v -x -H "Host:FUZZ.shibboleth.htb" --hw 26
+```
+

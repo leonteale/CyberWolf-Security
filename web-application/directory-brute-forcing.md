@@ -1,5 +1,7 @@
 # Directory Brute forcing
 
+### GoBuster
+
 ```
 gobuster dir -u http://horizontall.htb/ -w ~/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt    1 ⨯
 
