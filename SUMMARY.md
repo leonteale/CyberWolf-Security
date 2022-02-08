@@ -11,6 +11,7 @@
 * [Useful Commands](misc/useful-commands.md)
 * [Google Dorks](misc/google-dorks.md)
 * [Proxy Chains](misc/proxy-chains.md)
+* [Port Scanning](misc/port-scanning.md)
 
 ## Wireless testing
 
