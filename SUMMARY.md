@@ -60,6 +60,7 @@
   * [Payloads](web-application/cross-site-scripting-xss/payloads.md)
 * [WPScan](web-application/wpscan.md)
 * [Local File Inclusion (LFI)](web-application/local-file-inclusion-lfi.md)
+* [SQLmap](web-application/sqlmap.md)
 
 ## Privilege escalation
 
