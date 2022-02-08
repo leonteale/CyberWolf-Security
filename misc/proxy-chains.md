@@ -5,7 +5,7 @@ Sometimes we need to remain untraceable while performing a pentest activity. Pro
 Proxychains is a tool that allows any application to follow connection via proxy such as SOCKS5, Tor, and so on.
 
 ```
-leafpad /etc/proxychains.conf
+vim /etc/proxychains.conf
 ```
 
 We can add all the proxies we want in the preceding highlighted area and then save.
