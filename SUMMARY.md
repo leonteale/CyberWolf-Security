@@ -65,7 +65,8 @@
 
 ## Privilege escalation
 
-* [Windows](privilege-escalation/windows.md)
+* [Windows](privilege-escalation/windows/README.md)
+  * [Tools](privilege-escalation/windows/tools.md)
 * [Linux](privilege-escalation/linux/README.md)
   * [Tools](privilege-escalation/linux/tools.md)
   * [Perform a core dump](privilege-escalation/linux/perform-a-core-dump.md)
