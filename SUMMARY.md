@@ -5,6 +5,7 @@
 ## Misc
 
 * [Reverse Shells](misc/reverse-shells.md)
+* [File Sharing](misc/file-sharing.md)
 * [Finding Domain Controllers and DHCP servers](misc/finding-domain-controllers-and-dhcp-servers.md)
 * [Useful Commands](misc/useful-commands.md)
 * [Google Dorks](misc/google-dorks.md)
