@@ -12,6 +12,8 @@ We can add all the proxies we want in the preceding highlighted area and then sa
 
 ![](../.gitbook/assets/image.png)
 
+uncomment “strict\_chain”
+
 example proxy chains:
 
 socks4 127.0.0.1 9050\
