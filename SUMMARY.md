@@ -29,6 +29,7 @@
 * [IPMI](services/ipmi.md)
 * [Netbios](services/netbios.md)
 * [WinRM](services/winrm.md)
+* [SNMP](services/snmp.md)
 
 ## Mobile Application
 
