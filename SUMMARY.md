@@ -70,6 +70,7 @@
   * [Tools](privilege-escalation/linux/tools.md)
   * [Perform a core dump](privilege-escalation/linux/perform-a-core-dump.md)
   * [Useful commands](privilege-escalation/linux/useful-commands.md)
+  * [Spawn a TTY shell](privilege-escalation/linux/spawn-a-tty-shell.md)
 
 ## Steganography
 
