@@ -18,3 +18,10 @@ cat dcenum.txt | grep "Domain Users" | awk {'print $8'} | cut -d \\ -f 2
 net user leon password /add
 net localgroup administrators /add
 ```
+
+Compile c scripts
+
+```
+gcc -s filename.c -o filename
+```
+
