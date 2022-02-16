@@ -19,9 +19,23 @@ net user leon password /add
 net localgroup administrators /add
 ```
 
-Compile c scripts
+### Compile c scripts
 
 ```
-gcc -s filename.c -o filename
+gcc -s hello.c -o exploit
+```
+
+If the machine does not have GCC installed, it can be compiled on the attacker machine, taking note of the system architecture first, using the following syntax:
+
+For x64 bit:
+
+```
+gcc -m64 hello.c -o exploit
+```
+
+For x32 bit:
+
+```
+gcc -m32 hello.c -o exploit
 ```
 

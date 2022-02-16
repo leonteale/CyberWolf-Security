@@ -4,11 +4,9 @@
 
 {% embed url="https://github.com/carlospolop/PEASS-ng" %}
 
-{% embed url="https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh" %}
-this is a standalone .sh file
-{% endembed %}
+{% embed url="https://raw.githubusercontent.com/Cerbersec/scripts/master/linux/linpeas.sh" %}
 
-### Linux Expl~~o~~it Suggester
+### Linux Exploit Suggester
 
 ```
 wget https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh
