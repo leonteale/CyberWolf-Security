@@ -1,9 +1,7 @@
 # Installing MobSF
 
-
-
 ```
-git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF --depth=1
+git clone https://github.com/MobSF/Mobile-Security-Framework-MobSF
 ```
 
 After applying this command Mobile Security Framework will be cloned on our system. It is a big tool (around 300MB) so it will take time depending on our internet speed.
