@@ -6,6 +6,10 @@
 
 ```
 nmap [IP] -sV
+nmap --script http-enum -sV -p 80 [IP]
+nmap --script http-headers -sV -p 80 [IP]
+nmap --script http-methods --script-args http-methods.url-path=/webdav/ [IP]
+nmap --script http-webdav-scan --script-args http-methods.url-path=/webdav/ [IP]
 
 whatweb [IP]
 
@@ -18,7 +22,7 @@ See [this page](../web-application/directory-brute-forcing.md) on directory brut
 
 ## End of life versions
 
-
+[\* Extended Security Updates (ESU)](https://docs.microsoft.com/en-us/lifecycle/faq/extended-security-updates#esu-availability-and-end-dates) are available through specific volume licensing programs for these Windows products, for up to an additional three years past the end of support. Contact your Microsoft partner or account team to learn more.
 
 | Version                                        |   Start Date |     End Date |
 | ---------------------------------------------- | -----------: | -----------: |
