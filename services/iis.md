@@ -1,3 +1,10 @@
+---
+description: >-
+  Internet Information Services is an extensible web server software created by
+  Microsoft for use with the Windows NT family. IIS supports HTTP, HTTP/2,
+  HTTPS, FTP, FTPS, SMTP and NNTP.
+---
+
 # IIS
 
 ## Enumeration
