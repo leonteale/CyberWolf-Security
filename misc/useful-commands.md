@@ -39,3 +39,9 @@ For x32 bit:
 gcc -m32 hello.c -o exploit
 ```
 
+### Find text between 2 strings
+
+```
+echo "Here is a string" | grep -o -P '(?<=Here).*(?=string)'
+```
+
