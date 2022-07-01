@@ -45,3 +45,9 @@ gcc -m32 hello.c -o exploit
 echo "Here is a string" | grep -o -P '(?<=Here).*(?=string)'
 ```
 
+### Extract email address from file
+
+```
+grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" file.txt
+```
+
