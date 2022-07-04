@@ -4,7 +4,7 @@ Android Debug Bridge (adb) is a command line tool that lets you communicate with
 
 ### How do I find ADB located
 
-Download the latest version of the [platform-tools](http://adbdownload.com) (about 8 MB), If you installed Android Studio (Android SDK), the default path is C:\Users\YOUR-NAME\AppData\Local\Android\Sdk in Windows.
+Download the latest version of the [platform-tools](http://adbdownload.com/) (about 8 MB), If you installed Android Studio (Android SDK), the default path is C:\Users\YOUR-NAME\AppData\Local\Android\Sdk in Windows.
 
 #### Windows
 

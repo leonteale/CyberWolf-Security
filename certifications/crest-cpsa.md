@@ -3,7 +3,7 @@ description: >-
   https://www.crest-approved.org/examination/practitioner-security-analyst/index.html
 ---
 
-# CPSA
+# Crest CPSA
 
 CREST has a good reputation and market in the UK Penetration Testing industry, and in order to become CREST Registered Tester (CRT) also known as "CREST Registered Penetration Tester", you are first required to pass the theory part of the test which is the CPSA exam.
 
@@ -31,7 +31,7 @@ Resources: Go through [Section 1 - Networking Concepts](https://www.professormes
 
 A section that pretty much talks about WHOIS and DNS, I would say this isn't a hard section and you should be able to master it in very few hours if you practise "hands-on", make sure to have an up and running Kali box where you would be able to test all the commands.
 
-Resource: Sign-up for [Cybrary](https://www.cybrary.it), go to the "Advanced Penetration Testing" course, then go to Module 4 "Information Gathering (part 2) Domain Name Services".
+Resource: Sign-up for [Cybrary](https://www.cybrary.it/), go to the "Advanced Penetration Testing" course, then go to Module 4 "Information Gathering (part 2) Domain Name Services".
 
 ### Networking Equipment
 
@@ -73,7 +73,7 @@ Here you will need to understand common web application vulnerabilities and test
 
 For our very luck, all the additional resources are provided by Cybrary.
 
-Resources: Sign-up for [Cybrary](https://www.cybrary.it), go to the "Advanced Penetration Testing" course, then go to Module 11 "WebApps", also go to course named "Penetration Testing and Ethical Hacking" and go through Module 10 "Web Servers and Apps" and finally Module 11 "SQL Injection".
+Resources: Sign-up for [Cybrary](https://www.cybrary.it/), go to the "Advanced Penetration Testing" course, then go to Module 11 "WebApps", also go to course named "Penetration Testing and Ethical Hacking" and go through Module 10 "Web Servers and Apps" and finally Module 11 "SQL Injection".
 
 ### Databases
 
