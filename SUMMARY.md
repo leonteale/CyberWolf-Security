@@ -70,6 +70,7 @@
 * [Windows](privilege-escalation/windows/README.md)
   * [Tools](privilege-escalation/windows/tools.md)
   * [Unquoted service paths](privilege-escalation/windows/unquoted-service-paths.md)
+* [Service Execution](privilege-escalation/service-execution.md)
 * [Linux](privilege-escalation/linux/README.md)
   * [Tools](privilege-escalation/linux/tools.md)
   * [Perform a core dump](privilege-escalation/linux/perform-a-core-dump.md)
