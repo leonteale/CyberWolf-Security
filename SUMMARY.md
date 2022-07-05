@@ -7,7 +7,6 @@
 * [Reverse Shells](misc/reverse-shells.md)
 * [Web Shells](misc/web-shells.md)
 * [File Sharing](misc/file-sharing.md)
-* [Finding Domain Controllers and DHCP servers](misc/finding-domain-controllers-and-dhcp-servers.md)
 * [Useful Commands](misc/useful-commands.md)
 * [Google Dorks](misc/google-dorks.md)
 * [Proxy Chains](misc/proxy-chains.md)
@@ -18,6 +17,8 @@
 * [Converting handshake to .hccapx for Hashcat](wireless-testing/converting-handshake-to-.hccapx-for-hashcat.md)
 * [Cracking WPA/WPA2 with Hashcat](wireless-testing/cracking-wpa-wpa2-with-hashcat.md)
 * [Hacking Wireless](wireless-testing/hacking-wireless.md)
+* [Page 1](wireless-testing/page-1/README.md)
+  * [Page 2](wireless-testing/page-1/page-2.md)
 
 ## Services
 
@@ -64,6 +65,10 @@
 * [WPScan](web-application/wpscan.md)
 * [Local File Inclusion (LFI)](web-application/local-file-inclusion-lfi.md)
 * [SQLmap](web-application/sqlmap.md)
+
+## Internals
+
+* [Finding Domain Controllers and DHCP servers](internals/finding-domain-controllers-and-dhcp-servers.md)
 
 ## Privilege escalation
 
