@@ -1,5 +1,7 @@
 # SSH
 
+###
+
 ### Decrypt RSA file
 
 ```
@@ -19,3 +21,21 @@ On your target machine:
 ```
 echo "<your .ssh/key.pub>" > ~/.ssh/authorized_keys
 ```
+
+### Reverse SSH tunnel
+
+On the internal machine:
+
+```
+ssh -R 19999:localhost:22 leon@externalip.com
+```
+
+Creates listening tunnel on 19999
+
+On the external machine:
+
+```
+ssh user@localhost -p19999
+```
+
+Connects to 19999 to ssh back to the start of the tunnel using the remote machine's username and password
