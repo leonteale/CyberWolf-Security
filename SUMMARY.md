@@ -36,6 +36,7 @@
 * [WinRM](services/winrm.md)
 * [SNMP](services/snmp.md)
 * [IIS](services/iis.md)
+* [VNC](services/vnc.md)
 
 ## Mobile Application
 
