@@ -70,6 +70,7 @@
 ## Internals
 
 * [Finding Domain Controllers and DHCP servers](internals/finding-domain-controllers-and-dhcp-servers.md)
+* [Discovering hosts from the inside](internals/discovering-hosts-from-the-inside.md)
 
 ## Privilege escalation
 
