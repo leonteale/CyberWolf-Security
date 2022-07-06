@@ -3,6 +3,8 @@ description: >-
   VNC is a graphical desktop-sharing system that uses the Remote Frame Buffer
   protocol (RFB) to remotely control another computer. VNC usually uses ports
   5800 or 5801 or 5900 or 5901.
+cover: ../.gitbook/assets/vnc-remote-desktop-e1574450387675.jpg
+coverY: 0
 ---
 
 # VNC
