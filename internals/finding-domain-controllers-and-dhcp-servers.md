@@ -1,7 +1,8 @@
 # Finding Domain Controllers and DHCP servers
 
 ```
-nmap -sP 172.16.24.0/24 >> hosts.txt
+nmap -sP <IP>/24 >> hosts.txt
+nmap -p 389 <IP> 
 cat /var/lib/dhcp/*
 cat /etc/resolve.conf
 Route -n
