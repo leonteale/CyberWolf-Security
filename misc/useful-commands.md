@@ -14,8 +14,16 @@ cat dcenum.txt | grep "Domain Users" | awk {'print $8'} | cut -d \\ -f 2
 
 ### Extract domain users from 'net user'
 
+On the windows DC/DS, cmd.exe:
+
 ```
-cat net-user.txt |awk {'print $1,"\n",$2,"\n",$3'} | awk {'print $1'} > users.txt
+net user > output.txt
+```
+
+Using bash:
+
+```
+cat output.txt |awk {'print $1,"\n",$2,"\n",$3'} | awk {'print $1'} > users.txt
 ```
 
 ### Add a local user and add to administrators group
