@@ -1,6 +1,6 @@
 # Metasploit
 
-#### Start Required Services <a href="#start-required-services" id="start-required-services"></a>
+### Start Required Services <a href="#start-required-services" id="start-required-services"></a>
 
 * Metasploit uses PostgreSQL as its database so it needs to be launched first.
 
@@ -8,7 +8,7 @@
 $ sudo service postgresql start
 ```
 
-#### Initialise the Metasploit PostgreSQL Database <a href="#initialise-the-metasploit-postgresql-database" id="initialise-the-metasploit-postgresql-database"></a>
+### Initialise the Metasploit PostgreSQL Database <a href="#initialise-the-metasploit-postgresql-database" id="initialise-the-metasploit-postgresql-database"></a>
 
 * With PostgreSQL up and running, we next need to create and initialize the msf database.
 
@@ -16,7 +16,7 @@ $ sudo service postgresql start
 $ sudo msfdb init
 ```
 
-#### Launch msfconsole in Kali <a href="#launch-msfconsole-in-kali" id="launch-msfconsole-in-kali"></a>
+### Launch msfconsole in Kali <a href="#launch-msfconsole-in-kali" id="launch-msfconsole-in-kali"></a>
 
 ```bash
 $ sudo msfconsole
@@ -24,7 +24,7 @@ msf > db_status
 [*] postgresql connected to msf3
 ```
 
-#### Fix Metasploit Cache Issue <a href="#fix-metasploit-cache-issue" id="fix-metasploit-cache-issue"></a>
+### Fix Metasploit Cache Issue <a href="#fix-metasploit-cache-issue" id="fix-metasploit-cache-issue"></a>
 
 ```bash
 msf > search wordpress
@@ -35,4 +35,10 @@ msf > search wordpress
 msf> db_rebuild_cache
 ```
 
-Email Address\
+### Set RHOSTS from msfconsole search
+
+```
+services -S 445 -R
+```
+
+### Set RHOSTS globally 
