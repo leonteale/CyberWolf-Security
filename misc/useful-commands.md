@@ -12,6 +12,12 @@ cat dcenum.txt | grep "Domain Users" -C 2 | grep Username | awk {'print $2'}
 cat dcenum.txt | grep "Domain Users" | awk {'print $8'} | cut -d \\ -f 2
 ```
 
+### Extract domain users from 'net user'
+
+```
+cat net-user.txt |awk {'print $1,"\n",$2,"\n",$3'} | awk {'print $1'} > users.txt
+```
+
 ### Add a local user and add to administrators group
 
 ```
