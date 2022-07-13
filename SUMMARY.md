@@ -11,6 +11,7 @@
 * [Google Dorks](misc/google-dorks.md)
 * [Proxy Chains](misc/proxy-chains.md)
 * [Port Scanning](misc/port-scanning.md)
+* [Metasploit](misc/metasploit.md)
 
 ## Wireless testing
 
