@@ -12,6 +12,7 @@
 * [Proxy Chains](misc/proxy-chains.md)
 * [Port Scanning](misc/port-scanning.md)
 * [Metasploit](misc/metasploit.md)
+* [Crackmapexec](misc/crackmapexec.md)
 
 ## Wireless testing
 
