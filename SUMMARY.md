@@ -113,3 +113,7 @@
 
 * [ImageMagick](exploits/imagemagick.md)
 * [CVE-2021-3560 (PolKit)](exploits/cve-2021-3560-polkit.md)
+
+## Group 1
+
+* [Vulnerabilities](group-1/vulnerabilities.md)
