@@ -104,16 +104,16 @@
 * [Study Material](certifications/study-material/README.md)
   * [Encryption](certifications/study-material/encryption.md)
 
-## FAQ
+## Vulnerabilities
 
-* [Install ALFA AWUS1900 on Kali](faq/install-alfa-awus1900-on-kali.md)
-* [Update and upgrade Linux](faq/update-and-upgrade-linux.md)
+* [Vulnerabilities](vulnerabilities/vulnerabilities.md)
 
 ## Exploits
 
 * [ImageMagick](exploits/imagemagick.md)
 * [CVE-2021-3560 (PolKit)](exploits/cve-2021-3560-polkit.md)
 
-## Group 1
+## FAQ
 
-* [Vulnerabilities](group-1/vulnerabilities.md)
+* [Install ALFA AWUS1900 on Kali](faq/install-alfa-awus1900-on-kali.md)
+* [Update and upgrade Linux](faq/update-and-upgrade-linux.md)
