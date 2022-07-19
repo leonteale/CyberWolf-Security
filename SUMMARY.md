@@ -44,14 +44,15 @@
   * [500 - IKE](services/ports-services/500-ike.md)
   * [623 - IPMI](services/ipmi.md)
   * [1433 - MSSQL](services/mssql.md)
+  * [1521 - Oracle DB](services/ports-services/1521-oracle-db.md)
   * [3389 - RDP](services/rdp.md)
   * [2049 - NFS](services/services-ports/2049-nfs.md)
   * [5900 - VNC](services/vnc.md)
   * [5985 - WinRM](services/winrm.md)
+  * [6000 - X11](services/ports-services/6000-x11.md)
   * [8080 - Jenkins](services/jenkins-groovy-script.md)
   * [11211 - Memcached](services/ports-services/11211-memcached.md)
-  * [6000 - X11](services/ports-services/6000-x11.md)
-  * [1521 - Oracle DB](services/ports-services/1521-oracle-db.md)
+  * [873 - RSYNC](services/ports-services/873-rsync.md)
 
 ## Mobile Application
 
