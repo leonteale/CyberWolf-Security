@@ -59,7 +59,7 @@ You can do this because the password used inside 3des to encrypt the plain-text 
 For **Windows** you can also use this tool: [https://www.raymond.cc/blog/download/did/232/](https://www.raymond.cc/blog/download/did/232/)\
 I save the tool here also for ease of access:
 
-{% file src="../../.gitbook/assets/vncpwd.zip" %}
+{% file src="../.gitbook/assets/vncpwd.zip" %}
 
 ## Shodan
 

