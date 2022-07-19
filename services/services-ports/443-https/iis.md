@@ -25,7 +25,7 @@ http [IP]
 
 ### Directory enumeration
 
-See [this page](../web-application/directory-brute-forcing.md) on directory brute forcing.&#x20;
+See [this page](../../../web-application/directory-brute-forcing.md) on directory brute forcing.&#x20;
 
 ## End of life versions
 
