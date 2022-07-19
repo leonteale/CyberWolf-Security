@@ -50,6 +50,7 @@
   * [5985 - WinRM](services/winrm.md)
   * [8080 - Jenkins](services/jenkins-groovy-script.md)
   * [11211 - Memcached](services/ports-services/11211-memcached.md)
+  * [6000 - X11](services/ports-services/6000-x11.md)
 
 ## Mobile Application
 
