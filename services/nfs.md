@@ -4,6 +4,16 @@ Finding NFS services:
 
 ```
 nmap -sV -T4 -p111,2049 <IP>
+
+Starting Nmap 7.92 ( https://nmap.org ) at 2022-07-19 14:58 BST
+Stats: 0:00:07 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 0.00% done
+Nmap scan report for HOSTNAME (IP)
+Host is up (0.00070s latency).
+
+PORT     STATE SERVICE VERSION
+111/tcp  open  rpcbind 2-4 (RPC #100000)
+2049/tcp open  nfs_acl 3 (RPC #100227)
 ```
 
 We can verify is the NFS service is actually running by querying a specific port and program number.
