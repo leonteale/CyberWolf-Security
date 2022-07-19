@@ -27,7 +27,7 @@
 * [Services - Ports](services/services-ports/README.md)
   * [69 - TFTP](services/services-ports/69-tftp.md)
   * [2049 - NFS](services/services-ports/2049-nfs.md)
-  * [VNC](services/vnc.md)
+  * [5900 - VNC](services/services-ports/5900-vnc.md)
   * [IIS](services/iis.md)
   * [SNMP](services/snmp.md)
   * [WinRM](services/winrm.md)
