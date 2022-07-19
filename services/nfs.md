@@ -1,6 +1,6 @@
 # NFS
 
-Finding NFS services:
+### Finding NFS services:
 
 ```
 nmap -sV -T4 -p111,2049 <IP>
@@ -40,7 +40,7 @@ rpcinfo -n 2049 -t <IP> 100003
     program 100003 version 4 ready and waiting                                              
 ```
 
-Now we can view the mounts that have been exported
+### View the mounts that have been exported
 
 ```
 showmount -e <IP>
@@ -55,7 +55,7 @@ Now create a local directory that you will want to mount the exported share to
 mkdir /tmp/directory
 ```
 
-Now we can mount the share
+### Mount the share
 
 ```
 sudo mount -t nfs <IP>:/export /tmp/export
