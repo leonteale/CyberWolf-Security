@@ -80,4 +80,3 @@ aircrack-ng -w ~/Desktop/Wordlist/CRACKED_PASS.dic /root/Desktop/CapFileName
 ```
 
 It is also possible to crack the hash using Hashcat (better method). You will need to convert the handshake first
-
