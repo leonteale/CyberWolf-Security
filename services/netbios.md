@@ -48,7 +48,7 @@ responder -I eth0 -w -f -v
 
 requires privileged user.
 
-https://n0where.net/windows-powershell-llmnrnbns-spoofer-inveigh \
+https://n0where.net/windows-powershell-llmnrnbns-spoofer-inveigh\
 https://github.com/Kevin-Robertson/Inveigh
 
 ```
@@ -75,6 +75,3 @@ Stop-Inveigh
 ```
 
 ### Preventing Netbios attacks
-
-
-

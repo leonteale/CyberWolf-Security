@@ -19,4 +19,3 @@ smbclient \\\\[ip]\\[share name]
 ```
 /usr/bin/winexe -U mad01/user123%abcABC1234 //172.18.2.50 ipconfig
 ```
-
