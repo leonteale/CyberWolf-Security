@@ -73,3 +73,13 @@ ls -la /tmp/export
 ```
 
 From here, if you get "permission denied" when browsing the file and folder. Simple create a user with the same UID. That user should then get full access to the directory
+
+### Unmounting NFS File Systems <a href="#unmounting-nfs-file-systems" id="unmounting-nfs-file-systems"></a>
+
+The `umount` command detaches (unmounts) the mounted file system from the directory tree.
+
+To detach a mounted NFS share, use the `umount` command followed by either the directory where it has been mounted or remote share:
+
+```
+umount <IP>:/backups umount /var/backups
+```
