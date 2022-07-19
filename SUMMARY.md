@@ -33,7 +33,7 @@
   * [WinRM](services/winrm.md)
   * [137 - Netbios](services/netbios.md)
   * [623 - IPMI](services/ipmi.md)
-  * [MSSQL](services/mssql.md)
+  * [1433 - MSSQL](services/mssql.md)
   * [445 - SMB](services/smb/README.md)
     * [Connecting to SMB Shares](services/smb/connecting-to-smb-shares.md)
     * [Check for vulnerabilities](services/smb/check-for-vulnerabilities.md)

