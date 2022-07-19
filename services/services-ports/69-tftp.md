@@ -4,7 +4,7 @@ description: >-
   with a userid and password and verify which files they can access.
 ---
 
-# TFTP
+# 69 - TFTP
 
 ## Enumeration
 
