@@ -40,6 +40,7 @@
 * [IIS](services/iis.md)
 * [VNC](services/vnc.md)
 * [NFS](services/nfs.md)
+* [TFTP](services/tftp.md)
 
 ## Mobile Application
 
