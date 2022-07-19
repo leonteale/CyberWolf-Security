@@ -11,8 +11,7 @@
 * [Google Dorks](misc/google-dorks.md)
 * [Proxy Chains](misc/proxy-chains.md)
 * [Port Scanning](misc/port-scanning.md)
-* [Metasploit](misc/metasploit.md)
-* [Crackmapexec](misc/crackmapexec.md)
+* [Intercept Linux CLI Traffic](misc/intercept-linux-cli-traffic.md)
 
 ## Wireless testing
 
@@ -43,6 +42,7 @@
     * [Create an SMB Share](services/smb/create-an-smb-share.md)
   * [500 - IKE](services/ports-services/500-ike.md)
   * [623 - IPMI](services/ipmi.md)
+  * [873 - RSYNC](services/ports-services/873-rsync.md)
   * [1433 - MSSQL](services/mssql.md)
   * [1521 - Oracle DB](services/ports-services/1521-oracle-db.md)
   * [3389 - RDP](services/rdp.md)
@@ -52,7 +52,11 @@
   * [6000 - X11](services/ports-services/6000-x11.md)
   * [8080 - Jenkins](services/jenkins-groovy-script.md)
   * [11211 - Memcached](services/ports-services/11211-memcached.md)
-  * [873 - RSYNC](services/ports-services/873-rsync.md)
+
+## Tools
+
+* [Crackmapexec](tools/crackmapexec.md)
+* [Metasploit](tools/metasploit.md)
 
 ## Mobile Application
 

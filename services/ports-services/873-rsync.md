@@ -19,7 +19,9 @@ list = yes
 
 ## enumeration
 
-`nmap -p 873 192.168.0.1`
+```
+nmap -p 873 192.168.0.1
+```
 
 List directory
 
