@@ -113,7 +113,7 @@ Press STRAT once you put the IP and public commuinty&#x20;
 
 Download the  SNMP4tPC Getif MIB collection as well.
 
-![](../../.gitbook/assets/GetImage.gif)
+![](../.gitbook/assets/GetImage.gif)
 
 For each tab press 'start' to get the information &#x20;
 
