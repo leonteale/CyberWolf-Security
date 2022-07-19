@@ -1,7 +1,5 @@
 # 443 - HTTPS
 
-
-
 openssl show cert:
 
 ```
