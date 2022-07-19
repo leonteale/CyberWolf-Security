@@ -30,7 +30,7 @@
   * [5900 - VNC](services/vnc.md)
   * [IIS](services/iis.md)
   * [161 - SNMP](services/snmp.md)
-  * [WinRM](services/winrm.md)
+  * [5985 - WinRM](services/services-ports/5985-winrm.md)
   * [137 - Netbios](services/netbios.md)
   * [623 - IPMI](services/ipmi.md)
   * [1433 - MSSQL](services/mssql.md)
