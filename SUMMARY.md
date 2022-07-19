@@ -4,22 +4,22 @@
 
 ## Misc
 
-* [Reverse Shells](misc/reverse-shells.md)
-* [Web Shells](misc/web-shells.md)
-* [File Sharing](misc/file-sharing.md)
-* [Useful Commands](misc/useful-commands.md)
-* [Google Dorks](misc/google-dorks.md)
-* [Proxy Chains](misc/proxy-chains.md)
-* [Port Scanning](misc/port-scanning.md)
-* [Intercept Linux CLI Traffic](misc/intercept-linux-cli-traffic.md)
+* [Misc Items](misc/misc-items/README.md)
+  * [Reverse Shells](misc/misc-items/reverse-shells.md)
+  * [Web Shells](misc/misc-items/web-shells.md)
+  * [File Sharing](misc/misc-items/file-sharing.md)
+  * [Useful Commands](misc/misc-items/useful-commands.md)
+  * [Google Dorks](misc/misc-items/google-dorks.md)
+  * [Proxy Chains](misc/misc-items/proxy-chains.md)
+  * [Port Scanning](misc/misc-items/port-scanning.md)
+  * [Intercept Linux CLI Traffic](misc/misc-items/intercept-linux-cli-traffic.md)
 
 ## Wireless testing
 
-* [Converting handshake to .hccapx for Hashcat](wireless-testing/converting-handshake-to-.hccapx-for-hashcat.md)
-* [Cracking WPA/WPA2 with Hashcat](wireless-testing/cracking-wpa-wpa2-with-hashcat.md)
-* [Hacking Wireless](wireless-testing/hacking-wireless.md)
-* [Page 1](wireless-testing/page-1/README.md)
-  * [Page 2](wireless-testing/page-1/page-2.md)
+* [Wireless](wireless-testing/wireless/README.md)
+  * [Converting handshake to .hccapx for Hashcat](wireless-testing/wireless/converting-handshake-to-.hccapx-for-hashcat.md)
+  * [Cracking WPA/WPA2 with Hashcat](wireless-testing/wireless/cracking-wpa-wpa2-with-hashcat.md)
+  * [Hacking Wireless](wireless-testing/wireless/hacking-wireless.md)
 
 ## Services
 
@@ -55,20 +55,22 @@
 
 ## Tools
 
-* [Crackmapexec](tools/crackmapexec.md)
-* [Metasploit](tools/metasploit.md)
+* [Tools](tools/tools/README.md)
+  * [Crackmapexec](tools/tools/crackmapexec.md)
+  * [Metasploit](tools/tools/metasploit.md)
 
 ## Mobile Application
 
-* [Tools](mobile-application/tools/README.md)
-  * [MobSF](mobile-application/tools/mobsf/README.md)
-    * [Installing MobSF](mobile-application/tools/mobsf/installing-mobsf.md)
-* [Mobile Application Testing](mobile-application/mobile-application-testing/README.md)
-  * [Android](mobile-application/mobile-application-testing/android/README.md)
-    * [Methodology](mobile-application/mobile-application-testing/android/methodology.md)
-    * [ADB](mobile-application/mobile-application-testing/android/page-1.md)
-  * [IOS](mobile-application/mobile-application-testing/ios/README.md)
-    * [Page 3](mobile-application/mobile-application-testing/ios/page-3.md)
+* [Mob App](mobile-application/mob-app/README.md)
+  * [Tools](mobile-application/mob-app/tools/README.md)
+    * [MobSF](mobile-application/mob-app/tools/mobsf/README.md)
+      * [Installing MobSF](mobile-application/mob-app/tools/mobsf/installing-mobsf.md)
+  * [Mobile Application Testing](mobile-application/mob-app/mobile-application-testing/README.md)
+    * [Android](mobile-application/mob-app/mobile-application-testing/android/README.md)
+      * [Methodology](mobile-application/mob-app/mobile-application-testing/android/methodology.md)
+      * [ADB](mobile-application/mob-app/mobile-application-testing/android/page-1.md)
+    * [IOS](mobile-application/mob-app/mobile-application-testing/ios/README.md)
+      * [Page 3](mobile-application/mob-app/mobile-application-testing/ios/page-3.md)
 
 ## Password Cracking
 
@@ -76,21 +78,23 @@
 
 ## Web Application
 
-* [Directory Brute forcing](web-application/directory-brute-forcing.md)
-* [Subdomain brute forcing](web-application/subdomain-brute-forcing.md)
-* [JWT Tokens](web-application/jwt-tokens.md)
-* [GIT](web-application/git.md)
-* [Cross-Site Scripting (XSS)](web-application/cross-site-scripting-xss/README.md)
-  * [Embedded images](web-application/cross-site-scripting-xss/page-1.md)
-  * [Payloads](web-application/cross-site-scripting-xss/payloads.md)
-* [WPScan](web-application/wpscan.md)
-* [Local File Inclusion (LFI)](web-application/local-file-inclusion-lfi.md)
-* [SQLmap](web-application/sqlmap.md)
+* [Web App](web-application/web-app/README.md)
+  * [Directory Brute forcing](web-application/web-app/directory-brute-forcing.md)
+  * [Subdomain brute forcing](web-application/web-app/subdomain-brute-forcing.md)
+  * [JWT Tokens](web-application/web-app/jwt-tokens.md)
+  * [GIT](web-application/web-app/git.md)
+  * [Cross-Site Scripting (XSS)](web-application/web-app/cross-site-scripting-xss/README.md)
+    * [Embedded images](web-application/web-app/cross-site-scripting-xss/embedded-images.md)
+    * [Payloads](web-application/web-app/cross-site-scripting-xss/payloads.md)
+  * [WPScan](web-application/web-app/wpscan.md)
+  * [Local File Inclusion (LFI)](web-application/web-app/local-file-inclusion-lfi.md)
+  * [SQLmap](web-application/web-app/sqlmap.md)
 
 ## Internals
 
-* [Finding Domain Controllers and DHCP servers](internals/finding-domain-controllers-and-dhcp-servers.md)
-* [Discovering hosts from the inside](internals/discovering-hosts-from-the-inside.md)
+* [Internals](internals/internals/README.md)
+  * [Finding Domain Controllers and DHCP servers](internals/internals/finding-domain-controllers-and-dhcp-servers.md)
+  * [Discovering hosts from the inside](internals/internals/discovering-hosts-from-the-inside.md)
 
 ## Privilege escalation
 
@@ -116,11 +120,12 @@
 
 ## Certifications
 
-* [CEH](certifications/ceh.md)
-* [Crest CPSA](certifications/crest-cpsa.md)
-* [Crest CRT](certifications/crest-crt.md)
-* [Study Material](certifications/study-material/README.md)
-  * [Encryption](certifications/study-material/encryption.md)
+* [Certifications](certifications/certifications/README.md)
+  * [CEH](certifications/certifications/ceh.md)
+  * [Crest CPSA](certifications/certifications/crest-cpsa.md)
+  * [Crest CRT](certifications/certifications/crest-crt.md)
+  * [Study Material](certifications/certifications/study-material/README.md)
+    * [Encryption](certifications/certifications/study-material/encryption.md)
 
 ## Vulnerabilities
 
