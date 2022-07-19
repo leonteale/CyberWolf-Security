@@ -39,6 +39,7 @@
 * [SNMP](services/snmp.md)
 * [IIS](services/iis.md)
 * [VNC](services/vnc.md)
+* [NFS](services/nfs.md)
 
 ## Mobile Application
 
