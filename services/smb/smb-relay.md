@@ -6,7 +6,7 @@ For SMB Relay to be possible, you must turn off SMB and HTTP within the responde
 
 Set responder.conf to:
 
-![](<../../../.gitbook/assets/image (5) (1).png>)
+![](<../../.gitbook/assets/image (5) (1).png>)
 
 Then run responder:
 
