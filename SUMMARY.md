@@ -29,7 +29,7 @@
   * [2049 - NFS](services/services-ports/2049-nfs.md)
   * [5900 - VNC](services/vnc.md)
   * [IIS](services/iis.md)
-  * [SNMP](services/snmp.md)
+  * [161 - SNMP](services/services-ports/161-snmp.md)
   * [WinRM](services/winrm.md)
   * [Netbios](services/netbios.md)
   * [623 - IPMI](services/ipmi.md)
@@ -41,7 +41,7 @@
     * [Create an SMB Share](services/smb/create-an-smb-share.md)
   * [RDP](services/rdp.md)
   * [Jenkins (Groovy script)](services/jenkins-groovy-script.md)
-  * [22 - SSH](services/services-ports/22-ssh.md)
+  * [22 - SSH](services/ssh.md)
   * [363 - LDAP](services/services-ports/363-ldap.md)
 
 ## Mobile Application
