@@ -51,6 +51,7 @@
   * [8080 - Jenkins](services/jenkins-groovy-script.md)
   * [11211 - Memcached](services/ports-services/11211-memcached.md)
   * [6000 - X11](services/ports-services/6000-x11.md)
+  * [1521 - Oracle DB](services/ports-services/1521-oracle-db.md)
 
 ## Mobile Application
 
