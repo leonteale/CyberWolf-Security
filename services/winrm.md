@@ -11,7 +11,7 @@ The easiest way to detect whether WinRM is available is by seeing if the port is
 
 If one of these ports is open, WinRM is configured and you can try entering a remote session.
 
-### Brute Force
+## Brute Force
 
 Be careful, brute-forcing WinRM could block users.
 
@@ -27,7 +27,7 @@ crackmapexec winrm <IP> -d <Domain Name> -u <username> -H <HASH> -X '$PSVersionT
 #Crackmapexec won't give you an interactive shell, but it will check if the creds are valid to access winrm
 ```
 
-#### Metasploit
+### Metasploit
 
 The winrm\_login module is a standard Metasploit login scanner to brute force passwords.
 
@@ -98,8 +98,8 @@ $cred = New-Object System.Management.Automation.PSCredential ('ECORP.local\morph
 Invoke-Command -ComputerName DC -Credential $cred -ScriptBlock { whoami }
 ```
 
-###
 
-### Shodan
+
+## Shodan
 
 * `port:5985 Microsoft-HTTPAPI`
