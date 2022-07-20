@@ -83,7 +83,7 @@
 * [Internals](internals/internals/README.md)
   * [Finding Domain Controllers and DHCP servers](internals/finding-domain-controllers-and-dhcp-servers.md)
   * [Discovering hosts from the inside](internals/discovering-hosts-from-the-inside.md)
-  * [Migrating](internals/internals/migrating.md)
+  * [Dumping domain hashes](internals/internals/dumping-domain-hashes.md)
 
 ## Mobile Application
 

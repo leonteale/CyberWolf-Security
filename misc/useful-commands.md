@@ -65,3 +65,40 @@ echo "Here is a string" | grep -o -P '(?<=Here).*(?=string)'
 grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" file.txt
 ```
 
+List processes on host
+
+```
+ps
+Process List
+============
+
+ PID    PPID  Name                                        Arch  Session  User                          Path
+ ---    ----  ----                                        ----  -------  ----                          ----
+ 0      0     [System Process]
+ 4      0     System                                      x64   0
+ 88     4     Registry                                    x64   0
+ 108    1516  fontdrvhost.exe                             x64   2        Font Driver Host\UMFD-2       C:\Windows\System32\fontdrvhost.exe
+ 304    4     smss.exe                                    x64   0
+ 356    592   dwm.exe                                     x64   1        Window Manager\DWM-1          C:\Windows\System32\dwm.exe
+ 364    592   LogonUI.exe                                 x64   1        NT AUTHORITY\SYSTEM           C:\Windows\System32\LogonUI.exe
+ 420    408   csrss.exe                                   x64   0
+ 428    660   svchost.exe                                 x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\svchost.exe
+ 524    408   wininit.exe                                 x64   0
+ 532    516   csrss.exe                                   x64   1
+ 592    516   winlogon.exe                                x64   1        NT AUTHORITY\SYSTEM           C:\Windows\System32\winlogon.exe
+ 604    1720  taskhostw.exe                               x64   2        UNI\cyberes2                  C:\Windows\System32\taskhostw.exe
+ 656    660   svchost.exe                                 x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\svchost.exe
+ 660    524   services.exe                                x64   0
+ 668    524   lsass.exe                                   x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\lsass.exe
+ 804    660   svchost.exe                                 x64   0        NT AUTHORITY\NETWORK SERVICE  C:\Windows\System32\svchost.exe
+ 844    592   fontdrvhost.exe                             x64   1        Font Driver Host\UMFD-1       C:\Windows\System32\fontdrvhost.exe
+ 872    660   svchost.exe                                 x64   0        NT AUTHORITY\SYSTEM           C:\Windows\System32\svchost.exe
+
+```
+
+Migrate to another process
+
+```
+migrate <PID>
+```
+
