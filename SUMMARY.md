@@ -55,6 +55,7 @@
 * [Tools](tools/tools/README.md)
   * [Crackmapexec](misc/crackmapexec.md)
   * [Metasploit](misc/metasploit.md)
+  * [Bloodhound](tools/tools/bloodhound.md)
 
 ## Wireless testing
 
@@ -118,14 +119,16 @@
   * [Labs](labs-resources/blue-team/labs.md)
 * [Red-Team](labs-resources/red-team.md)
 
-## Certifications
+## Training
 
-* [Certifications](certifications/certifications/README.md)
-  * [CEH](certifications/ceh.md)
-  * [Crest CPSA](certifications/crest-cpsa.md)
-  * [Crest CRT](certifications/crest-crt.md)
-  * [Study Material](certifications/study-material/README.md)
-    * [Encryption](certifications/study-material/encryption.md)
+* [Certifications](training/certifications/README.md)
+  * [CEH](training/certifications/ceh.md)
+  * [Crest CPSA](training/certifications/crest-cpsa.md)
+  * [Crest CRT](training/certifications/crest-crt.md)
+  * [Study Material](training/certifications/study-material/README.md)
+    * [Encryption](training/certifications/study-material/encryption.md)
+* [Terminology](training/terminology/README.md)
+  * [NTLM & NTLM2](training/terminology/ntlm-and-ntlm2.md)
 
 ## Vulnerabilities
 
