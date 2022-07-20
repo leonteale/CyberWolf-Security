@@ -83,6 +83,7 @@
 * [Internals](internals/internals/README.md)
   * [Finding Domain Controllers and DHCP servers](internals/finding-domain-controllers-and-dhcp-servers.md)
   * [Discovering hosts from the inside](internals/discovering-hosts-from-the-inside.md)
+  * [Migrating](internals/internals/migrating.md)
 
 ## Mobile Application
 
@@ -121,12 +122,12 @@
 
 ## Training
 
-* [Certifications](training/certifications/README.md)
-  * [CEH](training/certifications/ceh.md)
-  * [Crest CPSA](training/certifications/crest-cpsa.md)
-  * [Crest CRT](training/certifications/crest-crt.md)
-  * [Study Material](training/certifications/study-material/README.md)
-    * [Encryption](training/certifications/study-material/encryption.md)
+* [Certifications](certifications/certifications/README.md)
+  * [CEH](certifications/ceh.md)
+  * [Crest CPSA](certifications/crest-cpsa.md)
+  * [Crest CRT](certifications/crest-crt.md)
+  * [Study Material](certifications/study-material/README.md)
+    * [Encryption](certifications/study-material/encryption.md)
 * [Terminology](training/terminology/README.md)
   * [NTLM & NTLM2](training/terminology/ntlm-and-ntlm2.md)
 
