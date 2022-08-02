@@ -11,7 +11,7 @@ nbtscan 172.18.2.0/24
 172.18.2.9:MAC:00-23-7d-aa-72-c2
 ```
 
-### nbt-wizz version version:&#x20;
+### nbt-wizz version version:
 
 Download:
 
@@ -59,14 +59,12 @@ set SPOOFIP 10.222.101.213
 run
 ```
 
-
-
 ### Capture Netbios broadcasts
 
 #### Responder
 
 ```
-responder -I eth0 -w -f -v
+sudo python3.9 /usr/share/responder/Responder.py -I eth0 -w -f -v
 ```
 
 #### Inveigh - (Powershell Responder)
