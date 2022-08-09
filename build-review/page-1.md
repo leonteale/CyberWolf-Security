@@ -4,7 +4,7 @@ Checklist
 
 
 
-### Prerequisites
+## Prerequisites
 
 * Local administrator and basic user account
 * PowerShell we need to be enabled on windows builds
@@ -14,19 +14,25 @@ Ensure that you make the followihng registry edit in order to be able to perform
 
 > regedit (run as admin) > HKEY\_LOCAL\_MACHINE > SOFTWARE > Microsoft > Windows > CurrentVersion > Policies > System. Right click > New > DWORD (32-bit) Value. LocalAccountTokenFilterPolicy > Right click > Modify > Value data: 1
 
-### Checklist
+## Checklist
 
 ![](<../.gitbook/assets/image (4).png>)
 
-### Useful commands
+## Useful commands
 
-Unquoted service paths
+### Unquoted service paths
 
 ```
 cmd /c wmic service get name,displayname,pathname,startmode |findstr /i "auto" |findstr /i /v "c:\windows\\" |findstr /i /v """
 ```
 
-### Benching
+### Search the running processes
+
+```
+Tasklist | findstr <query>
+```
+
+## Benching
 
 * NCSC ([https://www.ncsc.gov.uk/collection/end-user-device-security/platform-specific-guidance/](https://www.ncsc.gov.uk/collection/end-user-device-security/platform-specific-guidance/))&#x20;
 * &#x20;Compare the output
@@ -36,6 +42,6 @@ cmd /c wmic service get name,displayname,pathname,startmode |findstr /i "auto" |
   * Level 1&#x20;
   * Run in Nessus
 
-### Download for the file tests
+## Download for the file tests
 
 {% file src="../.gitbook/assets/Build-review.zip" %}
