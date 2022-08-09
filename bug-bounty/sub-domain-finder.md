@@ -1,6 +1,6 @@
 # Sub Domain Finder
 
-Pre requisites:
+### Pre requisites:
 
 ```
 ## Install subfinder
@@ -34,6 +34,8 @@ git clone https://github.com/danielmiessler/SecLists.git
 ## Install Chromium
 sudo apt-get install chromium
 ```
+
+### Commands
 
 ```
 subfinder -d target.com | tee subf.txt (subdomain enumeration 1)
