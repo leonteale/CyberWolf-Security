@@ -1,5 +1,22 @@
 # Sub Domain Finder
 
+Pre requisites:
+
+```
+sudo apt-get install subfinder
+sudo apt-get install assetfinder
+wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
+unzip aquatone_linux_amd64_1.7.0.zip
+sudo mv aquatone /usr/local/bin/
+pip install httpx
+go install github.com/tomnomnom/waybackurls@latest
+sudo mkdir /usr/local/go/
+sudo mkdir /usr/local/go/bin/
+sudo cp ~/go/bin/waybackurls /usr/local/bin/
+cd /usr/share/wordlists/
+git clone https://github.com/danielmiessler/SecLists.git
+```
+
 ```
 subfinder -d http://target.com | tee subf.txt (subdomain enumeration 1)
 assetfinder -subs-only http://target.com | tee ast.txt (subdomain enum 2)
