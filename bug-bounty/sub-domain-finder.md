@@ -27,6 +27,12 @@ sudo mkdir /usr/local/go/
 sudo mkdir /usr/local/go/bin/
 sudo cp ~/go/bin/waybackurls /usr/local/bin/
 
+## Install fff
+git clone https://github.com/dylanaraps/fff.git
+cd fff
+sudo make install
+cp fff /usr/local/bin/
+
 ## Add wordlists
 cd /usr/share/wordlists/
 git clone https://github.com/danielmiessler/SecLists.git
