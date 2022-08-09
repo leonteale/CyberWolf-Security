@@ -14,6 +14,12 @@ Ensure that you make the followihng registry edit in order to be able to perform
 
 ![](<../.gitbook/assets/image (4).png>)
 
+| Catagory | Checks | Result |
+| -------- | ------ | ------ |
+|          |        |        |
+|          |        |        |
+|          |        |        |
+
 ## Useful commands
 
 ### Unquoted service paths
