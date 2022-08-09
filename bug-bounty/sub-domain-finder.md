@@ -19,6 +19,7 @@ sudo apt-get install httpx-toolkit
 
 ## Install gau
 go install github.com/lc/gau@latest
+sudo cp ~/go/bin/gau /usr/local/bin/
 
 ## Install waybackurls
 go install github.com/tomnomnom/waybackurls@latest
