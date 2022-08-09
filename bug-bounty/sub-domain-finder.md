@@ -18,7 +18,7 @@ git clone https://github.com/danielmiessler/SecLists.git
 ```
 
 ```
-subfinder -d http://target.com | tee subf.txt (subdomain enumeration 1)
+subfinder -d target.com | tee subf.txt (subdomain enumeration 1)
 assetfinder -subs-only http://target.com | tee ast.txt (subdomain enum 2)
 
 amass enum — passive -d http://target.com | tee amass.txt (subdomain enum 3)
