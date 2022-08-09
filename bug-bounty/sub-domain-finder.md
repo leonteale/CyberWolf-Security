@@ -23,7 +23,7 @@ assetfinder -subs-only target.com | tee ast.txt (subdomain enum 2)
 
 amass enum -passive -d target.com | tee amass.txt (subdomain enum 3)
 cat subf.txt ast.txt amass.txt | sort -u | tee subdomains.txt (sorting sudomains)
-cat subdomains.txt | httpx | tee liveSubdomains.txt (filtering live subdomains)
+cat subdomains.txt | httpx-toolkit | tee liveSubdomains.txt (filtering live subdomains)
 
 cat liveSubdomains.txt | aquatone (taking screenshot of subdomains)
 cat liveSubdomains.txt | gau | tee gau.txt (fetching urls 1)
