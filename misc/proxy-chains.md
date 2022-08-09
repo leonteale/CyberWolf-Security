@@ -10,7 +10,7 @@ vim /etc/proxychains.conf
 
 We can add all the proxies we want in the preceding highlighted area and then save.
 
-![](../.gitbook/assets/image.png)
+![](<../.gitbook/assets/image (2).png>)
 
 uncomment “strict\_chain”
 
@@ -24,10 +24,6 @@ example proxy chains:
 
 socks4 127.0.0.1 9050\
 socks5 127.0.0.1 9050\
-****socks5 127.0.0.1 1234
+\*\*\*\*socks5 127.0.0.1 1234
 
-
-
-\
-
-
+\\
