@@ -28,9 +28,7 @@ cd /usr/share/wordlists/
 git clone https://github.com/danielmiessler/SecLists.git
 
 ## Install Chromium
-git clone https://github.com/scheib/chromium-latest-linux.git
-chmod +x run.sh
-./run.sh
+sudo apt-get install chromium
 ```
 
 ```
