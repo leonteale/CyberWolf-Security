@@ -142,6 +142,11 @@
 * [ImageMagick](exploits/imagemagick.md)
 * [CVE-2021-3560 (PolKit)](exploits/cve-2021-3560-polkit.md)
 
+## Bug Bounty
+
+* [Bug Bounty Programs](bug-bounty/bug-bounty-programs.md)
+* [Sub Domain Finder](bug-bounty/sub-domain-finder.md)
+
 ## FAQ
 
 * [Install ALFA AWUS1900 on Kali](faq/install-alfa-awus1900-on-kali.md)
