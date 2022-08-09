@@ -1,8 +1,4 @@
-# Page 1
-
-Checklist
-
-
+# Workstation
 
 ## Prerequisites
 
@@ -30,6 +26,13 @@ cmd /c wmic service get name,displayname,pathname,startmode |findstr /i "auto" |
 
 ```
 Tasklist | findstr <query>
+```
+
+### Check if LAPS is installed (PowerShell)
+
+```
+Get-ChildItem 'C:\Program Files\LAPS\CSE\Admpwd.dll'
+Get-ChildItem 'C:\Program Files (x86)\LAPS\CSE\Admpwd.dll'
 ```
 
 ## Benching
