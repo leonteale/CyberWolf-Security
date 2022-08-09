@@ -3,18 +3,34 @@
 Pre requisites:
 
 ```
+## Install subfinder
 sudo apt-get install subfinder
+
+## Install Assetfinder
 sudo apt-get install assetfinder
+
+## Install Aquatone
 wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
 unzip aquatone_linux_amd64_1.7.0.zip
 sudo mv aquatone /usr/local/bin/
+
+## Install httpx-toolki
 sudo apt-get install httpx-toolkit
+
+## Install waybackurls
 go install github.com/tomnomnom/waybackurls@latest
 sudo mkdir /usr/local/go/
 sudo mkdir /usr/local/go/bin/
 sudo cp ~/go/bin/waybackurls /usr/local/bin/
+
+## Add wordlists
 cd /usr/share/wordlists/
 git clone https://github.com/danielmiessler/SecLists.git
+
+## Install Chromium
+git clone https://github.com/scheib/chromium-latest-linux.git
+chmod +x run.sh
+./run.sh
 ```
 
 ```
