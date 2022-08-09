@@ -10,7 +10,7 @@ vim /etc/proxychains.conf
 
 We can add all the proxies we want in the preceding highlighted area and then save.
 
-![](<../.gitbook/assets/image (2).png>)
+![](<../.gitbook/assets/image (6).png>)
 
 uncomment “strict\_chain”
 
