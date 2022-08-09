@@ -8,7 +8,7 @@ sudo apt-get install assetfinder
 wget https://github.com/michenriksen/aquatone/releases/download/v1.7.0/aquatone_linux_amd64_1.7.0.zip
 unzip aquatone_linux_amd64_1.7.0.zip
 sudo mv aquatone /usr/local/bin/
-pip install httpx
+sudo apt-get install httpx-toolkit
 go install github.com/tomnomnom/waybackurls@latest
 sudo mkdir /usr/local/go/
 sudo mkdir /usr/local/go/bin/
