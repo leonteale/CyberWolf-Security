@@ -17,6 +17,9 @@ sudo mv aquatone /usr/local/bin/
 ## Install httpx-toolki
 sudo apt-get install httpx-toolkit
 
+## Install gau
+go install github.com/lc/gau@latest
+
 ## Install waybackurls
 go install github.com/tomnomnom/waybackurls@latest
 sudo mkdir /usr/local/go/
