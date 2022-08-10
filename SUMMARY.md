@@ -147,6 +147,7 @@
 
 * [Bug Bounty Programs](bug-bounty/bug-bounty-programs.md)
 * [Sub Domain Finder](bug-bounty/sub-domain-finder.md)
+* [link dump](bug-bounty/link-dump.md)
 
 ## FAQ
 
