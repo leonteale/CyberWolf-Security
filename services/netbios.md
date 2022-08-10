@@ -32,6 +32,10 @@ root@Kali:~/Downloads# ./nbtscan-1.0.35-redhat-linux -A 192.168.0.15
   00:00:00:00:00:00   ETHER
 ```
 
+### Windows NBTSCAN
+
+{% embed url="http://www.unixwiz.net/tools/nbtscan-1.0.35.exe" %}
+
 ### Netbios Spoofing
 
 #### Metasploit
