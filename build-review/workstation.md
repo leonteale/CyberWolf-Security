@@ -10,6 +10,8 @@ Ensure that you make the followihng registry edit in order to be able to perform
 
 > regedit (run as admin) > HKEY\_LOCAL\_MACHINE > SOFTWARE > Microsoft > Windows > CurrentVersion > Policies > System. Right click > New > DWORD (32-bit) Value. LocalAccountTokenFilterPolicy > Right click > Modify > Value data: 1
 
+Also enable/start the 'remote registry' service in services.msc
+
 ## Checklist
 
 ![](<../.gitbook/assets/image (4).png>)
