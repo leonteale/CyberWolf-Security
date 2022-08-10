@@ -119,7 +119,8 @@
 
 * [Blue-Team](labs-resources/blue-team/README.md)
   * [Labs](labs-resources/blue-team/labs.md)
-* [Red-Team](labs-resources/red-team.md)
+* [Red-Team](labs-resources/red-team/README.md)
+  * [Vulnerable virtual machines](labs-resources/red-team/vulnerable-virtual-machines.md)
 
 ## Training
 
