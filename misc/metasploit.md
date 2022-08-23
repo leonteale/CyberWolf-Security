@@ -1,6 +1,6 @@
 # Metasploit
 
-### Start Required Services <a href="#start-required-services" id="start-required-services"></a>
+## Start Required Services <a href="#start-required-services" id="start-required-services"></a>
 
 * Metasploit uses PostgreSQL as its database so it needs to be launched first.
 
@@ -24,6 +24,12 @@ msf > db_status
 [*] postgresql connected to msf3
 ```
 
+### Connect MSF to the database if needed
+
+```
+db_connect -y /usr/share/metasploit-framework/config/database.yml
+```
+
 ### Fix Metasploit Cache Issue <a href="#fix-metasploit-cache-issue" id="fix-metasploit-cache-issue"></a>
 
 ```bash
@@ -41,4 +47,4 @@ msf> db_rebuild_cache
 services -S 445 -R
 ```
 
-### Set RHOSTS globally 
+### Set RHOSTS globally
