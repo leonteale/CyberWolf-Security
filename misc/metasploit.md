@@ -48,3 +48,9 @@ services -S 445 -R
 ```
 
 ### Set RHOSTS globally
+
+### Export Database
+
+```
+ db_export -f xml /root/msfu/Exported.xml
+```
