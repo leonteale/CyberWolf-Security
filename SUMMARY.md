@@ -45,6 +45,7 @@
 ## Password Cracking
 
 * [Password attacks](password-cracking/password-attacks.md)
+* [Password Cracking](password-cracking/password-cracking.md)
 
 ## Tools
 
