@@ -43,6 +43,18 @@ Get-ChildItem 'C:\Program Files\LAPS\CSE\Admpwd.dll'
 Get-ChildItem 'C:\Program Files (x86)\LAPS\CSE\Admpwd.dll'
 ```
 
+## Vulnerability and patching checks
+
+{% embed url="https://support.microsoft.com/en-gb/topic/a-new-version-of-the-windows-update-offline-scan-file-wsusscn2-cab-is-available-for-advanced-users-fe433f4d-44f4-28e3-88c5-5b22329c0a08" %}
+
+### Using Microsoft Baseline Security Analyzer (MBA)
+
+[https://docs.microsoft.com/en-us/previous-versions/cc184924(v=msdn.10)?redirectedfrom=MSDN](https://docs.microsoft.com/en-us/previous-versions/cc184924\(v=msdn.10\)?redirectedfrom=MSDN)
+
+{% embed url="https://files02.tchspt.com/temp/MBSASetup-x64-EN.msi" %}
+
+
+
 ## Benching
 
 * NCSC ([https://www.ncsc.gov.uk/collection/end-user-device-security/platform-specific-guidance/](https://www.ncsc.gov.uk/collection/end-user-device-security/platform-specific-guidance/))&#x20;
