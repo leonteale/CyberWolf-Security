@@ -75,6 +75,7 @@
   * [WPScan](web-application/wpscan.md)
   * [Local File Inclusion (LFI)](web-application/local-file-inclusion-lfi.md)
   * [SQLmap](web-application/sqlmap.md)
+  * [Server Side Template Injection](web-application/web-app/server-side-template-injection.md)
 
 ## Internals
 
