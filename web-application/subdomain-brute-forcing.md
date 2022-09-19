@@ -2,13 +2,13 @@
 
 ### GoBuster
 
-```
-sudo gobuster vhost -u http://horizontall.htb -w ~/SecLists/Discovery/DNS/subdomains-top1million-110000.txt  1 ⨯
-
+<pre><code>git clone https://github.com/danielmiessler/SecLists.git
+<strong>sudo gobuster vhost -u http://horizontall.htb -w ~/SecLists/Discovery/DNS/subdomains-top1million-110000.txt
+</strong>
 
 ===============================================================
 Gobuster v3.1.0
-by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+by OJ Reeves (@TheColonial) &#x26; Christian Mehlmauer (@firefart)
 ===============================================================
 [+] Url:          http://horizontall.htb
 [+] Method:       GET
@@ -21,12 +21,10 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ===============================================================
 ~
 ~
-~
-```
+~</code></pre>
 
 ### WFUZZ
 
 ```
 wfuzz -w ~/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://shibboleth.htb/ -v -c -H "Host:FUZZ.shibboleth.htb" --hw 26
 ```
-
