@@ -21,6 +21,9 @@ nmap -T4 IP
 
 // Output results to all file types
 nmap -oA outputname
+
+// Only display open ports
+nmap --open IP
 ```
 
 ## Ping sweep
