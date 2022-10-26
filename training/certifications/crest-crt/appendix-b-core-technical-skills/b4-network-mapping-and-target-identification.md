@@ -26,12 +26,17 @@ nmap -oA outputname
 nmap --open IP
 ```
 
-## Ping sweep
+## Host identification techniques
 
-### ping sweep with nmap
+
+
+## Ping sweep
 
 ```
 nmap -sn IP/24
+```
+
+```
 nmap -sn -iL IPlist.txt
 ```
 
