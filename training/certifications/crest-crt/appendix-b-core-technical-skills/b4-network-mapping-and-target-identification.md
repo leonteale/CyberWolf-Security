@@ -43,6 +43,9 @@ fping -f IPlist.txt
 
 ping IP    #IPv4 by default
 ping -6 IP #IPv6
+
+traceroute -I #Linux version
+tracert -I    #Windows version
 ```
 
 ## False Negative
