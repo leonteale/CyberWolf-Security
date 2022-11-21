@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Home](README.md)
+* [Getting Started in Cyber Security](getting-started-in-cyber-security.md)
 
 ## Misc
 
