@@ -2,7 +2,11 @@
 
 Here is a youtube video to start with, helps explain some ways to get started in cyber security. It starts with giving the opinion to learn programming as it will help, but not rquired, especially if youre not into that thing, but if you do want to do that then it will always help.
 
-[https://www.youtube.com/watch?v=mS7qWC3CbOU](https://www.youtube.com/watch?v=mS7qWC3CbOU)
+{% embed url="https://www.youtube.com/watch?v=mS7qWC3CbOU" %}
+
+Additionally, this is a 12 hour "training" course on youtube. it covers the basics of things you should be learning. Looks like a lot, but is a resource you can go over in your own time
+
+{% embed url="https://www.youtube.com/watch?v=fNzpcB7ODxQ" %}
 
 Get started by getting a virtual machine installed on your laptop. Then you can run a “Kali linux” virtual machine, this is where you will do all your hacking from, this keeps your own machin safe then too in case you make a mistake. Youtube can show you how to do this. This is pretty much a bare minimum to get started.
 
