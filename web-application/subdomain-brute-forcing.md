@@ -21,10 +21,17 @@ by OJ Reeves (@TheColonial) &#x26; Christian Mehlmauer (@firefart)
 ===============================================================
 ~
 ~
-~</code></pre>
+~
+</code></pre>
 
 ### WFUZZ
 
 ```
 wfuzz -w ~/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://shibboleth.htb/ -v -c -H "Host:FUZZ.shibboleth.htb" --hw 26
+```
+
+## AMASS
+
+```
+amass enum -active -d domain.com -brute -src -w /Wordlists/SecLists/Discovery/DNS/deepmagic.com-prefixes-top500.txt -src -ip -dir amass4owasp -o amass.domain.com.out
 ```
