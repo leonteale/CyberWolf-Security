@@ -35,3 +35,9 @@ wfuzz -w ~/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://sh
 ```
 amass enum -active -d domain.com -brute -src -w /Wordlists/SecLists/Discovery/DNS/deepmagic.com-prefixes-top500.txt -src -ip -dir amass4owasp -o amass.domain.com.out
 ```
+
+## FFUF
+
+```
+ffuf -c -w /Wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -u http://thetoppers.htb -H "HOST:FUZZ.thetoppers.htb"
+```
