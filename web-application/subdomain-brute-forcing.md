@@ -41,3 +41,9 @@ amass enum -active -d domain.com -brute -src -w /Wordlists/SecLists/Discovery/DN
 ```
 ffuf -c -w /Wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -u http://thetoppers.htb -H "HOST:FUZZ.thetoppers.htb"
 ```
+
+IF you get lots responding/false possitives etc.. then you can filter. such as filter out the size
+
+```
+ffuf ........ -fs <size>
+```
