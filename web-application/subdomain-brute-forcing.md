@@ -4,25 +4,10 @@
 
 <pre><code>git clone https://github.com/danielmiessler/SecLists.git
 <strong>sudo gobuster vhost -u http://horizontall.htb -w ~/SecLists/Discovery/DNS/subdomains-top1million-110000.txt
-</strong>
+</strong></code></pre>
 
-===============================================================
-Gobuster v3.1.0
-by OJ Reeves (@TheColonial) &#x26; Christian Mehlmauer (@firefart)
-===============================================================
-[+] Url:          http://horizontall.htb
-[+] Method:       GET
-[+] Threads:      10
-[+] Wordlist:     /home/kali/SecLists/Discovery/DNS/subdomains-top1million-110000.txt
-[+] User Agent:   gobuster/3.1.0
-[+] Timeout:      10s
-===============================================================
-2022/01/14 08:40:24 Starting gobuster in VHOST enumeration mode
-===============================================================
-~
-~
-~
-</code></pre>
+vhost = virtual hosts running on the same IP. \
+DNS = seperate DNS entries that point to other IPs.&#x20;
 
 ### WFUZZ
 
