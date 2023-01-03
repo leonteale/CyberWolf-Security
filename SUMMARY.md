@@ -79,6 +79,7 @@
   * [Server Side Template Injection](web-application/web-app/server-side-template-injection.md)
   * [SQL Injection](web-application/web-app/sql-injection.md)
   * [Using Hydra for web brute force](web-application/web-app/using-hydra-for-web-brute-force.md)
+  * [Remote Code Execution (RCE)](web-application/web-app/remote-code-execution-rce.md)
 
 ## Internals
 
