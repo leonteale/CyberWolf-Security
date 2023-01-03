@@ -127,6 +127,7 @@
 ## Training
 
 * [Certifications](certifications/certifications/README.md)
+  * [OSCP](training/certifications/oscp.md)
   * [CEH](certifications/ceh.md)
   * [Crest CPSA](certifications/crest-cpsa.md)
   * [Crest CRT](training/certifications/crest-crt/README.md)
