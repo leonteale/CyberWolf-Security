@@ -15,8 +15,6 @@ e.g https://thymometrics.com/Styles/?nsextt=%27%22--%3E%3C/style%3E%3C/scRipt%3E
 
 ### Common working XSS payloads
 
-
-
 ```
 onmouseover="prompt(1)">
 <img src=x onerror=prompt(1);>
@@ -34,12 +32,12 @@ simple xss test for unsanatised html:
 "><svg/onload=alert(1)>  works on FF last version
 ```
 
-### XSS cheat sheet&#x20;
+### XSS cheat sheet
 
 {% embed url="https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet" %}
-
-&#x20;
 
 ### payloads that work on any browser
 
 {% embed url="http://html5sec.org" %}
+
+<figure><img src="../../.gitbook/assets/Fif0VqHUoAAj7Kp.jfif" alt=""><figcaption></figcaption></figure>
