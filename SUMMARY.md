@@ -87,6 +87,7 @@
   * [Finding Domain Controllers and DHCP servers](internals/finding-domain-controllers-and-dhcp-servers.md)
   * [Discovering hosts from the inside](internals/discovering-hosts-from-the-inside.md)
   * [Dumping domain hashes](internals/internals/dumping-domain-hashes.md)
+  * [Active Directory](internals/internals/active-directory.md)
 
 ## Mobile Application
 

