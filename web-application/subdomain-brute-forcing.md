@@ -2,7 +2,13 @@
 
 <figure><img src="../.gitbook/assets/Fou_zZuWIAAqH4-.jfif" alt=""><figcaption></figcaption></figure>
 
-###
+## [https://pentester.land/blog/subdomains-enumeration-cheatsheet/](https://pentester.land/blog/subdomains-enumeration-cheatsheet/)
+
+
+
+## domained
+
+[https://github.com/TypeError/domained](https://github.com/TypeError/domained)
 
 ### Subfinder
 
