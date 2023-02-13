@@ -10,13 +10,34 @@ subfinder -d domain.com -v -o subfinder.output.fle
 
 ## Test for domain takeover
 
+### subtake
+
+#### Install subtake
+
+```
+go get github.com/jakejarvis/subtake
+```
+
+#### Run subtake
+
 ```
 subtake -f subfinder.output.fle -ssl -a -o subtake.results.txt -c /home/kali/go/src/github.com/jakejarvis/subtake/fingerprints.json -v
 ```
 
-### Install subtake:
+### sub404
+
+#### install sub404
 
 ```
-go get github.com/jakejarvis/subtake
+git clone https://github.com/r3curs1v3-pr0xy/sub404.git
+cd sub404
+pip3 install -r requirements.txt
+```
+
+#### Run sub404
+
+```
+python3 sub404.py -d domain.com
+python3 sub404 -f subdomainlist.txt
 ```
 
