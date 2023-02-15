@@ -38,6 +38,6 @@ pip3 install -r requirements.txt
 
 ```
 python3 sub404.py -d domain.com
-python3 sub404 -f subdomainlist.txt
+python3 sub404 -f subfinder.output.fle
 ```
 
