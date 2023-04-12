@@ -90,6 +90,7 @@
   * [Discovering hosts from the inside](internals/discovering-hosts-from-the-inside.md)
   * [Dumping domain hashes](internals/internals/dumping-domain-hashes.md)
   * [Active Directory](internals/internals/active-directory.md)
+  * [Getting local hashes](internals/internals/getting-local-hashes.md)
 
 ## Mobile Application
 
