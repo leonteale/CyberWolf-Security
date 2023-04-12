@@ -2,6 +2,8 @@
 
 ## Enable remote admin login
 
+You might find that you need to enable this registry file to allow remote admin authentication
+
 ```
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /V LocalAccountTokenFilterPolicy /T REG_DWORD /F /D 1
 ```
