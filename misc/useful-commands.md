@@ -65,3 +65,8 @@ echo "Here is a string" | grep -o -P '(?<=Here).*(?=string)'
 grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" file.txt
 ```
 
+### find users with specific weak passwords from pipal
+
+```
+grep -E '(Password1|Password1Password1|Hire123!|Trucks123Trucks123|PasswordPassword1\.|Service1Service1|Winteriscoming@23|Cryingfr33m@n23|Password1!)' crackedhashes.txt | awk -F: '{print $3 ":" $1}' | sort | awk -F: '{print $2 " : " $1}' > weakpasses_output.txt
+```
