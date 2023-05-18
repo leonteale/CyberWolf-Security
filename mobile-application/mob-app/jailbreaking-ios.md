@@ -2,7 +2,7 @@
 
 ## Tutorial: Jailbreaking iPhone on macOS
 
-Jailbreaking your iPhone can give you additional control and customization options beyond what is offered by Apple's official iOS. This tutorial will guide you through the process of jailbreaking your iPhone on macOS using the Palera1n tool.
+Jailbreaking your iPhone can give you additional control and customisation options beyond what is offered by Apple's official iOS. This tutorial will guide you through the process of jailbreaking your iPhone on macOS using the Palera1n tool.
 
 ### Prerequisites
 
