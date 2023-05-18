@@ -46,7 +46,43 @@ A9(X) and earlier devices may encounter an issue where they get stuck midway thr
 2. Rerun the command `palera1n` that you ran previously.
 3. You'll need to repeat this step every time you rejailbreak your device.
 
-### Removing the Jailbreak
+## SSH to IPhone
+
+Once your iPhone is jailbroken, you can use SSH (Secure Shell) to connect to it from your macOS. Here's a step-by-step guide on how to SSH into your jailbroken iPhone:
+
+### Step 1: Install OpenSSH on your iPhone
+
+1. Launch the Cydia app on your jailbroken iPhone.
+2. Tap on the "Search" tab at the bottom and search for "OpenSSH".
+3. Select the "OpenSSH" package from the search results.
+4. Tap on "Install" and then "Confirm" to begin the installation process.
+5. Once the installation is complete, OpenSSH will be installed on your iPhone.
+
+### Step 2: Find your iPhone's IP address
+
+1. On your iPhone, go to the "Settings" app.
+2. Tap on "Wi-Fi" and make sure you are connected to the same Wi-Fi network as your Mac.
+3. Tap on the (i) icon next to your connected Wi-Fi network.
+4. Note down the IP address listed under the "IP Address" section. This is your iPhone's IP address on the local network.
+
+### Step 3: SSH into your iPhone from macOS
+
+1. Open the Terminal app on your macOS. You can find it in the "Utilities" folder within the "Applications" folder.
+2.  In the Terminal, use the following command to connect to your iPhone via SSH:
+
+    ```shell
+    shellCopy codessh root@<your_iPhone_IP_address>
+    ```
+
+    Replace `<your_iPhone_IP_address>` with the IP address you noted down in Step 2. For example:
+
+    ```shell
+    shellCopy codessh root@192.168.1.10
+    ```
+3. Press Enter and then enter the root password for your iPhone when prompted. The default password is usually "alpine" unless you have changed it. Note: It is highly recommended to change the default root password for security reasons. You can do this by running the command `passwd` after connecting via SSH.
+4. Once you have entered the correct password, you should now be connected to your jailbroken iPhone via SSH. You can now execute commands and navigate the file system on your iPhone using the Terminal on your macOS.
+
+## Removing the Jailbreak
 
 If you wish to remove the jailbreak from your device, you can follow these steps:
 
