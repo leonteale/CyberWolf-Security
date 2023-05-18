@@ -34,7 +34,7 @@ Before you begin, ensure that you meet the following requirements:
 ### Step 3: Jailbreaking
 
 1. Connect your device to your Mac using a USB cable.
-2. In the Terminal window, run the command `palera1n`. Make sure your device is plugged in before entering this command.
+2. In the Terminal window, run the command `palera1n`. Make sure your device is plugged in before entering this command. Note, this will, by default, run in "rootless" mode.&#x20;
 3. When prompted, press Enter and follow the on-screen instructions to enter DFU mode. The instructions will typically involve holding the power button and home button together for a specified number of seconds. Release the power button while keeping the home button pressed. The tool will notify you if the DFU mode entry was unsuccessful.
    * Note: Some USB-C to Lightning cables may not work reliably. It is recommended to use a USB-A to Lightning cable for a more stable connection.
 
