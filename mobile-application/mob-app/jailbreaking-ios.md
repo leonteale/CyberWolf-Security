@@ -52,7 +52,7 @@ Once your iPhone is jailbroken, you can use SSH (Secure Shell) to connect to it 
 
 ### Step 1: Install OpenSSH on your iPhone
 
-1. Launch the Cydia app on your jailbroken iPhone.
+1. Launch the Sileo app on your jailbroken iPhone.
 2. Tap on the "Search" tab at the bottom and search for "OpenSSH".
 3. Select the "OpenSSH" package from the search results.
 4. Tap on "Install" and then "Confirm" to begin the installation process.
