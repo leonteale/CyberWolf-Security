@@ -71,14 +71,10 @@ Once your iPhone is jailbroken, you can use SSH (Secure Shell) to connect to it 
 2.  In the Terminal, use the following command to connect to your iPhone via SSH:
 
     ```shell
-    shellCopy codessh root@<your_iPhone_IP_address>
+    ssh root@<your_iPhone_IP_address>
     ```
 
-    Replace `<your_iPhone_IP_address>` with the IP address you noted down in Step 2. For example:
-
-    ```shell
-    shellCopy codessh root@192.168.1.10
-    ```
+    Replace `<your_iPhone_IP_address>` with the IP address you noted down in Step 2. For&#x20;
 3. Press Enter and then enter the root password for your iPhone when prompted. The default password is usually "alpine" unless you have changed it. Note: It is highly recommended to change the default root password for security reasons. You can do this by running the command `passwd` after connecting via SSH.
 4. Once you have entered the correct password, you should now be connected to your jailbroken iPhone via SSH. You can now execute commands and navigate the file system on your iPhone using the Terminal on your macOS.
 
