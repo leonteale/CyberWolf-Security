@@ -31,7 +31,10 @@ Qark
 	
 Apktool
 	/usr/bin/apktool
-	
+		## Decompile the app
+			$ apktool d mobapp.apk
+		## Check for debuggable or backups
+			$ cat mobapp/AndroidManifest.xml | grep -iE 'debuggable|backup'
 	
 xmind
 	/snap/bin/xmind
