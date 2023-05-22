@@ -95,6 +95,7 @@
 ## Mobile Application
 
 * [Mob App](mobile-application/mob-app/README.md)
+  * [MobApp Testing VM](mobile-application/mob-app/mobapp-testing-vm.md)
   * [Jailbreaking IOS](mobile-application/mob-app/jailbreaking-ios.md)
   * [Tools](mobile-application/tools/README.md)
     * [MobSF](mobile-application/tools/mobsf/README.md)
