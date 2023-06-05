@@ -102,6 +102,7 @@
       * [Installing MobSF](mobile-application/tools/mobsf/installing-mobsf.md)
   * [Mobile Application Testing](mobile-application/mobile-application-testing/README.md)
     * [Android](mobile-application/mobile-application-testing/android/README.md)
+      * [Mobile Application Penetration Testing Checklist](mobile-application/mob-app/mobile-application-testing/android/mobile-application-penetration-testing-checklist.md)
       * [Methodology](mobile-application/mobile-application-testing/android/methodology.md)
       * [ADB](mobile-application/mobile-application-testing/android/page-1.md)
     * [IOS](mobile-application/mobile-application-testing/ios/README.md)
