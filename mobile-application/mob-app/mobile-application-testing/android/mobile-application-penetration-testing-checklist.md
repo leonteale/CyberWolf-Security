@@ -134,6 +134,35 @@ d2j-dex2jar.sh base.apk
 
 * Check if the app uses native libraries, and if so, how they are used and how they could potentially be exploited.
 
+in Android, native libraries are typically included as part of an APK file and are used to run code written in languages like C or C++. These libraries often contain the core functionalities of an app. However, they can be a point of concern from a security standpoint, as they are prone to common memory corruption vulnerabilities that can lead to serious exploits.
+
+Here's how you can approach identifying and understanding the usage of native libraries:
+
+1.  **Identify Native Libraries**
+
+    * Extract the APK file and look for `.so` (shared object) files. These are the native libraries. You can use the `unzip` command to extract APK files.
+
+    ```shell
+    unzip base.apk
+    ```
+2.  **Analyze the Native Libraries**
+
+    * Tools like `readelf` and `objdump` can be used to understand more about the binary. For instance, `readelf` can be used to list the symbols used by the binary.
+
+    ```shell
+    readelf -Ws /path/to/your/library.so
+    ```
+
+    * `objdump` can be used to disassemble the binary.
+
+    ```shell
+    objdump -D /path/to/your/library.so
+    ```
+3. **Reverse Engineer the Native Libraries**
+   * Tools like IDA Pro, radare2, or Ghidra can be used to reverse engineer the native libraries. This can help you understand what the code is doing.
+4. **Look for Common Vulnerabilities**
+   * When analysing native libraries, you should look for common vulnerabilities such as buffer overflows, format string vulnerabilities, and integer overflows. These are common in code written in languages like C and C++.
+
 ### Dynamic Analysis
 
 10. **Install the APK on the Device**
