@@ -53,24 +53,66 @@ description: >-
 
     when checking for hardcoded sensitive information, you would typically search for things like API keys, credentials, secret tokens, and other sensitive information that is hardcoded into the application. This can often be done by manually reviewing the source code or using a tool to search through the codebase.
 
-    Here's an example of how you might do it with `grep`, a command-line tool available in Unix-like systems:
+    Here's an example of how you might do it with `grep`, a command-line tool available in Unix-like systems:\
 
-```shell
-grep -ri "API_KEY" /path/to/source/code
-grep -ri "password" /path/to/source/code
-```
 
-In this example, `-r` means recursive (searching through all directories and files), `-i` means case insensitive, and "API\_KEY" or "password" is the string you're searching for.
+    ```shell
+    grep -ri "API_KEY" /path/to/source/code
+    grep -ri "password" /path/to/source/code
+    ```
 
-This command would search through the given path for any instance of the strings "API\_KEY" or "password". If the codebase is large, this might produce a lot of output, so you might need to refine your search terms or use more advanced options.
+    \
+    In this example, `-r` means recursive (searching through all directories and files), `-i` means case insensitive, and "API\_KEY" or "password" is the string you're searching for.\
 
-You might also search for common terms that might indicate sensitive information, such as "secret", "token", "key", "admin", "user", "login", "credential", etc.
 
-Remember, this is just a basic example and may not catch every instance of hardcoded sensitive information.
+    This command would search through the given path for any instance of the strings "API\_KEY" or "password". If the codebase is large, this might produce a lot of output, so you might need to refine your search terms or use more advanced options.\
 
+
+    You might also search for common terms that might indicate sensitive information, such as "secret", "token", "key", "admin", "user", "login", "credential", etc.\
+
+
+    Remember, this is just a basic example and may not catch every instance of hardcoded sensitive information.
 7. **Check for Insecure Storage**
 
-* Identify if the app is storing sensitive data insecurely on the device (like shared preferences, SQLite databases, internal and external storage).
+*   Identify if the app is storing sensitive data insecurely on the device (like shared preferences, SQLite databases, internal and external storage).\
+    \
+    when checking for insecure storage, you would typically look for places where sensitive data might be stored insecurely. This can include shared preferences, SQLite databases, internal storage, external storage, and so on.\
+
+
+    Here are some examples in markdown format on how you might perform these checks:
+
+    1.  **Check Shared Preferences**
+
+        * Shared Preferences in Android are often used to store small amounts of user data. They can be accessed in shell via ADB.
+
+        ```shell
+        adb shell run-as com.example.package cat shared_prefs/com.example.package_preferences.xml
+        ```
+    2.  **Check SQLite Databases**
+
+        * Many Android apps use SQLite databases for storing data. They can be accessed in shell via ADB.
+
+        ```shell
+        adb shell run-as com.example.package sqlite3 databases/database.db .dump
+        ```
+    3.  **Check Internal Storage**
+
+        * Apps may also store data in internal storage. This storage is private by default, but you should still check it.
+
+        ```shell
+        adb shell run-as com.example.package ls files/
+        adb shell run-as com.example.package cat files/file.txt
+        ```
+    4.  **Check External Storage**
+
+        * External storage is world-readable, and so sensitive data should not be stored here.
+
+        ```shell
+        adb shell ls /sdcard/Android/data/com.example.package/
+        adb shell cat /sdcard/Android/data/com.example.package/file.txt
+        ```
+
+    Remember that this is only a basic guide and actual paths can vary. You should look for any sensitive information that is being stored insecurely, such as usernames, passwords, tokens, private keys, credit card numbers, and so on. Also, consider the security implications of the permissions required by these storage methods.
 
 8. **Convert .dex Files to .jar Files**
 
