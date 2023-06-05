@@ -118,6 +118,14 @@ description: >-
 
 * Use dex2jar tool for conversion and then JD-GUI for viewing the source code.
 
+You can download .zip file with .sh and .bat files here [https://github.com/pxb1988/dex2jar](https://github.com/pxb1988/dex2jar)
+
+Unzip it and use like this:&#x20;
+
+```
+sh d2j-dex2jar.sh -f -o output_jar.jar apk_to_decompile.apk
+```
+
 ```shell
 d2j-dex2jar.sh base.apk
 ```
