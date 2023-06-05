@@ -30,7 +30,7 @@ description: >-
     * Use ADB command to pull the APK file from the device if the app is already installed.
 
     ```shell
-    shellCopy codeadb shell pm path com.example.package
+    shell adb shell pm path com.example.package
     adb pull /data/app/com.example.package-1/base.apk
     ```
 4.  **Decompile the APK File**
@@ -38,14 +38,14 @@ description: >-
     * Use APKTool for decompiling the APK to view and analyze the source code.
 
     ```shell
-    shellCopy codeapktool d base.apk
+    shell apktool d base.apk
     ```
 5.  **Review the Source Code**
 
     * Use JADX to convert .dex files to .java files for easy code review.
 
     ```shell
-    shellCopy codejadx -d output_dir base.apk
+    shell jadx -d output_dir base.apk
     ```
 6. **Check for Hardcoded Sensitive Information**
    * Search for sensitive data (like API keys, credentials) that should not be hardcoded into the app.
@@ -56,7 +56,7 @@ description: >-
     * Use dex2jar tool for conversion and then JD-GUI for viewing the source code.
 
     ```shell
-    shellCopy coded2j-dex2jar.sh base.apk
+    shell d2j-dex2jar.sh base.apk
     ```
 9. **Identify and Understand Usage of Native Libraries**
    * Check if the app uses native libraries, and if so, how they are used and how they could potentially be exploited.
@@ -68,14 +68,14 @@ description: >-
     * Use ADB to install the APK onto your device or emulator.
 
     ```shell
-    shellCopy codeadb install base.apk
+    shell adb install base.apk
     ```
 11. **Monitor System Logs**
 
     * Use `logcat` command to check for errors and exceptions in real time.
 
     ```shell
-    shellCopy codeadb logcat
+    shell adb logcat
     ```
 12. **Intercept and Analyze Network Traffic**
     * Set up Burp Suite as a proxy for the device and inspect the traffic.
@@ -84,7 +84,7 @@ description: >-
     * Use tcpdump to capture packets and Wireshark to analyze the network protocol details.
 
     ```shell
-    shellCopy codeadb shell tcpdump -w /sdcard/capture.pcap
+    shell adb shell tcpdump -w /sdcard/capture.pcap
     adb pull /sdcard/capture.pcap
     ```
 14. **Run the Application and Observe its Behavior**
@@ -94,7 +94,7 @@ description: >-
     * Use Drozer for a detailed analysis of the application's attack surface.
 
     ```shell
-    shellCopy codedrozer console connect
+    shell drozer console connect
     run app.package.attacksurface com.example.package
     ```
 16. **Use Frida/Objection for Dynamic Instrumentation and SSL Pinning Bypass**
@@ -104,7 +104,7 @@ description: >-
     * Check for insecure data storage or sensitive information stored in SQLite databases.
 
     ```shell
-    shellCopy codeadb shell run-as com.example.package sqlite3 databases/database.db .dump
+    shell adb shell run-as com.example.package sqlite3 databases/database.db .dump
     ```
 
 ### Advanced Analysis
@@ -116,7 +116,7 @@ description: >-
     * Use ADB shell to navigate through the file system and check permissions.
 
     ```shell
-    shellCopy codeadb shell
+    shell adb shell
     ```
 20. **Automate UI Interactions for Testing**
     * Use tools like Appium or ADB to script UI interactions.
@@ -153,14 +153,14 @@ Here are some steps on how to use `logcat`:
     * Simply type `adb logcat` in your command line and it will start displaying a real-time feed of system messages.
 
     ```shell
-    shellCopy codeadb logcat
+    shell adb logcat
     ```
 2.  **Filtering logcat Output**
 
     * You can filter `logcat` output for easier reading. For instance, you can filter by log level (Error, Warning, Info, Debug, Verbose), or by the source of the log messages (tag).
 
     ```shell
-    shellCopy codeadb logcat *:E
+    shell adb logcat *:E
     adb logcat -s "YourAppTag"
     ```
 3.  **Clearing the Log**
@@ -168,14 +168,14 @@ Here are some steps on how to use `logcat`:
     * If you want to clear the current log, you can use the `-c` command.
 
     ```shell
-    shellCopy codeadb logcat -c
+    shell adb logcat -c
     ```
 4.  **Saving log Output to a File**
 
     * If you need to save the log output for later analysis or to share it with your team, you can direct the output to a file.
 
     ```shell
-    shellCopy codeadb logcat > logcat.txt
+    shell adb logcat > logcat.txt
     ```
 5. **Analyzing the Log**
    * Once you have the log data, you can start analyzing it. You should look for any sensitive data that shouldn't be logged, such as passwords, credit card numbers, or personally identifiable information (PII). You should also look for error messages or exceptions that might reveal issues with the application, such as potential vulnerabilities or areas of weak security.
