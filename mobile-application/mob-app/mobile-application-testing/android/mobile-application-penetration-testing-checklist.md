@@ -30,7 +30,7 @@ description: >-
     * Use ADB command to pull the APK file from the device if the app is already installed.
 
     ```shell
-    shell adb shell pm path com.example.package
+    adb shell pm path com.example.package
     adb pull /data/app/com.example.package-1/base.apk
     ```
 4.  **Decompile the APK File**
@@ -38,28 +38,51 @@ description: >-
     * Use APKTool for decompiling the APK to view and analyze the source code.
 
     ```shell
-    shell apktool d base.apk
+    apktool d base.apk
     ```
 5.  **Review the Source Code**
 
     * Use JADX to convert .dex files to .java files for easy code review.
 
     ```shell
-    shell jadx -d output_dir base.apk
+    jadx -d output_dir base.apk
     ```
-6. **Check for Hardcoded Sensitive Information**
-   * Search for sensitive data (like API keys, credentials) that should not be hardcoded into the app.
+6.  **Check for Hardcoded Sensitive Information**
+
+    * Search for sensitive data (like API keys, credentials) that should not be hardcoded into the app.
+
+    when checking for hardcoded sensitive information, you would typically search for things like API keys, credentials, secret tokens, and other sensitive information that is hardcoded into the application. This can often be done by manually reviewing the source code or using a tool to search through the codebase.
+
+    Here's an example of how you might do it with `grep`, a command-line tool available in Unix-like systems:
+
+```shell
+grep -ri "API_KEY" /path/to/source/code
+grep -ri "password" /path/to/source/code
+```
+
+In this example, `-r` means recursive (searching through all directories and files), `-i` means case insensitive, and "API\_KEY" or "password" is the string you're searching for.
+
+This command would search through the given path for any instance of the strings "API\_KEY" or "password". If the codebase is large, this might produce a lot of output, so you might need to refine your search terms or use more advanced options.
+
+You might also search for common terms that might indicate sensitive information, such as "secret", "token", "key", "admin", "user", "login", "credential", etc.
+
+Remember, this is just a basic example and may not catch every instance of hardcoded sensitive information.
+
 7. **Check for Insecure Storage**
-   * Identify if the app is storing sensitive data insecurely on the device (like shared preferences, SQLite databases, internal and external storage).
-8.  **Convert .dex Files to .jar Files**
 
-    * Use dex2jar tool for conversion and then JD-GUI for viewing the source code.
+* Identify if the app is storing sensitive data insecurely on the device (like shared preferences, SQLite databases, internal and external storage).
 
-    ```shell
-    shell d2j-dex2jar.sh base.apk
-    ```
+8. **Convert .dex Files to .jar Files**
+
+* Use dex2jar tool for conversion and then JD-GUI for viewing the source code.
+
+```shell
+d2j-dex2jar.sh base.apk
+```
+
 9. **Identify and Understand Usage of Native Libraries**
-   * Check if the app uses native libraries, and if so, how they are used and how they could potentially be exploited.
+
+* Check if the app uses native libraries, and if so, how they are used and how they could potentially be exploited.
 
 ### Dynamic Analysis
 
@@ -68,14 +91,14 @@ description: >-
     * Use ADB to install the APK onto your device or emulator.
 
     ```shell
-    shell adb install base.apk
+    adb install base.apk
     ```
 11. **Monitor System Logs**
 
     * Use `logcat` command to check for errors and exceptions in real time.
 
     ```shell
-    shell adb logcat
+    adb logcat
     ```
 12. **Intercept and Analyze Network Traffic**
     * Set up Burp Suite as a proxy for the device and inspect the traffic.
@@ -84,7 +107,7 @@ description: >-
     * Use tcpdump to capture packets and Wireshark to analyze the network protocol details.
 
     ```shell
-    shell adb shell tcpdump -w /sdcard/capture.pcap
+    adb shell tcpdump -w /sdcard/capture.pcap
     adb pull /sdcard/capture.pcap
     ```
 14. **Run the Application and Observe its Behavior**
@@ -94,7 +117,7 @@ description: >-
     * Use Drozer for a detailed analysis of the application's attack surface.
 
     ```shell
-    shell drozer console connect
+    drozer console connect
     run app.package.attacksurface com.example.package
     ```
 16. **Use Frida/Objection for Dynamic Instrumentation and SSL Pinning Bypass**
@@ -104,7 +127,7 @@ description: >-
     * Check for insecure data storage or sensitive information stored in SQLite databases.
 
     ```shell
-    shell adb shell run-as com.example.package sqlite3 databases/database.db .dump
+    adb shell run-as com.example.package sqlite3 databases/database.db .dump
     ```
 
 ### Advanced Analysis
@@ -116,7 +139,7 @@ description: >-
     * Use ADB shell to navigate through the file system and check permissions.
 
     ```shell
-    shell adb shell
+    adb shell
     ```
 20. **Automate UI Interactions for Testing**
     * Use tools like Appium or ADB to script UI interactions.
@@ -153,14 +176,14 @@ Here are some steps on how to use `logcat`:
     * Simply type `adb logcat` in your command line and it will start displaying a real-time feed of system messages.
 
     ```shell
-    shell adb logcat
+    adb logcat
     ```
 2.  **Filtering logcat Output**
 
     * You can filter `logcat` output for easier reading. For instance, you can filter by log level (Error, Warning, Info, Debug, Verbose), or by the source of the log messages (tag).
 
     ```shell
-    shell adb logcat *:E
+    adb logcat *:E
     adb logcat -s "YourAppTag"
     ```
 3.  **Clearing the Log**
@@ -168,14 +191,14 @@ Here are some steps on how to use `logcat`:
     * If you want to clear the current log, you can use the `-c` command.
 
     ```shell
-    shell adb logcat -c
+    adb logcat -c
     ```
 4.  **Saving log Output to a File**
 
     * If you need to save the log output for later analysis or to share it with your team, you can direct the output to a file.
 
     ```shell
-    shell adb logcat > logcat.txt
+    adb logcat > logcat.txt
     ```
 5. **Analyzing the Log**
    * Once you have the log data, you can start analyzing it. You should look for any sensitive data that shouldn't be logged, such as passwords, credit card numbers, or personally identifiable information (PII). You should also look for error messages or exceptions that might reveal issues with the application, such as potential vulnerabilities or areas of weak security.
