@@ -239,7 +239,8 @@ Here's how you can approach identifying and understanding the usage of native li
     adb logcat | grep "password"
     ```
 
-    This command will show you any log entries that include the word "password". You can replace "password" with any other word you're interested in, such as "token", "key", "pin", etc.
+    This command will show you any log entries that include the word "password". You can replace "password" with any other word you're interested in, such as "token", "key", "pin", etc.\
+
 12. **Intercept and Analyse Network Traffic**
     * Set up Burp Suite as a proxy for the device and inspect the traffic.
 13. **Capture Traffic with tcpdump and Analyse with Wireshark**
