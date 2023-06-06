@@ -189,6 +189,45 @@ Here's how you can approach identifying and understanding the usage of native li
     adb shell tcpdump -w /sdcard/capture.pcap
     adb pull /sdcard/capture.pcap
     ```
+
+    \
+    If you get issue with tcpdump not being installed on the device then you an do the following:\
+
+
+    1.  **Use an Android device/emulator with root access**
+
+        On a rooted device, you can install `tcpdump` using the appropriate binary for your device's architecture. Here are some links to download tcpdump binaries:
+
+        * [ARM](https://www.androidtcpdump.com/tcpdump)
+        * [ARM64](https://www.androidtcpdump.com/tcpdump)
+        * [x86](https://www.androidtcpdump.com/tcpdump)
+
+        Once you have the binary, you can push it to the device using the `adb push` command:
+
+        ```shell
+        wget https://www.androidtcpdump.com/raw/tcpdump
+        chmod +x tcpdump
+        adb push tcpdump /data/local/tcpdump
+        adb shell chmod 755 /data/local/tcpdump
+        ```
+
+        Then, to capture packets:
+
+        ```shell
+        adb shell su -c '/data/local/tcpdump -w /sdcard/capture.pcap'
+        ```
+    2.  **Use an alternative tool**
+
+        If you can't install `tcpdump` on your device, you can use an alternative tool. For example, you could use [`tPacketCapture`](https://play.google.com/store/apps/details?id=jp.co.taosoftware.android.packetcapture\&hl=en\&gl=US) app from the Play Store, which doesn't require root. However, please note that using such apps might not give you the level of control you would get with `tcpdump`.
+    3.  **Use `tcpdump` on your host machine**
+
+        If you're testing on an emulator, another option is to use `tcpdump` on your host machine to capture packets. Here's an example:
+
+        ```shell
+        sudo tcpdump -i any -w capture.pcap
+        ```
+
+        This command tells `tcpdump` to capture packets on all network interfaces (`-i any`) and write them to a file called `capture.pcap` (`-w capture.pcap`).
 14. **Run the Application and Observe its Behavior**
     * Manually run the application, perform various operations, and observe its behavior and outputs.
 15. **Use Drozer to Map the Attack Surface**
