@@ -512,18 +512,60 @@ Here's how you can approach identifying and understanding the usage of native li
 
     \
     This command will search all files in the current directory and its subdirectories for the `SQLite format 3` string, and print the names of the files where the string was found.\
+    \
+    If this finds a few databases, you can quickly dump them all to the /sdcard/ using the following command:\
 
-
-    Keep in mind that `grep` might not be available on all devices, so you may need to pull the files to your local machine to perform the search:
 
     ```shell
-    adb pull /data/data/org.innox.c4u_mobile_app . grep -lr "SQLite format 3" org.innox.c4u_mobile_app
+    for db in $(find . -type f -exec grep -l "SQLite format 3" {} ;); do sqlite3 $db ".output /sdcard/$(basename $db).dump"; sqlite3 $db ".dump"; done
     ```
 
     \
-    This will first copy the app's data directory to your local machine, and then perform the search locally.\
+    If it seems like the `sqlite3` binary is not available on your Android device's shell. This binary is not included by default on some Android distributions for security reasons.\
+
+
+    You can try to use `adb` to push the `sqlite3` binary from your Kali machine to your Android device. The `sqlite3` binary is usually included with the Android SDK platform-tools, but if it's not present, you can download it from a trusted source.\
+
+
+    You can push it from your local machine to your Android device using the `adb push` command. The binary must be located in the `/system/xbin` directory and must have executable permissions. Here's how to do that:
+
+    1. Find the `sqlite3` binary on your local machine. If you have the Android SDK installed, it might be located in the `platform-tools` directory. If not, you might need to download it from a trusted source. Mine was located in: \
+       \
+       /usr/lib/android-sdk/platform-tools/sqlite3\
+
+    2. Push the binary to your Android device:
+
+    ```bash
+    adb push /usr/lib/android-sdk/platform-tools/sqlite3 /data/local/tmp/
+    ```
+
     \
-    Please note that the \`adb pull\` command requires appropriate permissions to access the app's data directory. If the app is not debuggable and the device is not rooted, you may not be able to access the app's private data.
+    Move the binary to the `/system/xbin` directory and give it executable permissions:
+
+    ```bash
+    adb shell
+    su
+    mount -o remount,rw /system
+    cp /data/local/tmp/sqlite3 /system/xbin/
+    chmod 755 /system/xbin/sqlite3
+    mount -o remount,ro /system
+    exit
+    exit
+    ```
+
+    \
+    Now you should be able to use the `sqlite3` command in your Android shell.
+
+Keep in mind that `grep` might not be available on all devices, so you may need to pull the files to your local machine to perform the search:
+
+```shell
+adb pull /data/data/org.innox.c4u_mobile_app . grep -lr "SQLite format 3" org.innox.c4u_mobile_app
+```
+
+\
+This will first copy the app's data directory to your local machine, and then perform the search locally.\
+\
+Please note that the \`adb pull\` command requires appropriate permissions to access the app's data directory. If the app is not debuggable and the device is not rooted, you may not be able to access the app's private data.
 
 ### Dumping Database Content
 
