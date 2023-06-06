@@ -36,11 +36,7 @@ description: >-
     ```
 
     \
-    or, if you have the APK and need to install it to the device
-
-    ```
-    adb install app.apk
-    ```
+    or simply use the .apk file provided by the client (or downloaded from google play store)
 4.  **Decompile the APK File**
 
     * Use APKTool for decompiling the APK to view and analyze the source code.
