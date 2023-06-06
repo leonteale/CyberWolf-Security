@@ -265,7 +265,37 @@ Here's how you can approach identifying and understanding the usage of native li
                 tcpdump -r capture.pcap
                 ```
 
-            When analyzing the `.pcap` file, you're looking for anything out of the ordinary, such as unusual traffic patterns, unencrypted sensitive data, or communications with suspicious IP addresses.
+            When analyzing the `.pcap` file, you're looking for anything out of the ordinary, such as unusual traffic patterns, unencrypted sensitive data, or communications with suspicious IP addresses.\
+            \
+            **Using `tcpdump` to analyze `.pcap` files**
+
+            1.  Here are some examples of how you might use `tcpdump` to analyze a `.pcap` file:
+
+                *   **Show all IP addresses**
+
+                    ```shell
+                    tcpdump -r capture.pcap -nn
+                    ```
+                *   **Filter by a specific IP address**
+
+                    ```shell
+                    tcpdump -r capture.pcap src 192.168.1.1
+                    ```
+                *   **Filter by HTTP requests**
+
+                    ```shell
+                    tcpdump -r capture.pcap -A 'tcp port 80'
+                    ```
+                *   **Search for keywords**
+
+                    ```shell
+                    tcpdump -r capture.pcap -A | grep 'password'
+                    ```
+
+                Please note that `tcpdump` can only analyze unencrypted traffic. If the network traffic in your `.pcap` file is encrypted (e.g., HTTPS, SSH), `tcpdump` will not be able to decipher the contents of the packets.\
+
+
+                Additionally, it's very uncommon and highly insecure for passwords or PINs to be sent over the network in plaintext. In a secure setup, sensitive information like passwords or PINs would be sent over an encrypted connection, so `tcpdump` would not be able to recover them.
     2.  **Use an alternative tool**
 
         If you can't install `tcpdump` on your device, you can use an alternative tool. For example, you could use [`tPacketCapture`](https://play.google.com/store/apps/details?id=jp.co.taosoftware.android.packetcapture\&hl=en\&gl=US) app from the Play Store, which doesn't require root. However, please note that using such apps might not give you the level of control you would get with `tcpdump`.
