@@ -607,7 +607,19 @@ Here's how you can approach identifying and understanding the usage of native li
     Please note, the URL in the wget command above may vary depending on the version of SQLite and the architecture of your device. You should download the version that suits your requirements.
 
     \
-    After executing the above steps, you can use the sqlite3 command as `/data/local/tmp/sqlite3`.
+    After executing the above steps, you can use the sqlite3 command as `/data/local/tmp/sqlite3`.\
+    \
+    If you are not sure what version of Android arcitechture you have you can run:\
+
+
+    ```shell
+    getprop ro.product.cpu.abilist
+
+    ### Mine shows:
+    # arm64-v8a,armeabi-v7a,armeabi
+    ```
+
+
 
 Keep in mind that `grep` might not be available on all devices, so you may need to pull the files to your local machine to perform the search:
 
