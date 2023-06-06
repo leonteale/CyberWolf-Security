@@ -503,44 +503,66 @@ Here's how you can approach identifying and understanding the usage of native li
     This command will list all `.db` files (which are typically SQLite databases) in the current directory and all subdirectories.\
 
 
-    ### Dumping Database Content
+    To find SQLite databases within an Android application's directory, even if they don't have a `.db` extension, you can use the `grep` command with the `-lr` flags and the `SQLite format 3` magic string. The `-l` flag tells `grep` to output the names of files where the pattern has been found, and the `-r` flag tells it to search recursively.\
 
-    \
-    Once you've found a database, you can use the `sqlite3` command-line tool to inspect it. The `.dump` command will print the contents of the entire database:
 
     ```shell
-    sqlite3 databases/database.db .dump
+    find . -type f -exec grep -l "SQLite format 3" {} \;
     ```
 
     \
-    Remember to replace `databases/database.db` with the actual path to the database file you're interested in.
+    This command will search all files in the current directory and its subdirectories for the `SQLite format 3` string, and print the names of the files where the string was found.\
 
-    ###
 
-    ### Querying Specific Tables or Data
-
-    \
-    If you know the structure of the database, you can query specific tables or data using standard SQL syntax. For example:
+    Keep in mind that `grep` might not be available on all devices, so you may need to pull the files to your local machine to perform the search:
 
     ```shell
-    sqlite3 databases/database.db "SELECT * FROM user_table"
+    adb pull /data/data/org.innox.c4u_mobile_app . grep -lr "SQLite format 3" org.innox.c4u_mobile_app
     ```
 
     \
-    This command will select all data from the `user_table`. Replace `user_table` with the actual table name you are interested in.\
-
-
-    ### Exporting Database for Local Inspection
-
+    This will first copy the app's data directory to your local machine, and then perform the search locally.\
     \
-    If the database is large or you want to use a GUI tool like DB Browser for SQLite for a more convenient view, you can pull the database file from the device to your local machine:
+    Please note that the \`adb pull\` command requires appropriate permissions to access the app's data directory. If the app is not debuggable and the device is not rooted, you may not be able to access the app's private data.
 
-    ```shell
-    adb exec-out run-as org.app.mobile_app cat databases/database.db > local_database.db
-    ```
+### Dumping Database Content
 
-    \
-    This command will create a copy of the `database.db` on your local machine with the name `local_database.db`. You can open `local_database.db` with any SQLite database viewer on your local machine.
+\
+Once you've found a database, you can use the `sqlite3` command-line tool to inspect it. The `.dump` command will print the contents of the entire database:
+
+```shell
+sqlite3 databases/database.db .dump
+```
+
+\
+Remember to replace `databases/database.db` with the actual path to the database file you're interested in.
+
+###
+
+### Querying Specific Tables or Data
+
+\
+If you know the structure of the database, you can query specific tables or data using standard SQL syntax. For example:
+
+```shell
+sqlite3 databases/database.db "SELECT * FROM user_table"
+```
+
+\
+This command will select all data from the `user_table`. Replace `user_table` with the actual table name you are interested in.\
+
+
+### Exporting Database for Local Inspection
+
+\
+If the database is large or you want to use a GUI tool like DB Browser for SQLite for a more convenient view, you can pull the database file from the device to your local machine:
+
+```shell
+adb exec-out run-as org.app.mobile_app cat databases/database.db > local_database.db
+```
+
+\
+This command will create a copy of the `database.db` on your local machine with the name `local_database.db`. You can open `local_database.db` with any SQLite database viewer on your local machine.
 
 ### Advanced Analysis
 
