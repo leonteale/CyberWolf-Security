@@ -447,8 +447,8 @@ Here's how you can approach identifying and understanding the usage of native li
         ```
 
         This command tells `tcpdump` to capture packets on all network interfaces (`-i any`) and write them to a file called `capture.pcap` (`-w capture.pcap`).
-14. **Run the Application and Observe its Behavior**
-    * Manually run the application, perform various operations, and observe its behavior and outputs.
+14. **Run the Application and Observe its Behaviour**
+    * Manually run the application, perform various operations, and observe its behaviour and outputs.
 15. **Use Drozer to Map the Attack Surface**
 
     * Use Drozer for a detailed analysis of the application's attack surface.
@@ -458,14 +458,81 @@ Here's how you can approach identifying and understanding the usage of native li
     run app.package.attacksurface com.example.package
     ```
 16. **Use Frida/Objection for Dynamic Instrumentation and SSL Pinning Bypass**
-    * Use Frida or Objection to modify the app behavior during runtime, and also to bypass SSL Pinning if implemented.
-17. **Analyze SQLite Databases if Present**
+    * Use Frida or Objection to modify the app behaviour during runtime, and also to bypass SSL Pinning if implemented.
+17. **Analyse SQLite Databases if Present**
 
     * Check for insecure data storage or sensitive information stored in SQLite databases.
 
     ```shell
     adb shell run-as com.example.package sqlite3 databases/database.db .dump
     ```
+
+    \
+    SQLite is a lightweight disk-based database and it's used by many Android applications to store data. Sometimes sensitive data can be found in SQLite databases, so they should always be checked during a penetration test.\
+
+
+    ### Locating SQLite Databases
+
+
+
+    SQLite databases are usually stored in the `/data/data/<package_name>/databases/` directory on the device. However, applications can potentially store databases in other locations within their data directory.\
+
+
+    Use the following command to navigate to the application's main directory:
+
+    ```shell
+    adb shell run-as org.app.mobile_app
+    ```
+
+    \
+    Then you can search for SQLite database files recursively from the application's root directory using the `find` command. This will help you discover any databases that might be stored in non-standard locations:
+
+    ```shell
+    find . -name "*.db"
+    ```
+
+    \
+    This command will list all `.db` files (which are typically SQLite databases) in the current directory and all subdirectories.\
+
+
+    ### Dumping Database Content
+
+    \
+    Once you've found a database, you can use the `sqlite3` command-line tool to inspect it. The `.dump` command will print the contents of the entire database:
+
+    ```shell
+    sqlite3 databases/database.db .dump
+    ```
+
+    \
+    Remember to replace `databases/database.db` with the actual path to the database file you're interested in.
+
+    ###
+
+    ### Querying Specific Tables or Data
+
+    \
+    If you know the structure of the database, you can query specific tables or data using standard SQL syntax. For example:
+
+    ```shell
+    sqlite3 databases/database.db "SELECT * FROM user_table"
+    ```
+
+    \
+    This command will select all data from the `user_table`. Replace `user_table` with the actual table name you are interested in.\
+
+
+    ### Exporting Database for Local Inspection
+
+    \
+    If the database is large or you want to use a GUI tool like DB Browser for SQLite for a more convenient view, you can pull the database file from the device to your local machine:
+
+    ```shell
+    adb exec-out run-as org.app.mobile_app cat databases/database.db > local_database.db
+    ```
+
+    \
+    This command will create a copy of the `database.db` on your local machine with the name `local_database.db`. You can open `local_database.db` with any SQLite database viewer on your local machine.
 
 ### Advanced Analysis
 
