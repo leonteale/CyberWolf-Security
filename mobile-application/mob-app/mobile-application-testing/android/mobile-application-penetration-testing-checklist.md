@@ -259,6 +259,36 @@ Here's how you can approach identifying and understanding the usage of native li
                 sudo apt install wireshark
                 wireshark capture.pcap
                 ```
+
+                \
+                In the Wireshark interface, you can use the display filter input at the top of the window to filter the displayed packets:
+
+                1.  **Show all IP addresses**
+
+                    You don't need to apply any specific filter to show all IP addresses. By default, Wireshark displays all packets in the `.pcap` file.
+                2.  **Filter by a specific IP address**
+
+                    To filter packets by a specific IP address, you can use the following filter:
+
+                    ```
+                    ip.src == 192.168.1.1
+                    ```
+
+                    Replace `192.168.1.1` with the IP address you're interested in. This filter will show all packets where the source IP address is the one you specified.
+                3.  **Filter by HTTP requests**
+
+                    To filter HTTP requests, you can use the following filter:
+
+                    ```
+                    http
+                    ```
+
+                    This filter will show all HTTP packets.
+                4.  **Search for keywords**
+
+                    To search for specific keywords in the packet data, you can use the `Find Packet` dialog (`Edit > Find Packet`, or Ctrl+F). In the dialog, select `String` for the search type, `Packet bytes` for the search in option, and enter your keyword in the search field.
+
+                As with `tcpdump`, Wireshark can only analyze unencrypted traffic. If the network traffic in your `.pcap` file is encrypted (e.g., HTTPS, SSH), Wireshark will not be able to decipher the contents of the packets. Also, remember that sensitive information like passwords or PINs should not be sent over the network in plaintext.
             *   **tcpdump**: `tcpdump` can also be used to analyze `.pcap` files from the command line. Here's an example that prints all packets:
 
                 ```shell
