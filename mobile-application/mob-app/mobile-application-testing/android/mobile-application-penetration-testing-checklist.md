@@ -536,13 +536,13 @@ Here's how you can approach identifying and understanding the usage of native li
 
     ```bash
     # Downloading SQLite3 for ARM architecture
-    wget https://www.sqlite.org/2023/sqlite-tools-linux-x86-3360000.zip
+    wget https://www.sqlite.org/2023/sqlite-tools-linux-x86-3420000.zip
 
     # Unzipping the package
-    unzip sqlite-tools-linux-x86-3360000.zip
+    unzip sqlite-tools-linux-x86-3420000.zip
 
     # Change to the sqlite directory
-    cd sqlite-tools-linux-x86-3360000
+    cd sqlite-tools-linux-x86-3420000
 
     # Pushing sqlite3 to the device
     adb push sqlite3 /data/local/tmp/
