@@ -572,14 +572,12 @@ Here's how you can approach identifying and understanding the usage of native li
     \
     Now you should be able to use the `sqlite3` command in your Android shell\
     \
-    If you get "not executable: 64-bit ELF file" the error typically indicates that you are trying to run an executable compiled for a different architecture than the one you're currently running.
-
-    Your device seems to be running a 32-bit OS. Therefore, you need to find a version of SQLite3 that's compatible with a 32-bit architecture.\
+    If you get "not executable: 64-bit ELF file" the error typically indicates that you are trying to run an executable compiled for a different architecture than the one you're currently running.\
 
 
-    You can download a 32-bit version of SQLite from the SQLite's official download page.
+    You can download a different version of SQLite from the SQLite's official download page.
 
-    Here is an example on how to download, push and give executable permissions to sqlite3:\
+    Here is an example on how to download, push and give executable permissions to sqlite3 for arm64:\
 
 
     <pre class="language-bash"><code class="lang-bash"># Downloading SQLite3 for ARM architecture
@@ -600,9 +598,9 @@ Here's how you can approach identifying and understanding the usage of native li
     #Finally, you should be able to execute the SQLite binary by specifying the full path to the file.
     /data/local/tmp/libsqliteX.so
 
-    # Giving executable permissions to sqlite3
-    adb shell chmod 755 /data/local/tmp/libsqliteX.so
-    export PATH=$PATH:/data/local/tmp/
+    # Giving executable permissions to sqlite3 inside the adb shell
+    <strong>chmod 755 /data/local/tmp/libsqliteX.so
+    </strong>export PATH=$PATH:/data/local/tmp/
     </code></pre>
 
     \
