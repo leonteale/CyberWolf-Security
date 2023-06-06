@@ -179,9 +179,9 @@ Here's how you can approach identifying and understanding the usage of native li
     ```shell
     adb logcat
     ```
-12. **Intercept and Analyze Network Traffic**
+12. **Intercept and Analyse Network Traffic**
     * Set up Burp Suite as a proxy for the device and inspect the traffic.
-13. **Capture Traffic with tcpdump and Analyze with Wireshark**
+13. **Capture Traffic with tcpdump and Analyse with Wireshark**
 
     * Use tcpdump to capture packets and Wireshark to analyze the network protocol details.
 
