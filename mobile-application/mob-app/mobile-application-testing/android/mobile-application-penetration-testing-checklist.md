@@ -22,6 +22,7 @@ description: >-
    * Wireshark
    * Frida
    * Objection
+   * scrcpy
 
 ### Static Analysis
 
