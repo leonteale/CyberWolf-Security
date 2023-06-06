@@ -216,6 +216,26 @@ Here's how you can approach identifying and understanding the usage of native li
         ```shell
         adb shell su -c '/data/local/tcpdump -w /sdcard/capture.pcap'
         ```
+
+
+
+        The error message "Permission denied" suggests that ADB doesn't have the required permissions to push the file to the specified location on your Android device. This usually happens when your device isn't rooted or if the SELinux policy is preventing write access to the `/data/local` directory.
+
+        Here are a few things you could try:
+
+        1.  **Push to a different location**: Try pushing the file to the `/sdcard` directory. This directory usually allows write access from ADB. Here's an example:
+
+            ```shell
+            adb push tcpdump /sdcard/tcpdump
+            ```
+        2. **Check if your device is rooted**: If your device is not rooted, you'll need to gain root access to push files to the `/data/local` directory.
+        3.  **Change SELinux policy**: If your device is rooted and you're still seeing this error, it could be because of the SELinux policy. You can temporarily set the SELinux policy to permissive with the following command:
+
+            ```shell
+            adb shell su 0 setenforce 0
+            ```
+
+            Then, try the `adb push` command again. Note that changing the SELinux policy can make your device less secure, so only do this if you understand the implications.
     2.  **Use an alternative tool**
 
         If you can't install `tcpdump` on your device, you can use an alternative tool. For example, you could use [`tPacketCapture`](https://play.google.com/store/apps/details?id=jp.co.taosoftware.android.packetcapture\&hl=en\&gl=US) app from the Play Store, which doesn't require root. However, please note that using such apps might not give you the level of control you would get with `tcpdump`.
