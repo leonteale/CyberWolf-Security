@@ -517,9 +517,25 @@ Here's how you can approach identifying and understanding the usage of native li
 
 
     ```shell
-    for db in $(find . -type f -exec grep -l "SQLite format 3" {} ;); do sqlite3 $db ".output /sdcard/$(basename $db).dump"; sqlite3 $db ".dump"; done
+    for db in $(find . -type f -exec grep -l "SQLite format 3" {} \;); do sqlite3 $db ".output /sdcard/databases/$(basename $db).dump"; done
     ```
 
+    \
+    Before you run this command, ensure that the `databases` directory exists on your `sdcard`. If not, you can create it using the following command:
+
+    ```bash
+    adb shell mkdir /sdcard/databases
+    ```
+
+    \
+    Now, when you want to pull all the databases to your local machine, you can do so with one command:
+
+    ```bash
+    adb pull /sdcard/databases .
+    ```
+
+    \
+    This will copy all the files from the `databases` directory on your `sdcard` to the current directory on your local machine.\
     \
     If it seems like the `sqlite3` binary is not available on your Android device's shell. This binary is not included by default on some Android distributions for security reasons.\
 
