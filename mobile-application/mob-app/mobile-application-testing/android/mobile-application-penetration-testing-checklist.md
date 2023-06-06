@@ -238,6 +238,22 @@ Here's how you can approach identifying and understanding the usage of native li
         ```
 
         \
+        Make sure that it is capturing on the correct network, it might default to "dummy0". \
+
+
+        ```shell
+        adb shell ip link show
+        ```
+
+        This command will list all network interfaces on your Android device. Once you have identified the correct network interface, you can specify it when starting `tcpdump`.
+
+        ```shell
+        adb shell su -c '/data/local/tcpdump -i wlan0 -w /sdcard/capture.pcap'
+        ```
+
+        Again, replace `wlan0` with the name of your network interface.
+
+        \
         This is the process of retrieving the `.pcap` file and analyzing it.
 
         1.  **Get the .pcap file to your machine**
