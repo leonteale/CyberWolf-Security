@@ -34,6 +34,13 @@ description: >-
     adb shell pm path com.example.package
     adb pull /data/app/com.example.package-1/base.apk
     ```
+
+    \
+    or, if you have the APK and need to install it to the device
+
+    ```
+    adb install app.apk
+    ```
 4.  **Decompile the APK File**
 
     * Use APKTool for decompiling the APK to view and analyze the source code.
@@ -520,6 +527,9 @@ Here's how you can approach identifying and understanding the usage of native li
     for db in $(find . -type f -exec grep -l "SQLite format 3" {} \;); do sqlite3 $db ".output /sdcard/databases/$(basename $db).dump"; done
     ```
 
+    \
+    If you get this:\
+    /system/bin/sh: /data/local/tmp/sqlite3: not executable: 64-bit ELF file\
     \
     Before you run this command, ensure that the `databases` directory exists on your `sdcard`. If not, you can create it using the following command:
 
