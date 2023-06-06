@@ -582,23 +582,28 @@ Here's how you can approach identifying and understanding the usage of native li
     Here is an example on how to download, push and give executable permissions to sqlite3:\
 
 
-    ```bash
-    # Downloading SQLite3 for ARM architecture
-    wget https://www.sqlite.org/2023/sqlite-tools-linux-x86-3420000.zip
+    <pre class="language-bash"><code class="lang-bash"># Downloading SQLite3 for ARM architecture
+    wget https://www.sqlite.org/2023/sqlite-android-3420000.aar
 
     # Unzipping the package
-    unzip sqlite-tools-linux-x86-3420000.zip
+    unzip sqlite-android-3420000.aar -d sqlite-android-3420000
 
     # Change to the sqlite directory
-    cd sqlite-tools-linux-x86-3420000
+    cd sqlite-android-3420000/jni/arm64-v8a/
 
-    # Pushing sqlite3 to the device
-    adb push sqlite3 /data/local/tmp/
+    # Pushing libsqliteX.so to the device
+    adb push libsqliteX.so /data/local/tmp/
+
+    <strong>#In the adb shell session on your Android device, set the file permissions of the libsqliteX.so file to make it executable.
+    </strong>chmod +x /data/local/libsqliteX.so
+
+    #Finally, you should be able to execute the SQLite binary by specifying the full path to the file.
+    /data/local/libsqliteX.so
 
     # Giving executable permissions to sqlite3
-    adb shell chmod 755 /data/local/tmp/sqlite3
-    export PATH=$PATH:/data/local/tmp
-    ```
+    adb shell chmod 755 /data/local/libsqliteX.so
+    export PATH=$PATH:/data/local/
+    </code></pre>
 
     \
     The above steps will push sqlite3 to the /data/local/tmp/ directory and give it executable permissions.
