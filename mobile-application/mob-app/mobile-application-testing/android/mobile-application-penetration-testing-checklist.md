@@ -524,41 +524,6 @@ Here's how you can approach identifying and understanding the usage of native li
     ```
 
     \
-    If you get "not executable: 64-bit ELF file" the error typically indicates that you are trying to run an executable compiled for a different architecture than the one you're currently running.
-
-    Your device seems to be running a 32-bit OS. Therefore, you need to find a version of SQLite3 that's compatible with a 32-bit architecture.\
-
-
-    You can download a 32-bit version of SQLite from the SQLite's official download page.
-
-    Here is an example on how to download, push and give executable permissions to sqlite3:\
-
-
-    ```bash
-    # Downloading SQLite3 for ARM architecture
-    wget https://www.sqlite.org/2023/sqlite-tools-linux-x86-3420000.zip
-
-    # Unzipping the package
-    unzip sqlite-tools-linux-x86-3420000.zip
-
-    # Change to the sqlite directory
-    cd sqlite-tools-linux-x86-3420000
-
-    # Pushing sqlite3 to the device
-    adb push sqlite3 /data/local/tmp/
-
-    # Giving executable permissions to sqlite3
-    adb shell chmod 755 /data/local/tmp/sqlite3
-    ```
-
-    \
-    The above steps will push sqlite3 to the /data/local/tmp/ directory and give it executable permissions.
-
-    \
-    Please note, the URL in the wget command above may vary depending on the version of SQLite and the architecture of your device. You should download the version that suits your requirements.
-
-    \
-    After executing the above steps, you can use the sqlite3 command as `/data/local/tmp/sqlite3`.\
     \
     Before you run this command, ensure that the `databases` directory exists on your `sdcard`. If not, you can create it using the following command:
 
@@ -605,7 +570,44 @@ Here's how you can approach identifying and understanding the usage of native li
     ```
 
     \
-    Now you should be able to use the `sqlite3` command in your Android shell.
+    Now you should be able to use the `sqlite3` command in your Android shell\
+    \
+    If you get "not executable: 64-bit ELF file" the error typically indicates that you are trying to run an executable compiled for a different architecture than the one you're currently running.
+
+    Your device seems to be running a 32-bit OS. Therefore, you need to find a version of SQLite3 that's compatible with a 32-bit architecture.\
+
+
+    You can download a 32-bit version of SQLite from the SQLite's official download page.
+
+    Here is an example on how to download, push and give executable permissions to sqlite3:\
+
+
+    ```bash
+    # Downloading SQLite3 for ARM architecture
+    wget https://www.sqlite.org/2023/sqlite-tools-linux-x86-3420000.zip
+
+    # Unzipping the package
+    unzip sqlite-tools-linux-x86-3420000.zip
+
+    # Change to the sqlite directory
+    cd sqlite-tools-linux-x86-3420000
+
+    # Pushing sqlite3 to the device
+    adb push sqlite3 /data/local/tmp/
+
+    # Giving executable permissions to sqlite3
+    adb shell chmod 755 /data/local/tmp/sqlite3
+    export PATH=$PATH:/data/local/tmp
+    ```
+
+    \
+    The above steps will push sqlite3 to the /data/local/tmp/ directory and give it executable permissions.
+
+    \
+    Please note, the URL in the wget command above may vary depending on the version of SQLite and the architecture of your device. You should download the version that suits your requirements.
+
+    \
+    After executing the above steps, you can use the sqlite3 command as `/data/local/tmp/sqlite3`.
 
 Keep in mind that `grep` might not be available on all devices, so you may need to pull the files to your local machine to perform the search:
 
