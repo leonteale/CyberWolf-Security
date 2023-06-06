@@ -595,14 +595,14 @@ Here's how you can approach identifying and understanding the usage of native li
     adb push libsqliteX.so /data/local/tmp/
 
     <strong>#In the adb shell session on your Android device, set the file permissions of the libsqliteX.so file to make it executable.
-    </strong>chmod +x /data/local/libsqliteX.so
+    </strong>chmod +x /data/local/tmp/libsqliteX.so
 
     #Finally, you should be able to execute the SQLite binary by specifying the full path to the file.
-    /data/local/libsqliteX.so
+    /data/local/tmp/libsqliteX.so
 
     # Giving executable permissions to sqlite3
-    adb shell chmod 755 /data/local/libsqliteX.so
-    export PATH=$PATH:/data/local/
+    adb shell chmod 755 /data/local/tmp/libsqliteX.so
+    export PATH=$PATH:/data/local/tmp/
     </code></pre>
 
     \
