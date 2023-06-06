@@ -485,6 +485,14 @@ Here's how you can approach identifying and understanding the usage of native li
     ```
 
     \
+    The `run-as` command allows you to run commands as if you were the app that owns the data directory, but it only works for apps that are debuggable. Debuggable apps are typically only found during development, and should not be used in production due to security concerns.\
+
+
+    If the app is not marked as debuggable in its manifest file (AndroidManifest.xml), you won't be able to use the `run-as` command. This is a security feature to prevent unauthorized access to the app's private data.\
+
+
+    This does present a challenge when you're trying to perform a penetration test on a non-debuggable app. If the device is rooted, you can access the app's data directory without using the `run-as` command. However, be aware that rooting a device can pose its own security risks.\
+    \
     Then you can search for SQLite database files recursively from the application's root directory using the `find` command. This will help you discover any databases that might be stored in non-standard locations:
 
     ```shell
