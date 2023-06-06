@@ -693,8 +693,65 @@ This command will create a copy of the `database.db` on your local machine with 
     * Use tools like radare2 or Ghidra to reverse engineer the native libraries.
 23. **Patch and Repackage the Application as Needed**
     * Use APKTool to decompile the app, modify the code, and then recompile the APK.
-24. **Verify Secure Network Traffic and Analyze Protocols like MQTT, XMPP, etc.**
-    * Besides HTTP and HTTPS, check for secure implementation of other protocols like MQTT, XMPP etc.
+24. **Verify Secure Network Traffic and Analyse Protocols like MQTT, XMPP, etc.**
+    *   Besides HTTP and HTTPS, check for secure implementation of other protocols like MQTT, XMPP etc.\
+        \
+        Network protocol analysis on Android is not straightforward due to the sandboxed nature of Android applications, but there are a few ways to approach it.\
+
+
+        **Wireshark** and **tcpdump** are two tools that can be used to capture and analyse network traffic, which includes traffic from protocols like MQTT, XMPP, etc. We already discussed how to use these tools earlier.\
+
+
+        However, to verify secure network traffic and analyse such protocols specifically for an Android application, you'll need to capture the traffic from that application. This can be done using VPN-based Android apps that can capture traffic from your device, or by routing your device's traffic through a proxy running on another machine.\
+
+
+        #### Steps to analyse network protocols for an Android app
+
+
+
+        **1. Setup a proxy to capture traffic:**\
+
+
+        You can set up a proxy using tools like Wireshark on a separate machine, and then route all the traffic from your Android device through that proxy. To do this, you'll need to:\
+
+
+        1.1. Set up the proxy on a separate machine and note down the IP address and port number.\
+
+
+        1.2. On your Android device, go to Wi-Fi settings, long-press on the connected Wi-Fi network, and modify the network configuration to use the manual proxy settings. Enter the IP address and port number of your proxy machine.\
+
+
+        1.3. Now, all the traffic from your Android device will go through the proxy, and you can capture this traffic.\
+
+
+        **2. Capture and analyse the traffic:**\
+
+
+        2.1. Start capturing traffic on your proxy using Wireshark or tcpdump.
+
+        \
+        2.2. Use the Android app as normal to generate network traffic.
+
+        \
+        2.3. Stop the capture on your proxy.\
+
+
+        2.4. Analyse the captured traffic using Wireshark's various features. For example, you can filter by protocol (e.g., MQTT), inspect individual packets, follow TCP streams, etc.\
+
+
+        **3. Use an Android app to capture traffic:**\
+
+
+        3.1. If setting up a separate proxy is not feasible, there are Android apps available that can capture network traffic from your device. These apps work by creating a VPN connection on the device and capturing all traffic that goes through it.\
+
+
+        3.2. One such app is [Packet Capture](https://play.google.com/store/apps/details?id=app.greyshirts.sslcapture\&hl=en\&gl=US). After installing the app, you can start the capture, use your app to generate traffic, and then stop the capture. The app will show the captured traffic, which you can then analyse.\
+
+
+        **4. Check for secure implementation:**\
+
+
+        To check for secure implementation of the protocols, you should check whether the communication is encrypted, check the certificates used for encryption, and try to decrypt the communication if possible.
 25. **Check for Weak Cryptographic Functions**
     * Check for usage of weak or deprecated cryptographic functions, or improper usage of cryptography.
 26. **Check for Code Obfuscation and Anti-Reversing Techniques**
