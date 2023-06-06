@@ -205,7 +205,7 @@ Here's how you can approach identifying and understanding the usage of native li
         Once you have the binary, you can push it to the device using the `adb push` command:
 
         ```shell
-        wget https://www.androidtcpdump.com/raw/tcpdump
+        wget https://www.androidtcpdump.com/download/4.99.4.1.10.4/tcpdump
         chmod +x tcpdump
         adb push tcpdump /data/local/tcpdump
         adb shell chmod 755 /data/local/tcpdump
