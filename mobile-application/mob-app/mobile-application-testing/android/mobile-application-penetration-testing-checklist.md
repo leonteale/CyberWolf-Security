@@ -211,12 +211,6 @@ Here's how you can approach identifying and understanding the usage of native li
         adb shell chmod 755 /data/local/tcpdump
         ```
 
-        Then, to capture packets:
-
-        ```shell
-        adb shell su -c '/data/local/tcpdump -w /sdcard/capture.pcap'
-        ```
-
 
 
         The error message "Permission denied" suggests that ADB doesn't have the required permissions to push the file to the specified location on your Android device. This usually happens when your device isn't rooted or if the SELinux policy is preventing write access to the `/data/local` directory.
@@ -236,6 +230,42 @@ Here's how you can approach identifying and understanding the usage of native li
             ```
 
             Then, try the `adb push` command again. Note that changing the SELinux policy can make your device less secure, so only do this if you understand the implications.
+
+        Then, to capture packets:
+
+        ```shell
+        adb shell su -c '/data/local/tcpdump -w /sdcard/capture.pcap'
+        ```
+
+        \
+        This is the process of retrieving the `.pcap` file and analyzing it.
+
+        1.  **Get the .pcap file to your machine**
+
+            You can use the `adb pull` command to retrieve the `capture.pcap` file from your Android device to your local machine:
+
+            ```shell
+            adb pull /sdcard/capture.pcap
+            ```
+
+            This command will download the `capture.pcap` file from your Android device to the current directory on your local machine.
+        2.  **Analyze the .pcap file**
+
+            You can use a tool like Wireshark or `tcpdump` to analyze the `.pcap` file.
+
+            *   **Wireshark**: Wireshark has a GUI that makes it easy to analyze `.pcap` files. You can install Wireshark and open the `.pcap` file with it:
+
+                ```shell
+                sudo apt install wireshark
+                wireshark capture.pcap
+                ```
+            *   **tcpdump**: `tcpdump` can also be used to analyze `.pcap` files from the command line. Here's an example that prints all packets:
+
+                ```shell
+                tcpdump -r capture.pcap
+                ```
+
+            When analyzing the `.pcap` file, you're looking for anything out of the ordinary, such as unusual traffic patterns, unencrypted sensitive data, or communications with suspicious IP addresses.
     2.  **Use an alternative tool**
 
         If you can't install `tcpdump` on your device, you can use an alternative tool. For example, you could use [`tPacketCapture`](https://play.google.com/store/apps/details?id=jp.co.taosoftware.android.packetcapture\&hl=en\&gl=US) app from the Play Store, which doesn't require root. However, please note that using such apps might not give you the level of control you would get with `tcpdump`.
