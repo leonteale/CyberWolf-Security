@@ -220,6 +220,32 @@ Here's how you can approach identifying and understanding the usage of native li
     ```
 
     \
+    In Android's logging system, a "tag" is a short string that you define and associate with your log messages. Tags act as identifiers or labels that can help you filter, sort, and search for specific types of log data. They're especially helpful when you're dealing with a lot of log data from different sources.\
+
+
+    Typically, developers use the name of the class or activity that the log call is in as the tag, so it's easier to identify where the log call is coming from.\
+
+
+    For example, a log message could look like this:
+
+    ```java
+    Log.i("MainActivity", "Button clicked!");
+    ```
+
+    \
+    Here, `"MainActivity"` is the tag, and `"Button clicked!"` is the log message.
+
+    In a penetration testing scenario, identifying the tag depends on what you're trying to do:
+
+    1.  **If you're examining a specific app,** you can use the package name of the app as a starting point. For example, if you're testing an app with the package name `com.example.myapp`, you can start with:
+
+        ```shell
+        adb logcat | grep "com.example.myapp"
+        ```
+    2. **If you're looking at the system logs in general,** there may not be a specific tag you should be looking for. Instead, you could grep for terms that are often related to sensitive information, such as "password", "token", "username", etc.
+    3. **If you have the source code of the app,** you can look at the code to identify what tags the app is using for its log messages.
+
+    \
     **Combining TAG and Priority Filters**
 
     You can also combine these filters:
