@@ -545,12 +545,8 @@ Here's how you can approach identifying and understanding the usage of native li
     ```bash
     adb shell
     su
-    mount -o remount,rw /system
-    cp /data/local/tmp/sqlite3 /system/xbin/
-    chmod 755 /system/xbin/sqlite3
-    mount -o remount,ro /system
-    exit
-    exit
+    chmod 755 /data/local/tmp/sqlite3
+    export PATH=$PATH:/data/local/tmp
     ```
 
     \
