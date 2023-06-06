@@ -247,11 +247,13 @@ Here's how you can approach identifying and understanding the usage of native li
 
         This command will list all network interfaces on your Android device. Once you have identified the correct network interface, you can specify it when starting `tcpdump`.
 
+
+
+        So, if you're looking to monitor network traffic from an app, it would likely be going through this interface (assuming the app is using WiFi to communicate). You can specify `wlan0` when starting `tcpdump` as follows:
+
         ```shell
         adb shell su -c '/data/local/tcpdump -i wlan0 -w /sdcard/capture.pcap'
         ```
-
-        Again, replace `wlan0` with the name of your network interface.
 
         \
         This is the process of retrieving the `.pcap` file and analyzing it.
