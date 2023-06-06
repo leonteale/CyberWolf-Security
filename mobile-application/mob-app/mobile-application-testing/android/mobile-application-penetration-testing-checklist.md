@@ -751,7 +751,43 @@ This command will create a copy of the `database.db` on your local machine with 
         **4. Check for secure implementation:**\
 
 
-        To check for secure implementation of the protocols, you should check whether the communication is encrypted, check the certificates used for encryption, and try to decrypt the communication if possible.
+        To check for secure implementation of the protocols, you should check whether the communication is encrypted, check the certificates used for encryption, and try to decrypt the communication if possible.\
+        \
+        In order to use `tcpdump` to monitor for specific protocols such as MQTT and XMPP, you can use the `port` filter.
+
+        1. **MQTT:** MQTT by default uses TCP port 1883 for non-encrypted communication and TCP port 8883 for encrypted communication.\
+
+
+        ```bash
+        tcpdump -i any -s 0 -w mqtt.pcap port 1883 or port 8883
+        ```
+
+        2. **XMPP:** XMPP uses TCP port 5222 for client connections and TCP port 5269 for server connections. For encrypted connections, port 5223 is often used.\
+
+
+        ```bash
+        tcpdump -i any -s 0 -w xmpp.pcap port 5222 or port 5223 or port 5269
+        ```
+
+        \
+        Remember that MQTT and XMPP are just examples. You should check which protocols the Android app you are testing is using and what ports those protocols use.\
+
+
+        If you don't know which protocols the app is using, you could monitor all TCP and UDP traffic and then analyse the pcap file using a tool like Wireshark to see which protocols are present:\
+
+
+        ```bash
+        tcpdump -i any -s 0 -w all_traffic.pcap
+        ```
+
+        \
+        Wireshark can recognize many different protocols automatically and can help you filter and analyse the pcap file easily.
+
+        \
+        Please remember to replace `any` in the `-i` parameter with the actual interface you are listening on if you know it.
+
+        \
+        Please note, though `tcpdump` is powerful, it only gives you the raw network packets. To interpret and analyse those packets, a packet analyzer like Wireshark will provide a more in-depth view into the packet data.
 25. **Check for Weak Cryptographic Functions**
     * Check for usage of weak or deprecated cryptographic functions, or improper usage of cryptography.
 26. **Check for Code Obfuscation and Anti-Reversing Techniques**
