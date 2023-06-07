@@ -46,7 +46,7 @@ Remember, the above points form a general checklist, and testing methods might c
 
 ## Methodology
 
-### Pre-requisites
+## Pre-requisites
 
 1. **Setup Testing Environment**
    * Prepare a suitable testing environment, which can be an actual Android device or an Android emulator like Genymotion.
@@ -64,7 +64,7 @@ Remember, the above points form a general checklist, and testing methods might c
    * Objection
    * [scrcpy](https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md)
 
-### Static Analysis
+## Static Analysis
 
 3.  **Obtain the APK File**
 
@@ -207,7 +207,7 @@ Here's how you can approach identifying and understanding the usage of native li
 4. **Look for Common Vulnerabilities**
    * When analysing native libraries, you should look for common vulnerabilities such as buffer overflows, format string vulnerabilities, and integer overflows. These are common in code written in languages like C and C++.
 
-#### Certificate Pinning
+### Certificate Pinning
 
 While there's not a specific setting in the app you can check, you can inspect the app's code or configuration files to see if certificate pinning is being used. Here's how you can do it:
 
@@ -220,7 +220,9 @@ While there's not a specific setting in the app you can check, you can inspect t
 
 Remember that these checks can give you some clues about whether certificate pinning is used, but the definitive test would be trying to intercept the app's SSL traffic using a proxy tool, as I described in the previous message.
 
-### Dynamic Analysis
+### Tap-Jacking
+
+## Dynamic Analysis
 
 10. **Install the APK on the Device**
 
@@ -700,7 +702,7 @@ sqlite3 databases/database.db .dump
 \
 Remember to replace `databases/database.db` with the actual path to the database file you're interested in.
 
-###
+
 
 ### Querying Specific Tables or Data
 
@@ -712,8 +714,14 @@ sqlite3 databases/database.db "SELECT * FROM user_table"
 ```
 
 \
-This command will select all data from the `user_table`. Replace `user_table` with the actual table name you are interested in.\
+This command will select all data from the `user_table`. Replace `user_table` with the actual table name you are interested in.
 
+or you can use a GUI for manual checking
+
+```shell
+sqlitebrowser
+
+```
 
 ### Exporting Database for Local Inspection
 
@@ -724,10 +732,22 @@ If the database is large or you want to use a GUI tool like DB Browser for SQLit
 adb exec-out run-as org.app.mobile_app cat databases/database.db > local_database.db
 ```
 
+Or from within the device shell
+
+```shell
+adb shell
+    su
+    cd /data/data/org.app.mobile_app/databases/
+    mkdir -p /sdcard/databases/
+    cp * /sdcard/databases/
+
+adb pull /sdcard/databases pull
+```
+
 \
 This command will create a copy of the `database.db` on your local machine with the name `local_database.db`. You can open `local_database.db` with any SQLite database viewer on your local machine.
 
-### Advanced Analysis
+## Advanced Analysis
 
 18. **Identify and Exploit Intent-Based Vulnerabilities**
     * Use Drozer or other tools to identify potential vulnerabilities with Android Intents.
@@ -840,13 +860,13 @@ This command will create a copy of the `database.db` on your local machine with 
         Please remember to replace `any` in the `-i` parameter with the actual interface you are listening on if you know it.
 
         \
-        Please note, though `tcpdump` is powerful, it only gives you the raw network packets. To interpret and analyse those packets, a packet analyzer like Wireshark will provide a more in-depth view into the packet data.
+        Please note, though `tcpdump` is powerful, it only gives you the raw network packets. To interpret and analyse those packets, a packet analyser like Wireshark will provide a more in-depth view into the packet data.
 25. **Check for Weak Cryptographic Functions**
     * Check for usage of weak or deprecated cryptographic functions, or improper usage of cryptography.
 26. **Check for Code Obfuscation and Anti-Reversing Techniques**
     * Check for presence of anti-reversing measures like code obfuscation, root detection, debugger detection etc.
 
-### Post Exploitation
+## Post Exploitation
 
 27. **Exploit Identified Vulnerabilities**
     * Use discovered vulnerabilities to demonstrate potential impacts.
@@ -890,5 +910,5 @@ Here are some steps on how to use `logcat`:
     ```shell
     adb logcat > logcat.txt
     ```
-5. **Analyzing the Log**
-   * Once you have the log data, you can start analyzing it. You should look for any sensitive data that shouldn't be logged, such as passwords, credit card numbers, or personally identifiable information (PII). You should also look for error messages or exceptions that might reveal issues with the application, such as potential vulnerabilities or areas of weak security.
+5. **Analysing the Log**
+   * Once you have the log data, you can start analysing it. You should look for any sensitive data that shouldn't be logged, such as passwords, credit card numbers, or personally identifiable information (PII). You should also look for error messages or exceptions that might reveal issues with the application, such as potential vulnerabilities or areas of weak security.
