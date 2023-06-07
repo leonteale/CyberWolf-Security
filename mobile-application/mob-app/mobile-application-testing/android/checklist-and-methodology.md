@@ -62,7 +62,7 @@ Remember, the above points form a general checklist, and testing methods might c
    * Wireshark
    * Frida
    * Objection
-   * [scrcpy](https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md)
+   * [scrcpy](https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md) - Mirror and control your phone screen using ADB
 
 ## Static Analysis
 
