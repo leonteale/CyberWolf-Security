@@ -350,186 +350,186 @@ Remember that tapjacking is more a user-interface concern rather than a data sec
 
 12. **Intercept and Analyse Network Traffic**
     * Set up Burp Suite as a proxy for the device and inspect the traffic.
-13. **Capture Traffic with tcpdump and Analyse with Wireshark**
 
-    * Use tcpdump to capture packets and Wireshark to analyze the network protocol details.
+### **Capture Traffic - tcpdump and Wireshark**
+
+* Use tcpdump to capture packets and Wireshark to analyse the network protocol details.
+
+```shell
+adb shell tcpdump -w /sdcard/capture.pcap
+adb pull /sdcard/capture.pcap
+```
+
+\
+If you get issue with tcpdump not being installed on the device then you an do the following:
+
+1.  **Use an Android device/emulator with root access**
+
+    On a rooted device, you can install `tcpdump` using the appropriate binary for your device's architecture. Here are some links to download tcpdump binaries:
+
+    * [ARM](https://www.androidtcpdump.com/tcpdump)
+    * [ARM64](https://www.androidtcpdump.com/tcpdump)
+    * [x86](https://www.androidtcpdump.com/tcpdump)
+
+    Once you have the binary, you can push it to the device using the `adb push` command:
 
     ```shell
-    adb shell tcpdump -w /sdcard/capture.pcap
-    adb pull /sdcard/capture.pcap
+    wget https://www.androidtcpdump.com/download/4.99.4.1.10.4/tcpdump
+    chmod +x tcpdump
+    adb push tcpdump /data/local/tcpdump
+    adb shell chmod 755 /data/local/tcpdump
+    ```
+
+
+
+    The error message "Permission denied" suggests that ADB doesn't have the required permissions to push the file to the specified location on your Android device. This usually happens when your device isn't rooted or if the SELinux policy is preventing write access to the `/data/local` directory.
+
+    Here are a few things you could try:
+
+    1.  **Push to a different location**: Try pushing the file to the `/sdcard` directory. This directory usually allows write access from ADB. Here's an example:
+
+        ```shell
+        adb push tcpdump /sdcard/tcpdump
+        ```
+    2. **Check if your device is rooted**: If your device is not rooted, you'll need to gain root access to push files to the `/data/local` directory.
+    3.  **Change SELinux policy**: If your device is rooted and you're still seeing this error, it could be because of the SELinux policy. You can temporarily set the SELinux policy to permissive with the following command:
+
+        ```shell
+        adb shell su 0 setenforce 0
+        ```
+
+        Then, try the `adb push` command again. Note that changing the SELinux policy can make your device less secure, so only do this if you understand the implications.
+
+    Then, to capture packets:
+
+    ```shell
+    adb shell su -c '/data/local/tcpdump -w /sdcard/capture.pcap'
     ```
 
     \
-    If you get issue with tcpdump not being installed on the device then you an do the following:\
+    Make sure that it is capturing on the correct network, it might default to "dummy0". \
 
 
-    1.  **Use an Android device/emulator with root access**
+    ```shell
+    adb shell ip link show
+    ```
 
-        On a rooted device, you can install `tcpdump` using the appropriate binary for your device's architecture. Here are some links to download tcpdump binaries:
+    This command will list all network interfaces on your Android device. Once you have identified the correct network interface, you can specify it when starting `tcpdump`.
 
-        * [ARM](https://www.androidtcpdump.com/tcpdump)
-        * [ARM64](https://www.androidtcpdump.com/tcpdump)
-        * [x86](https://www.androidtcpdump.com/tcpdump)
 
-        Once you have the binary, you can push it to the device using the `adb push` command:
+
+    So, if you're looking to monitor network traffic from an app, it would likely be going through this interface (assuming the app is using WiFi to communicate). You can specify `wlan0` when starting `tcpdump` as follows:
+
+    ```shell
+    adb shell su -c '/data/local/tcpdump -i wlan0 -w /sdcard/capture.pcap'
+    ```
+
+    \
+    This is the process of retrieving the `.pcap` file and analyzing it.
+
+    1.  **Get the .pcap file to your machine**
+
+        You can use the `adb pull` command to retrieve the `capture.pcap` file from your Android device to your local machine:
 
         ```shell
-        wget https://www.androidtcpdump.com/download/4.99.4.1.10.4/tcpdump
-        chmod +x tcpdump
-        adb push tcpdump /data/local/tcpdump
-        adb shell chmod 755 /data/local/tcpdump
+        adb pull /sdcard/capture.pcap
         ```
 
+        This command will download the `capture.pcap` file from your Android device to the current directory on your local machine.
+    2.  **Analyze the .pcap file**
 
+        You can use a tool like Wireshark or `tcpdump` to analyze the `.pcap` file.
 
-        The error message "Permission denied" suggests that ADB doesn't have the required permissions to push the file to the specified location on your Android device. This usually happens when your device isn't rooted or if the SELinux policy is preventing write access to the `/data/local` directory.
-
-        Here are a few things you could try:
-
-        1.  **Push to a different location**: Try pushing the file to the `/sdcard` directory. This directory usually allows write access from ADB. Here's an example:
+        *   **Wireshark**: Wireshark has a GUI that makes it easy to analyze `.pcap` files. You can install Wireshark and open the `.pcap` file with it:
 
             ```shell
-            adb push tcpdump /sdcard/tcpdump
-            ```
-        2. **Check if your device is rooted**: If your device is not rooted, you'll need to gain root access to push files to the `/data/local` directory.
-        3.  **Change SELinux policy**: If your device is rooted and you're still seeing this error, it could be because of the SELinux policy. You can temporarily set the SELinux policy to permissive with the following command:
-
-            ```shell
-            adb shell su 0 setenforce 0
+            sudo apt install wireshark
+            wireshark capture.pcap
             ```
 
-            Then, try the `adb push` command again. Note that changing the SELinux policy can make your device less secure, so only do this if you understand the implications.
-
-        Then, to capture packets:
-
-        ```shell
-        adb shell su -c '/data/local/tcpdump -w /sdcard/capture.pcap'
-        ```
-
-        \
-        Make sure that it is capturing on the correct network, it might default to "dummy0". \
-
-
-        ```shell
-        adb shell ip link show
-        ```
-
-        This command will list all network interfaces on your Android device. Once you have identified the correct network interface, you can specify it when starting `tcpdump`.
-
-
-
-        So, if you're looking to monitor network traffic from an app, it would likely be going through this interface (assuming the app is using WiFi to communicate). You can specify `wlan0` when starting `tcpdump` as follows:
-
-        ```shell
-        adb shell su -c '/data/local/tcpdump -i wlan0 -w /sdcard/capture.pcap'
-        ```
-
-        \
-        This is the process of retrieving the `.pcap` file and analyzing it.
-
-        1.  **Get the .pcap file to your machine**
-
-            You can use the `adb pull` command to retrieve the `capture.pcap` file from your Android device to your local machine:
-
-            ```shell
-            adb pull /sdcard/capture.pcap
-            ```
-
-            This command will download the `capture.pcap` file from your Android device to the current directory on your local machine.
-        2.  **Analyze the .pcap file**
-
-            You can use a tool like Wireshark or `tcpdump` to analyze the `.pcap` file.
-
-            *   **Wireshark**: Wireshark has a GUI that makes it easy to analyze `.pcap` files. You can install Wireshark and open the `.pcap` file with it:
-
-                ```shell
-                sudo apt install wireshark
-                wireshark capture.pcap
-                ```
-
-                \
-                In the Wireshark interface, you can use the display filter input at the top of the window to filter the displayed packets:
-
-                1.  **Show all IP addresses**
-
-                    You don't need to apply any specific filter to show all IP addresses. By default, Wireshark displays all packets in the `.pcap` file.
-                2.  **Filter by a specific IP address**
-
-                    To filter packets by a specific IP address, you can use the following filter:
-
-                    ```
-                    ip.src == 192.168.1.1
-                    ```
-
-                    Replace `192.168.1.1` with the IP address you're interested in. This filter will show all packets where the source IP address is the one you specified.
-                3.  **Filter by HTTP requests**
-
-                    To filter HTTP requests, you can use the following filter:
-
-                    ```
-                    http
-                    ```
-
-                    This filter will show all HTTP packets.
-                4.  **Search for keywords**
-
-                    To search for specific keywords in the packet data, you can use the `Find Packet` dialog (`Edit > Find Packet`, or Ctrl+F). In the dialog, select `String` for the search type, `Packet bytes` for the search in option, and enter your keyword in the search field.
-
-                As with `tcpdump`, Wireshark can only analyze unencrypted traffic. If the network traffic in your `.pcap` file is encrypted (e.g., HTTPS, SSH), Wireshark will not be able to decipher the contents of the packets. Also, remember that sensitive information like passwords or PINs should not be sent over the network in plaintext.
-            *   **tcpdump**: `tcpdump` can also be used to analyze `.pcap` files from the command line. Here's an example that prints all packets:
-
-                ```shell
-                tcpdump -r capture.pcap
-                ```
-
-            When analyzing the `.pcap` file, you're looking for anything out of the ordinary, such as unusual traffic patterns, unencrypted sensitive data, or communications with suspicious IP addresses.\
             \
-            **Using `tcpdump` to analyze `.pcap` files**
+            In the Wireshark interface, you can use the display filter input at the top of the window to filter the displayed packets:
 
-            1.  Here are some examples of how you might use `tcpdump` to analyze a `.pcap` file:
+            1.  **Show all IP addresses**
 
-                *   **Show all IP addresses**
+                You don't need to apply any specific filter to show all IP addresses. By default, Wireshark displays all packets in the `.pcap` file.
+            2.  **Filter by a specific IP address**
 
-                    ```shell
-                    tcpdump -r capture.pcap -nn
-                    ```
-                *   **Filter by a specific IP address**
+                To filter packets by a specific IP address, you can use the following filter:
 
-                    ```shell
-                    tcpdump -r capture.pcap src 192.168.1.1
-                    ```
-                *   **Filter by HTTP requests**
+                ```
+                ip.src == 192.168.1.1
+                ```
 
-                    ```shell
-                    tcpdump -r capture.pcap -A 'tcp port 80'
-                    ```
-                *   **Search for keywords**
+                Replace `192.168.1.1` with the IP address you're interested in. This filter will show all packets where the source IP address is the one you specified.
+            3.  **Filter by HTTP requests**
 
-                    ```shell
-                    tcpdump -r capture.pcap -A | grep 'password'
-                    ```
+                To filter HTTP requests, you can use the following filter:
 
-                Please note that `tcpdump` can only analyze unencrypted traffic. If the network traffic in your `.pcap` file is encrypted (e.g., HTTPS, SSH), `tcpdump` will not be able to decipher the contents of the packets.\
+                ```
+                http
+                ```
+
+                This filter will show all HTTP packets.
+            4.  **Search for keywords**
+
+                To search for specific keywords in the packet data, you can use the `Find Packet` dialog (`Edit > Find Packet`, or Ctrl+F). In the dialog, select `String` for the search type, `Packet bytes` for the search in option, and enter your keyword in the search field.
+
+            As with `tcpdump`, Wireshark can only analyze unencrypted traffic. If the network traffic in your `.pcap` file is encrypted (e.g., HTTPS, SSH), Wireshark will not be able to decipher the contents of the packets. Also, remember that sensitive information like passwords or PINs should not be sent over the network in plaintext.
+        *   **tcpdump**: `tcpdump` can also be used to analyze `.pcap` files from the command line. Here's an example that prints all packets:
+
+            ```shell
+            tcpdump -r capture.pcap
+            ```
+
+        When analyzing the `.pcap` file, you're looking for anything out of the ordinary, such as unusual traffic patterns, unencrypted sensitive data, or communications with suspicious IP addresses.\
+        \
+        **Using `tcpdump` to analyze `.pcap` files**
+
+        1.  Here are some examples of how you might use `tcpdump` to analyze a `.pcap` file:
+
+            *   **Show all IP addresses**
+
+                ```shell
+                tcpdump -r capture.pcap -nn
+                ```
+            *   **Filter by a specific IP address**
+
+                ```shell
+                tcpdump -r capture.pcap src 192.168.1.1
+                ```
+            *   **Filter by HTTP requests**
+
+                ```shell
+                tcpdump -r capture.pcap -A 'tcp port 80'
+                ```
+            *   **Search for keywords**
+
+                ```shell
+                tcpdump -r capture.pcap -A | grep 'password'
+                ```
+
+            Please note that `tcpdump` can only analyze unencrypted traffic. If the network traffic in your `.pcap` file is encrypted (e.g., HTTPS, SSH), `tcpdump` will not be able to decipher the contents of the packets.\
 
 
-                Additionally, it's very uncommon and highly insecure for passwords or PINs to be sent over the network in plaintext. In a secure setup, sensitive information like passwords or PINs would be sent over an encrypted connection, so `tcpdump` would not be able to recover them.\
-                \
-                For more tcpdump commands, refer to the following: [tcpdump](https://app.gitbook.com/s/uuomMqs69rpH2Wnxhc3O/\~/changes/321/tools/tools/tcpdump)
-    2.  **Use an alternative tool**
+            Additionally, it's very uncommon and highly insecure for passwords or PINs to be sent over the network in plaintext. In a secure setup, sensitive information like passwords or PINs would be sent over an encrypted connection, so `tcpdump` would not be able to recover them.\
+            \
+            For more tcpdump commands, refer to the following: [tcpdump](https://app.gitbook.com/s/uuomMqs69rpH2Wnxhc3O/\~/changes/321/tools/tools/tcpdump)
+2.  **Use an alternative tool**
 
-        If you can't install `tcpdump` on your device, you can use an alternative tool. For example, you could use [`tPacketCapture`](https://play.google.com/store/apps/details?id=jp.co.taosoftware.android.packetcapture\&hl=en\&gl=US) app from the Play Store, which doesn't require root. However, please note that using such apps might not give you the level of control you would get with `tcpdump`.
-    3.  **Use `tcpdump` on your host machine**
+    If you can't install `tcpdump` on your device, you can use an alternative tool. For example, you could use [`tPacketCapture`](https://play.google.com/store/apps/details?id=jp.co.taosoftware.android.packetcapture\&hl=en\&gl=US) app from the Play Store, which doesn't require root. However, please note that using such apps might not give you the level of control you would get with `tcpdump`.
+3.  **Use `tcpdump` on your host machine**
 
-        If you're testing on an emulator, another option is to use `tcpdump` on your host machine to capture packets. Here's an example:
+    If you're testing on an emulator, another option is to use `tcpdump` on your host machine to capture packets. Here's an example:
 
-        ```shell
-        sudo tcpdump -i any -w capture.pcap
-        ```
+    ```shell
+    sudo tcpdump -i any -w capture.pcap
+    ```
 
-        This command tells `tcpdump` to capture packets on all network interfaces (`-i any`) and write them to a file called `capture.pcap` (`-w capture.pcap`).
-14. **Run the Application and Observe its Behaviour**
-    * Manually run the application, perform various operations, and observe its behaviour and outputs.
-15. **Use Drozer to Map the Attack Surface**
+    This command tells `tcpdump` to capture packets on all network interfaces (`-i any`) and write them to a file called `capture.pcap` (`-w capture.pcap`).
+4. **Run the Application and Observe its Behaviour**
+   * Manually run the application, perform various operations, and observe its behaviour and outputs.
+5.  **Use Drozer to Map the Attack Surface**
 
     * Use Drozer for a detailed analysis of the application's attack surface.
 
@@ -537,9 +537,9 @@ Remember that tapjacking is more a user-interface concern rather than a data sec
     drozer console connect
     run app.package.attacksurface com.example.package
     ```
-16. **Use Frida/Objection for Dynamic Instrumentation and SSL Pinning Bypass**
-    * Use Frida or Objection to modify the app behaviour during runtime, and also to bypass SSL Pinning if implemented.
-17. **Analyse SQLite Databases if Present**
+6. **Use Frida/Objection for Dynamic Instrumentation and SSL Pinning Bypass**
+   * Use Frida or Objection to modify the app behaviour during runtime, and also to bypass SSL Pinning if implemented.
+7.  **Analyse SQLite Databases if Present**
 
     * Check for insecure data storage or sensitive information stored in SQLite databases.
 
