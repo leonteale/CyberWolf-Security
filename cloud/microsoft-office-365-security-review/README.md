@@ -38,3 +38,24 @@ Connect-SPOService -Url “https://$orgName-admin.sharepoint.com” -Credential
 $M365Credentials 
 Connect-MicrosoftTeams -Credential $M365credentials 
 ```
+
+## Review Guidance
+
+The following supporting material provides additional information relating to the associated finding. This section reviews 7KBW’s O365 security settings against the technical guide “Office 365 UK Blueprint - Secure Configuration Alignment – Prepared for UK Government, 4/9/2021, Version 2 Final”, comparing with xxxxxx configuration.
+
+## GOOD
+
+### Verify that Microsoft 365 Audit logging is enabled
+
+When audit log search in the compliance centre is turned on, user and admin activity from your organisation is recorded in the audit log and retained for 90 days, and up to one year depending on the license assigned to users.
+
+```
+Get-AdminAuditLogConfig | FL UnifiedAuditLogIngestionEnabled
+```
+
+A value of _**True**_ for the UnifiedAuditLogIngestionEnabled property indicates that auditing is turned on. A value of _**False**_ indicates that auditing is not turned on.
+
+[https://compliance.microsoft.com/auditlogsearch](https://compliance.microsoft.com/auditlogsearch)\
+\
+Reference:\
+[https://learn.microsoft.com/en-us/microsoft-365/compliance/audit-log-enable-disable?view=o365-worldwide](https://learn.microsoft.com/en-us/microsoft-365/compliance/audit-log-enable-disable?view=o365-worldwide)\
