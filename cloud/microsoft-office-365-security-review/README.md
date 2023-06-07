@@ -41,7 +41,7 @@ Connect-MicrosoftTeams -Credential $M365credentials
 
 ## Review Guidance
 
-The following supporting material provides additional information relating to the associated finding. This section reviews 7KBW’s O365 security settings against the technical guide “Office 365 UK Blueprint - Secure Configuration Alignment – Prepared for UK Government, 4/9/2021, Version 2 Final”, comparing with xxxxxx configuration.
+The following supporting material provides additional information relating to the associated finding. This section reviews an example's O365 security settings against the technical guide “Office 365 UK Blueprint - Secure Configuration Alignment – Prepared for UK Government, 4/9/2021, Version 2 Final”, comparing with xxxxxx configuration.
 
 ## GOOD
 
@@ -57,7 +57,7 @@ A value of _**True**_ for the UnifiedAuditLogIngestionEnabled property indicates
 \
 [https://compliance.microsoft.com/auditlogsearch](https://compliance.microsoft.com/auditlogsearch)
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 Reference:\
 [https://learn.microsoft.com/en-us/microsoft-365/compliance/audit-log-enable-disable?view=o365-worldwide](https://learn.microsoft.com/en-us/microsoft-365/compliance/audit-log-enable-disable?view=o365-worldwide)
