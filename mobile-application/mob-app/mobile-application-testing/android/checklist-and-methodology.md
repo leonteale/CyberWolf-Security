@@ -8,39 +8,64 @@ description: >-
 
 ## Checklist
 
-1. **App Package Structure Analysis:**
-   * [ ] Analyse the APK file with tools such as APKTool, Jadx, or similar.
-   * [ ] Look for embedded secrets, such as API keys, in the decompiled code.
-   * [ ] Review the AndroidManifest.xml for sensitive data or misconfigurations.
-2. **Insecure Data Storage:**
-   * [ ] Check shared preferences for sensitive data stored in clear text.
-   * [ ] Check SQLite databases for sensitive data.
-   * [ ] Review the internal & external storage directories for insecurely stored data.
-3. **Network Analysis:**
-   * [ ] Use Wireshark or similar tools to analyse network traffic.
-   * [ ] Check if the app is transmitting sensitive data in plain text over the network.
-   * [ ] Verify if the app is implementing certificate pinning to prevent man-in-the-middle attacks.
-4. **Log Analysis:**
-   * [ ] Use Logcat to collect system logs and analyse them for sensitive data leakage.
-5. **Reverse Engineering and Code Analysis:**
-   * [ ] Use tools such as Jadx or JD-GUI to decompile the APK and analyse the source code.
-   * [ ] Check for hard-coded secrets, insecure functions, or insecure implementations.
-6. **Runtime Analysis:**
-   * [ ] Use Frida, Xposed, or similar frameworks to hook into the app's methods during runtime for dynamic analysis.
-   * [ ] Test the app's behaviour and response to certain inputs or manipulated environment variables.
-7. **Authentication Mechanisms:**
-   * [ ] Check for user enumeration vulnerabilities.
-   * [ ] Verify if the app uses secure protocols during authentication.
-   * [ ] Check for weak password policies.
-8. **Session Management:**
-   * [ ] Check if sessions expire appropriately.
-   * [ ] Check if the app handles multiple simultaneous sessions correctly.
-9. **Data Encryption:**
-   * [ ] Verify if data at rest is encrypted.
-   * [ ] Check if data in transit is encrypted.
-10. **App Permissions:**
-    * [ ] Review the permissions requested by the app.
-    * [ ] Check if the app requests more permissions than necessary.
+**App Package Structure Analysis:**
+
+* [ ] Analyse the APK file with tools such as APKTool, Jadx, or similar.
+* [ ] Look for embedded secrets, such as API keys, in the decompiled code.
+* [ ] Review the AndroidManifest.xml for sensitive data or misconfigurations.
+
+**Insecure Data Storage:**
+
+* [ ] Check shared preferences for sensitive data stored in clear text.
+* [ ] Check SQLite databases for sensitive data.
+* [ ] Review the internal & external storage directories for insecurely stored data.
+
+**Network Analysis:**
+
+* [ ] Use Wireshark or similar tools to analyse network traffic.
+* [ ] Check if the app is transmitting sensitive data in plain text over the network.
+* [ ] Verify if the app is implementing certificate pinning to prevent man-in-the-middle attacks.
+
+**Log Analysis:**
+
+* [ ] Use Logcat to collect system logs and analyse them for sensitive data leakage.
+
+**Reverse Engineering and Code Analysis:**
+
+* [ ] Use tools such as Jadx or JD-GUI to decompile the APK and analyse the source code.
+* [ ] Check for hard-coded secrets, insecure functions, or insecure implementations.
+
+**Runtime Analysis:**
+
+* [ ] Use Frida, Xposed, or similar frameworks to hook into the app's methods during runtime for dynamic analysis.
+* [ ] Test the app's behaviour and response to certain inputs or manipulated environment variables.
+
+**Authentication Mechanisms:**
+
+* [ ] Check for user enumeration vulnerabilities.
+* [ ] Verify if the app uses secure protocols during authentication.
+* [ ] Check for weak password policies.
+
+**Session Management:**
+
+* [ ] Check if sessions expire appropriately.
+* [ ] Check if the app handles multiple simultaneous sessions correctly.
+
+**Data Encryption:**
+
+* [ ] Verify if data at rest is encrypted.
+* [ ] Check if data in transit is encrypted.
+
+**App Permissions:**
+
+* [ ] Review the permissions requested by the app.
+* [ ] Check if the app requests more permissions than necessary.
+
+**Additional points:**
+
+* [ ] Check if the app has any mechanisms to detect if the device is rooted or jailbroken.
+* [ ] Verify if the app has proper error handling, ensuring it doesn't reveal sensitive information when errors occur.
+* [ ] Check the resiliency against reverse engineering and tampering by using tools like Objection or APKtool.
 
 Remember, the above points form a general checklist, and testing methods might change based on the app's functionality, architecture, and the kind of data it handles.
 
