@@ -704,7 +704,7 @@ Remember to replace `databases/database.db` with the actual path to the database
 
 
 
-### Querying Specific Tables or Data
+### Querying Specific Tables
 
 \
 If you know the structure of the database, you can query specific tables or data using standard SQL syntax. For example:
@@ -723,7 +723,7 @@ sqlitebrowser
 
 ```
 
-### Exporting Database for Local Inspection
+### Exporting Databases
 
 \
 If the database is large or you want to use a GUI tool like DB Browser for SQLite for a more convenient view, you can pull the database file from the device to your local machine:
@@ -746,6 +746,44 @@ adb pull /sdcard/databases pull
 
 \
 This command will create a copy of the `database.db` on your local machine with the name `local_database.db`. You can open `local_database.db` with any SQLite database viewer on your local machine.
+
+### Using logcat
+
+`logcat` is a command-line tool that dumps a log of system messages, which can include information about system processes, errors, warnings, stack traces, and more.
+
+Here are some steps on how to use `logcat`:
+
+1.  **Basic logcat Usage**
+
+    * Simply type `adb logcat` in your command line and it will start displaying a real-time feed of system messages.
+
+    ```shell
+    adb logcat
+    ```
+2.  **Filtering logcat Output**
+
+    * You can filter `logcat` output for easier reading. For instance, you can filter by log level (Error, Warning, Info, Debug, Verbose), or by the source of the log messages (tag).
+
+    ```shell
+    adb logcat *:E
+    adb logcat -s "YourAppTag"
+    ```
+3.  **Clearing the Log**
+
+    * If you want to clear the current log, you can use the `-c` command.
+
+    ```shell
+    adb logcat -c
+    ```
+4.  **Saving log Output to a File**
+
+    * If you need to save the log output for later analysis or to share it with your team, you can direct the output to a file.
+
+    ```shell
+    adb logcat > logcat.txt
+    ```
+5. **Analysing the Log**
+   * Once you have the log data, you can start analysing it. You should look for any sensitive data that shouldn't be logged, such as passwords, credit card numbers, or personally identifiable information (PII). You should also look for error messages or exceptions that might reveal issues with the application, such as potential vulnerabilities or areas of weak security.
 
 ## Advanced Analysis
 
@@ -874,41 +912,3 @@ This command will create a copy of the `database.db` on your local machine with 
     * Document all findings, provide evidence, and create a detailed report.
 
 Please note, every application will have different security controls in place, so this checklist may need to be adjusted based on the application you're testing. Always follow ethical guidelines and only test applications you have permission to test.
-
-### Using logcat in Android Pentesting
-
-`logcat` is a command-line tool that dumps a log of system messages, which can include information about system processes, errors, warnings, stack traces, and more.
-
-Here are some steps on how to use `logcat`:
-
-1.  **Basic logcat Usage**
-
-    * Simply type `adb logcat` in your command line and it will start displaying a real-time feed of system messages.
-
-    ```shell
-    adb logcat
-    ```
-2.  **Filtering logcat Output**
-
-    * You can filter `logcat` output for easier reading. For instance, you can filter by log level (Error, Warning, Info, Debug, Verbose), or by the source of the log messages (tag).
-
-    ```shell
-    adb logcat *:E
-    adb logcat -s "YourAppTag"
-    ```
-3.  **Clearing the Log**
-
-    * If you want to clear the current log, you can use the `-c` command.
-
-    ```shell
-    adb logcat -c
-    ```
-4.  **Saving log Output to a File**
-
-    * If you need to save the log output for later analysis or to share it with your team, you can direct the output to a file.
-
-    ```shell
-    adb logcat > logcat.txt
-    ```
-5. **Analysing the Log**
-   * Once you have the log data, you can start analysing it. You should look for any sensitive data that shouldn't be logged, such as passwords, credit card numbers, or personally identifiable information (PII). You should also look for error messages or exceptions that might reveal issues with the application, such as potential vulnerabilities or areas of weak security.
