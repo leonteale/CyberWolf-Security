@@ -14,7 +14,7 @@ Also enable/start the 'remote registry' service in services.msc
 
 ## Checklist
 
-![](<../.gitbook/assets/image (4).png>)
+![](<../.gitbook/assets/image (4) (2).png>)
 
 | Catagory | Checks | Result |
 | -------- | ------ | ------ |
