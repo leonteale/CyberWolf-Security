@@ -259,8 +259,11 @@ Here's how you can check if an Android application is vulnerable to tapjacking:
 
 You can also install this tapjacking-poc.apk which will allow you to perform the above.
 
-```
-adb install tapjacking-poc.apk
+```bash
+git clone https://github.com/mwrlabs/tapjacking-poc.git
+cd tapjacking-poc
+cd bin
+adb install tapjacking.apk
 ```
 
 If the target app is still able to receive touch events while being obscured by the overlay, then it's vulnerable to tapjacking.
