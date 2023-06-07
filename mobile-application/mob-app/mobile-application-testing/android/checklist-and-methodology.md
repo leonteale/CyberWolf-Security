@@ -207,6 +207,19 @@ Here's how you can approach identifying and understanding the usage of native li
 4. **Look for Common Vulnerabilities**
    * When analysing native libraries, you should look for common vulnerabilities such as buffer overflows, format string vulnerabilities, and integer overflows. These are common in code written in languages like C and C++.
 
+#### Certificate Pinning
+
+While there's not a specific setting in the app you can check, you can inspect the app's code or configuration files to see if certificate pinning is being used. Here's how you can do it:
+
+1. **Inspect the network security configuration**: \
+   In Android 7.0 (API level 24) and later, you can configure how your app trusts custom CAs by adding a network security configuration file to your app. The file resides in the `res/xml` directory and is pointed to by the `android:networkSecurityConfig` attribute in the application tag in the manifest. If the app has this file, check it for any `<pin-set>` entries, which suggest the use of certificate pinning.
+2. **Decompile the APK**: \
+   Tools like `jadx` or `apktool` can decompile the APK file to inspect its source code. Look for uses of classes or methods related to certificate pinning. For example, in OkHttp library, `CertificatePinner` class is used for pinning. If you find such code, it's an indication that certificate pinning might be used.
+3. **Inspect SSL libraries**: \
+   If the app uses native code (C/C++), it might be using a custom SSL library. Check for .so (shared object) files in the lib directory of the unpacked APK. You might be able to glean some info about the use of certificate pinning from the names and versions of these libraries.
+
+Remember that these checks can give you some clues about whether certificate pinning is used, but the definitive test would be trying to intercept the app's SSL traffic using a proxy tool, as I described in the previous message.
+
 ### Dynamic Analysis
 
 10. **Install the APK on the Device**
