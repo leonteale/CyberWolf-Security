@@ -222,6 +222,28 @@ Remember that these checks can give you some clues about whether certificate pin
 
 ### Tap-Jacking
 
+Tapjacking, also known as UI redress attack, is a malicious technique where an attacker overlays a transparent window over the application's user interface, tricking the user into clicking on hidden buttons or links. This could lead to unauthorised actions or disclosure of sensitive information.
+
+Here's how you can check if an Android application is vulnerable to tapjacking:
+
+1. **Check the Android Manifest file**: Look for the `android:filterTouchesWhenObscured` attribute. If the value is `true`, it means the app has tapjacking protection. If the value is `false` or the attribute is not present, it suggests that the app could be vulnerable to tapjacking. The attribute can be set at the individual view level as well.
+2. **Dynamic Analysis**: You can also create a malicious app to overlay on the target app to check for tapjacking vulnerability. You would need to:
+   * Create an overlay view in the malicious app with the same layout as the target app.
+   * Set the view as clickable and focusable.
+   * Start the malicious app and place it on top of the target app.
+
+You can also install this tapjacking-poc.apk which will allow you to perform the above.
+
+```
+adb install tapjacking-poc.apk
+```
+
+If the target app is still able to receive touch events while being obscured by the overlay, then it's vulnerable to tapjacking.
+
+3. **Tools**: Tools such as Drozer can also help in identifying tapjacking vulnerabilities.
+
+Remember that tapjacking is more a user-interface concern rather than a data security concern. While it could be used as part of a larger attack, by itself it does not expose sensitive data or system resources.
+
 ## Dynamic Analysis
 
 10. **Install the APK on the Device**
