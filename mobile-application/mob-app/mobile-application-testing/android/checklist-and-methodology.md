@@ -425,7 +425,7 @@ If you get issue with tcpdump not being installed on the device then you an do t
     ```
 
     \
-    This is the process of retrieving the `.pcap` file and analyzing it.
+    This is the process of retrieving the `.pcap` file and analysing it.
 
     1.  **Get the .pcap file to your machine**
 
@@ -436,11 +436,11 @@ If you get issue with tcpdump not being installed on the device then you an do t
         ```
 
         This command will download the `capture.pcap` file from your Android device to the current directory on your local machine.
-    2.  **Analyze the .pcap file**
+    2.  **Analyse the .pcap file**
 
-        You can use a tool like Wireshark or `tcpdump` to analyze the `.pcap` file.
+        You can use a tool like Wireshark or `tcpdump` to analyse the `.pcap` file.
 
-        *   **Wireshark**: Wireshark has a GUI that makes it easy to analyze `.pcap` files. You can install Wireshark and open the `.pcap` file with it:
+        *   **Wireshark**: Wireshark has a GUI that makes it easy to analyse `.pcap` files. You can install Wireshark and open the `.pcap` file with it:
 
             ```shell
             sudo apt install wireshark
@@ -475,18 +475,18 @@ If you get issue with tcpdump not being installed on the device then you an do t
 
                 To search for specific keywords in the packet data, you can use the `Find Packet` dialog (`Edit > Find Packet`, or Ctrl+F). In the dialog, select `String` for the search type, `Packet bytes` for the search in option, and enter your keyword in the search field.
 
-            As with `tcpdump`, Wireshark can only analyze unencrypted traffic. If the network traffic in your `.pcap` file is encrypted (e.g., HTTPS, SSH), Wireshark will not be able to decipher the contents of the packets. Also, remember that sensitive information like passwords or PINs should not be sent over the network in plaintext.
-        *   **tcpdump**: `tcpdump` can also be used to analyze `.pcap` files from the command line. Here's an example that prints all packets:
+            As with `tcpdump`, Wireshark can only analyse unencrypted traffic. If the network traffic in your `.pcap` file is encrypted (e.g., HTTPS, SSH), Wireshark will not be able to decipher the contents of the packets. Also, remember that sensitive information like passwords or PINs should not be sent over the network in plaintext.
+        *   **tcpdump**: `tcpdump` can also be used to analyse `.pcap` files from the command line. Here's an example that prints all packets:
 
             ```shell
             tcpdump -r capture.pcap
             ```
 
-        When analyzing the `.pcap` file, you're looking for anything out of the ordinary, such as unusual traffic patterns, unencrypted sensitive data, or communications with suspicious IP addresses.\
+        When analysing the `.pcap` file, you're looking for anything out of the ordinary, such as unusual traffic patterns, unencrypted sensitive data, or communications with suspicious IP addresses.\
         \
-        **Using `tcpdump` to analyze `.pcap` files**
+        **Using `tcpdump` to analyse `.pcap` files**
 
-        1.  Here are some examples of how you might use `tcpdump` to analyze a `.pcap` file:
+        1.  Here are some examples of how you might use `tcpdump` to analyse a `.pcap` file:
 
             *   **Show all IP addresses**
 
@@ -509,7 +509,7 @@ If you get issue with tcpdump not being installed on the device then you an do t
                 tcpdump -r capture.pcap -A | grep 'password'
                 ```
 
-            Please note that `tcpdump` can only analyze unencrypted traffic. If the network traffic in your `.pcap` file is encrypted (e.g., HTTPS, SSH), `tcpdump` will not be able to decipher the contents of the packets.\
+            Please note that `tcpdump` can only analyse unencrypted traffic. If the network traffic in your `.pcap` file is encrypted (e.g., HTTPS, SSH), `tcpdump` will not be able to decipher the contents of the packets.\
 
 
             Additionally, it's very uncommon and highly insecure for passwords or PINs to be sent over the network in plaintext. In a secure setup, sensitive information like passwords or PINs would be sent over an encrypted connection, so `tcpdump` would not be able to recover them.\
@@ -548,156 +548,191 @@ If you get issue with tcpdump not being installed on the device then you an do t
     ```
 
     \
-    SQLite is a lightweight disk-based database and it's used by many Android applications to store data. Sometimes sensitive data can be found in SQLite databases, so they should always be checked during a penetration test.\
+    SQLite is a lightweight disk-based database and it's used by many Android applications to store data. Sometimes sensitive data can be found in SQLite databases, so they should always be checked during a penetration test.
 
+### Using logcat
 
-    ### Locating SQLite Databases
+`logcat` is a command-line tool that dumps a log of system messages, which can include information about system processes, errors, warnings, stack traces, and more.
 
+Here are some steps on how to use `logcat`:
 
+1.  **Basic logcat Usage**
 
-    SQLite databases are usually stored in the `/data/data/<package_name>/databases/` directory on the device. However, applications can potentially store databases in other locations within their data directory.\
-
-
-    Use the following command to navigate to the application's main directory:
-
-    ```shell
-    adb shell run-as org.app.mobile_app
-    ```
-
-    \
-    The `run-as` command allows you to run commands as if you were the app that owns the data directory, but it only works for apps that are debuggable. Debuggable apps are typically only found during development, and should not be used in production due to security concerns.\
-
-
-    If the app is not marked as debuggable in its manifest file (AndroidManifest.xml), you won't be able to use the `run-as` command. This is a security feature to prevent unauthorized access to the app's private data.\
-
-
-    This does present a challenge when you're trying to perform a penetration test on a non-debuggable app. If the device is rooted, you can access the app's data directory without using the `run-as` command. However, be aware that rooting a device can pose its own security risks.\
-    \
-    Then you can search for SQLite database files recursively from the application's root directory using the `find` command. This will help you discover any databases that might be stored in non-standard locations:
+    * Simply type `adb logcat` in your command line and it will start displaying a real-time feed of system messages.
 
     ```shell
-    find . -name "*.db"
+    adb logcat
     ```
+2.  **Filtering logcat Output**
 
-    \
-    This command will list all `.db` files (which are typically SQLite databases) in the current directory and all subdirectories.\
-
-
-    To find SQLite databases within an Android application's directory, even if they don't have a `.db` extension, you can use the `grep` command with the `-lr` flags and the `SQLite format 3` magic string. The `-l` flag tells `grep` to output the names of files where the pattern has been found, and the `-r` flag tells it to search recursively.\
-
+    * You can filter `logcat` output for easier reading. For instance, you can filter by log level (Error, Warning, Info, Debug, Verbose), or by the source of the log messages (tag).
 
     ```shell
-    find . -type f -exec grep -l "SQLite format 3" {} \;
+    adb logcat *:E
+    adb logcat -s "YourAppTag"
     ```
+3.  **Clearing the Log**
 
-    \
-    This command will search all files in the current directory and its subdirectories for the `SQLite format 3` string, and print the names of the files where the string was found.\
-    \
-    If this finds a few databases, you can quickly dump them all to the /sdcard/ using the following command:\
-
+    * If you want to clear the current log, you can use the `-c` command.
 
     ```shell
-    for db in $(find . -type f -exec grep -l "SQLite format 3" {} \;); do sqlite3 $db ".output /sdcard/databases/$(basename $db).dump"; done
+    adb logcat -c
     ```
+4.  **Saving log Output to a File**
 
-    \
-    \
-    Before you run this command, ensure that the `databases` directory exists on your `sdcard`. If not, you can create it using the following command:
-
-    ```bash
-    adb shell mkdir /sdcard/databases
-    ```
-
-    \
-    Now, when you want to pull all the databases to your local machine, you can do so with one command:
-
-    ```bash
-    adb pull /sdcard/databases .
-    ```
-
-    \
-    This will copy all the files from the `databases` directory on your `sdcard` to the current directory on your local machine.\
-    \
-    If it seems like the `sqlite3` binary is not available on your Android device's shell. This binary is not included by default on some Android distributions for security reasons.\
-
-
-    You can try to use `adb` to push the `sqlite3` binary from your Kali machine to your Android device. The `sqlite3` binary is usually included with the Android SDK platform-tools, but if it's not present, you can download it from a trusted source.\
-
-
-    You can push it from your local machine to your Android device using the `adb push` command. The binary must be located in the `/system/xbin` directory and must have executable permissions. Here's how to do that:
-
-    1. Find the `sqlite3` binary on your local machine. If you have the Android SDK installed, it might be located in the `platform-tools` directory. If not, you might need to download it from a trusted source. Mine was located in: \
-       \
-       /usr/lib/android-sdk/platform-tools/sqlite3\
-
-    2. Push the binary to your Android device:
-
-    ```bash
-    adb push /usr/lib/android-sdk/platform-tools/sqlite3 /data/local/tmp/
-    ```
-
-    \
-    Move the binary to the `/system/xbin` directory and give it executable permissions:
-
-    ```bash
-    adb shell
-    su
-    chmod 755 /data/local/tmp/sqlite3
-    export PATH=$PATH:/data/local/tmp
-    ```
-
-    \
-    Now you should be able to use the `sqlite3` command in your Android shell\
-    \
-    If you get "not executable: 64-bit ELF file" the error typically indicates that you are trying to run an executable compiled for a different architecture than the one you're currently running.\
-
-
-    You can download a different version of SQLite from the SQLite's official download page.
-
-    Here is an example on how to download, push and give executable permissions to sqlite3 for arm64:\
-
-
-    <pre class="language-bash"><code class="lang-bash"># Downloading SQLite3 for ARM architecture
-    wget https://www.sqlite.org/2023/sqlite-android-3420000.aar
-
-    # Unzipping the package
-    unzip sqlite-android-3420000.aar -d sqlite-android-3420000
-
-    # Change to the sqlite directory
-    cd sqlite-android-3420000/jni/arm64-v8a/
-
-    # Pushing libsqliteX.so to the device
-    adb push libsqliteX.so /data/local/tmp/
-
-    <strong>#In the adb shell session on your Android device, set the file permissions of the libsqliteX.so file to make it executable.
-    </strong>chmod +x /data/local/tmp/libsqliteX.so
-
-    #Finally, you should be able to execute the SQLite binary by specifying the full path to the file.
-    /data/local/tmp/libsqliteX.so
-
-    # Giving executable permissions to sqlite3 inside the adb shell
-    <strong>chmod 755 /data/local/tmp/libsqliteX.so
-    </strong>export PATH=$PATH:/data/local/tmp/
-    </code></pre>
-
-    \
-    The above steps will push sqlite3 to the /data/local/tmp/ directory and give it executable permissions.
-
-    \
-    Please note, the URL in the wget command above may vary depending on the version of SQLite and the architecture of your device. You should download the version that suits your requirements.
-
-    \
-    After executing the above steps, you can use the sqlite3 command as `/data/local/tmp/sqlite3`.\
-    \
-    If you are not sure what version of Android arcitechture you have you can run:\
-
+    * If you need to save the log output for later analysis or to share it with your team, you can direct the output to a file.
 
     ```shell
-    getprop ro.product.cpu.abilist
-
-    ### Mine shows:
-    # arm64-v8a,armeabi-v7a,armeabi
+    adb logcat > logcat.txt
     ```
+5. **Analysing the Log**
+   * Once you have the log data, you can start analysing it. You should look for any sensitive data that shouldn't be logged, such as passwords, credit card numbers, or personally identifiable information (PII). You should also look for error messages or exceptions that might reveal issues with the application, such as potential vulnerabilities or areas of weak security.
+
+### Locating SQLite Databases
+
+SQLite databases are usually stored in the `/data/data/<package_name>/databases/` directory on the device. However, applications can potentially store databases in other locations within their data directory.\
+
+
+Use the following command to navigate to the application's main directory:
+
+```shell
+adb shell run-as org.app.mobile_app
+```
+
+\
+The `run-as` command allows you to run commands as if you were the app that owns the data directory, but it only works for apps that are debuggable. Debuggable apps are typically only found during development, and should not be used in production due to security concerns.\
+
+
+If the app is not marked as debuggable in its manifest file (AndroidManifest.xml), you won't be able to use the `run-as` command. This is a security feature to prevent unauthorized access to the app's private data.\
+
+
+This does present a challenge when you're trying to perform a penetration test on a non-debuggable app. If the device is rooted, you can access the app's data directory without using the `run-as` command. However, be aware that rooting a device can pose its own security risks.\
+\
+Then you can search for SQLite database files recursively from the application's root directory using the `find` command. This will help you discover any databases that might be stored in non-standard locations:
+
+```shell
+find . -name "*.db"
+```
+
+\
+This command will list all `.db` files (which are typically SQLite databases) in the current directory and all subdirectories.\
+
+
+To find SQLite databases within an Android application's directory, even if they don't have a `.db` extension, you can use the `grep` command with the `-lr` flags and the `SQLite format 3` magic string. The `-l` flag tells `grep` to output the names of files where the pattern has been found, and the `-r` flag tells it to search recursively.\
+
+
+```shell
+find . -type f -exec grep -l "SQLite format 3" {} \;
+```
+
+\
+This command will search all files in the current directory and its subdirectories for the `SQLite format 3` string, and print the names of the files where the string was found.\
+\
+If this finds a few databases, you can quickly dump them all to the /sdcard/ using the following command:\
+
+
+```shell
+for db in $(find . -type f -exec grep -l "SQLite format 3" {} \;); do sqlite3 $db ".output /sdcard/databases/$(basename $db).dump"; done
+```
+
+\
+\
+Before you run this command, ensure that the `databases` directory exists on your `sdcard`. If not, you can create it using the following command:
+
+```bash
+adb shell mkdir /sdcard/databases
+```
+
+\
+Now, when you want to pull all the databases to your local machine, you can do so with one command:
+
+```bash
+adb pull /sdcard/databases .
+```
+
+\
+This will copy all the files from the `databases` directory on your `sdcard` to the current directory on your local machine.\
+\
+If it seems like the `sqlite3` binary is not available on your Android device's shell. This binary is not included by default on some Android distributions for security reasons.\
+
+
+You can try to use `adb` to push the `sqlite3` binary from your Kali machine to your Android device. The `sqlite3` binary is usually included with the Android SDK platform-tools, but if it's not present, you can download it from a trusted source.\
+
+
+You can push it from your local machine to your Android device using the `adb push` command. The binary must be located in the `/system/xbin` directory and must have executable permissions. Here's how to do that:
+
+1. Find the `sqlite3` binary on your local machine. If you have the Android SDK installed, it might be located in the `platform-tools` directory. If not, you might need to download it from a trusted source. Mine was located in: \
+   \
+   /usr/lib/android-sdk/platform-tools/sqlite3\
+
+2. Push the binary to your Android device:
+
+```bash
+adb push /usr/lib/android-sdk/platform-tools/sqlite3 /data/local/tmp/
+```
+
+\
+Move the binary to the `/system/xbin` directory and give it executable permissions:
+
+```bash
+adb shell
+su
+chmod 755 /data/local/tmp/sqlite3
+export PATH=$PATH:/data/local/tmp
+```
+
+\
+Now you should be able to use the `sqlite3` command in your Android shell\
+\
+If you get "not executable: 64-bit ELF file" the error typically indicates that you are trying to run an executable compiled for a different architecture than the one you're currently running.\
+
+
+You can download a different version of SQLite from the SQLite's official download page.
+
+Here is an example on how to download, push and give executable permissions to sqlite3 for arm64:\
+
+
+<pre class="language-bash"><code class="lang-bash"># Downloading SQLite3 for ARM architecture
+wget https://www.sqlite.org/2023/sqlite-android-3420000.aar
+
+# Unzipping the package
+unzip sqlite-android-3420000.aar -d sqlite-android-3420000
+
+# Change to the sqlite directory
+cd sqlite-android-3420000/jni/arm64-v8a/
+
+# Pushing libsqliteX.so to the device
+adb push libsqliteX.so /data/local/tmp/
+
+<strong>#In the adb shell session on your Android device, set the file permissions of the libsqliteX.so file to make it executable.
+</strong>chmod +x /data/local/tmp/libsqliteX.so
+
+#Finally, you should be able to execute the SQLite binary by specifying the full path to the file.
+/data/local/tmp/libsqliteX.so
+
+# Giving executable permissions to sqlite3 inside the adb shell
+<strong>chmod 755 /data/local/tmp/libsqliteX.so
+</strong>export PATH=$PATH:/data/local/tmp/
+</code></pre>
+
+\
+The above steps will push sqlite3 to the /data/local/tmp/ directory and give it executable permissions.
+
+\
+Please note, the URL in the wget command above may vary depending on the version of SQLite and the architecture of your device. You should download the version that suits your requirements.
+
+\
+After executing the above steps, you can use the sqlite3 command as `/data/local/tmp/sqlite3`.\
+\
+If you are not sure what version of Android arcitechture you have you can run:\
+
+
+```shell
+getprop ro.product.cpu.abilist
+
+### Mine shows:
+# arm64-v8a,armeabi-v7a,armeabi
+```
 
 
 
@@ -769,43 +804,7 @@ adb pull /sdcard/databases pull
 \
 This command will create a copy of the `database.db` on your local machine with the name `local_database.db`. You can open `local_database.db` with any SQLite database viewer on your local machine.
 
-### Using logcat
 
-`logcat` is a command-line tool that dumps a log of system messages, which can include information about system processes, errors, warnings, stack traces, and more.
-
-Here are some steps on how to use `logcat`:
-
-1.  **Basic logcat Usage**
-
-    * Simply type `adb logcat` in your command line and it will start displaying a real-time feed of system messages.
-
-    ```shell
-    adb logcat
-    ```
-2.  **Filtering logcat Output**
-
-    * You can filter `logcat` output for easier reading. For instance, you can filter by log level (Error, Warning, Info, Debug, Verbose), or by the source of the log messages (tag).
-
-    ```shell
-    adb logcat *:E
-    adb logcat -s "YourAppTag"
-    ```
-3.  **Clearing the Log**
-
-    * If you want to clear the current log, you can use the `-c` command.
-
-    ```shell
-    adb logcat -c
-    ```
-4.  **Saving log Output to a File**
-
-    * If you need to save the log output for later analysis or to share it with your team, you can direct the output to a file.
-
-    ```shell
-    adb logcat > logcat.txt
-    ```
-5. **Analysing the Log**
-   * Once you have the log data, you can start analysing it. You should look for any sensitive data that shouldn't be logged, such as passwords, credit card numbers, or personally identifiable information (PII). You should also look for error messages or exceptions that might reveal issues with the application, such as potential vulnerabilities or areas of weak security.
 
 ## Advanced Analysis
 
