@@ -110,6 +110,12 @@
     * [IOS](mobile-application/mobile-application-testing/ios/README.md)
       * [Page 3](mobile-application/mobile-application-testing/ios/page-3.md)
 
+## Cloud
+
+* [Microsoft Office 365 Security Review](cloud/microsoft-office-365-security-review/README.md)
+  * [Page 1](cloud/microsoft-office-365-security-review/page-1.md)
+* [Kubernetes & Docker Review](cloud/kubernetes-and-docker-review.md)
+
 ## Privilege escalation
 
 * [Windows](privilege-escalation/windows/README.md)
