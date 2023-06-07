@@ -46,7 +46,7 @@ Remember, the above points form a general checklist, and testing methods might c
 
 ## Methodology
 
-### Setup
+### Pre-requisites
 
 1. **Setup Testing Environment**
    * Prepare a suitable testing environment, which can be an actual Android device or an Android emulator like Genymotion.
