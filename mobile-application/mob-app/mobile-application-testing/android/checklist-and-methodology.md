@@ -272,6 +272,53 @@ If the target app is still able to receive touch events while being obscured by 
 
 Remember that tapjacking is more a user-interface concern rather than a data security concern. While it could be used as part of a larger attack, by itself it does not expose sensitive data or system resources.
 
+### Binary uses insecure APIs
+
+**How to Test**
+
+1. **Decompiling the APK:** First, we'll need to decompile the APK file. We can use Apktool for this:
+
+```bash
+apktool d YourApp.apk
+```
+
+This will decompile the APK and output its contents into a directory named after the APK file.
+
+2. **Searching for the insecure APIs:** Next, navigate to the decompiled directory and search for the usage of the insecure APIs using 'grep':
+
+```bash
+cd YourApp
+grep -r "_memcpy\|_fopen\|_sscanf\|_printf"
+```
+
+This command will search all the files recursively in the current directory for the insecure APIs.
+
+Alternatively, you could use JADX, a more powerful tool that produces Java source code from Android Dex and Apk files:
+
+```bash
+jadx -d output YourApp.apk
+```
+
+And then use grep to search the output directory:
+
+```bash
+cd output
+grep -r "_memcpy\|_fopen\|_sscanf\|_printf"
+```
+
+**Remediation Advice**
+
+If the insecure APIs are found, developers should replace these functions with their secure counterparts where possible.
+
+* For \_memcpy, consider using memcpy\_s (if available) or be sure to limit the copied data to the size of the destination buffer. In the context of Android's native (C/C++) code, the usage of memcpy should always respect the size of the destination buffer to avoid buffer overflows.
+* For \_fopen, consider using fopen\_s or other methods with better error handling and more secure behaviors. Alternatively, in the context of Android, consider enforcing strict mode with `android:usesCleartextTraffic="false"` in the Android Manifest to prevent insecure HTTP traffic, and only allow HTTPS URLs.
+* For \_sscanf, use sscanf\_s or ensure input validation. In the context of Android development, consider using a safer alternative like strsep if possible.
+* For \_printf, use snprintf, vsnprintf, or similar to avoid buffer overflows. Alternatively, in Android, avoid using this function in favor of Android's logging system (Log.d, Log.i, etc) which is safer and more flexible.
+
+However, it's important to note that the "\_s" versions of these functions are part of the optional Annex K of the ISO C11 standard, and may not be available on all platforms or compilers. Therefore, when using these functions in Android, especially when using the Android NDK, the traditional versions of these functions might be the only ones available. In such cases, additional care should be taken to use these functions in a secure manner, such as by ensuring proper size checks and error handling.
+
+The specific remediation steps will depend on the nature of the native code, the Android app's functionality, and the specific usage of these insecure functions within the context of the app. It's crucial to review the code carefully to determine the best mitigation strategy for each instance of insecure API usage.
+
 ## Dynamic Analysis
 
 10. **Install the APK on the Device**
