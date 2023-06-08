@@ -368,6 +368,10 @@ Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
 
 This line would indicate that AES encryption with CBC mode and PKCS5 padding is being used.
 
+**Using tools:**\
+\
+MobFS is a good automated tool for static analysis which can help automate finding ciphers that are in use.&#x20;
+
 **Remediation**
 
 1. **Use authenticated encryption**:\
