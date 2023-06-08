@@ -306,6 +306,10 @@ cd output
 grep -r "_memcpy\|_fopen\|_sscanf\|_printf"
 ```
 
+3. **Using tools:**\
+   \
+   MobFS is a good automated tool for static analysis which can help automate finding these APIs.&#x20;
+
 **Remediation Advice**
 
 If the insecure APIs are found, developers should replace these functions with their secure counterparts where possible.
