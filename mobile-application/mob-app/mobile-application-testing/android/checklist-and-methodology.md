@@ -291,7 +291,13 @@ cd YourApp
 grep -r "_memcpy\|_fopen\|_sscanf\|_printf"
 ```
 
-This command will search all the files recursively in the current directory for the insecure APIs.
+This command will search all the files recursively in the current directory for the insecure APIs and prints the files which have the search term within them. \
+\
+You can then use the following to view the contents for the proof of concept:
+
+```bash
+strings <filename> | grep "_memcpy\|_fopen\|_sscanf\|_printf"
+```
 
 Alternatively, you could use JADX, a more powerful tool that produces Java source code from Android Dex and Apk files:
 
