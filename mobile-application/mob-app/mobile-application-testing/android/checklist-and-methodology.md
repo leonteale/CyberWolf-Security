@@ -323,6 +323,81 @@ However, it's important to note that the "\_s" versions of these functions are p
 
 The specific remediation steps will depend on the nature of the native code, the Android app's functionality, and the specific usage of these insecure functions within the context of the app. It's crucial to review the code carefully to determine the best mitigation strategy for each instance of insecure API usage.
 
+### Check for encryption mode CBC with KCS5/PKCS7 padding
+
+Testing if an application uses a specific encryption mode and padding, such as Cipher Block Chaining (CBC) with PKCS5/PKCS7 padding, is typically achieved through code review or dynamic analysis.
+
+**Code Review**
+
+For Android applications, you can decompile the APK file to Java code using tools such as JADX or JD-GUI. After decompiling, search for encryption-related methods in the code, typically `Cipher.getInstance`. The argument passed to this method will reveal the encryption mode and padding. If the argument is something like `AES/CBC/PKCS5Padding` or `AES/CBC/PKCS7Padding`, then the application is using AES encryption with CBC mode and PKCS5/PKCS7 padding.
+
+Using tools like JADX or apktool, you can decompile the APK file to obtain the source code. Once you have the source code, you can search for keywords related to encryption such as "Cipher", "AES/CBC/PKCS5Padding", etc.
+
+```bash
+jadx -d output/ app.apk
+grep -ri "AES/CBC/PKCS5Padding" output/
+```
+
+**Dynamic Analysis**
+
+Dynamic analysis would involve using a runtime instrumentation tool like Frida. You can hook into the `Cipher.getInstance` method to monitor the encryption mode and padding being used at runtime.\
+\
+Using tools like Frida or Xposed, you can hook into the app's methods during runtime to inspect or modify the app's behavior.
+
+For instance, with Frida, you can hook into the `Cipher.getInstance` method to print the transformation string every time it's called:
+
+```javascript
+Java.perform(function () {
+    var Cipher = Java.use('javax.crypto.Cipher');
+    Cipher.getInstance.overload('java.lang.String').implementation = function (transformation) {
+        console.log('Cipher.getInstance called with transformation: ' + transformation);
+        return this.getInstance(transformation);
+    };
+});
+```
+
+This script prints the transformation string that is used when creating a Cipher instance.\
+\
+**Source Code Review**&#x20;
+
+If you have access to the source code, look for any instance where encryption is done. Look for instances where the Cipher class is used, and check how it's being initialized. For example:
+
+```java
+Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+```
+
+This line would indicate that AES encryption with CBC mode and PKCS5 padding is being used.
+
+**Remediation**
+
+1. **Use authenticated encryption**:\
+   \
+   Galois/Counter Mode (GCM) and Counter with CBC-MAC (CCM) are both examples of authenticated encryption modes which provide both confidentiality and integrity. Using these modes ensures that the encrypted data hasn't been tampered with, and is hence recommended.
+2.  **MAC-then-Encrypt or Encrypt-then-MAC**:\
+    \
+    These are alternative methods to provide data integrity. In MAC-then-Encrypt, a MAC (Message Authentication Code) is first computed on the plaintext and then the plaintext and MAC are encrypted together. In Encrypt-then-MAC, the plaintext is first encrypted and then a MAC is computed on the ciphertext. Both of these methods ensure that the encrypted data hasn't been tampered with.\
+
+
+    **Note**: Encrypt-then-MAC is generally considered more secure because it avoids certain potential vulnerabilities present in MAC-then-Encrypt, such as padding oracle attacks.
+
+**Additional Pointers**
+
+* Make sure that the encryption keys are securely generated and stored. They should not be hard-coded into the application code.
+* Regularly rotate encryption keys to reduce the potential damage if an older key is compromised.
+* Use secure random number generators for generating keys and initialization vectors.
+* Do not use the same key for encryption and integrity. They should be independent to avoid potential vulnerabilities.
+* Consider key management solutions for secure key storage and management.
+
+If an application must continue to use CBC mode, it should be used in combination with an HMAC to ensure data integrity.
+
+**Relevant Links:**
+
+1. [Frida](https://frida.re/)
+2. [JADX](https://github.com/skylot/jadx)
+3. [JD-GUI](https://github.com/java-decompiler/jd-gui)
+
+**Please note:** The way encryption is being used in the application is more important than which exact encryption mode and padding are being used. It is crucial to ensure keys are being managed securely, IVs are used correctly, and data is authenticated in addition to being encrypted. Encryption should not be the only defence mechanism for sensitive data.
+
 ## Dynamic Analysis
 
 10. **Install the APK on the Device**
