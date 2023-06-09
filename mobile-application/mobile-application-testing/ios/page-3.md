@@ -119,6 +119,10 @@ This will provide you a list of warnings and errors if the code doesn't adhere t
 
 This can be performed by manual code review or by searching through the codebase using grep-like tools for patterns related to sensitive information like passwords, API keys, tokens, etc. Be aware that this process may produce false positives and negatives.
 
+```bash
+grep -r "api_key" /path/to/project/directory
+```
+
 ### Security Configuration Checks
 
 ### **Reviewing Configuration Settings**
@@ -132,6 +136,12 @@ Review the app's requested permissions in `Info.plist` and ensure the app isn't 
 ### Cryptography Checks
 
 Manual code review should be conducted to find usage of weak cryptography protocols or hard-coded cryptographic keys. Developers should use Apple's built-in cryptographic APIs, like `CommonCrypto` and `CryptoKit`, instead of custom solutions.
+
+Here is an example of what to look for, insecure usage of `kCCAlgorithmDES` (Data Encryption Standard) which is considered weak:
+
+```sh
+grep -r "kCCAlgorithmDES" /path/to/project/directory
+```
 
 ### Privacy Checks
 
