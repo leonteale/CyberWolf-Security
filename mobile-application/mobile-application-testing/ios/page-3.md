@@ -201,3 +201,57 @@ For `_printf`, use `snprintf`, `vsnprintf`, or similar to avoid buffer overflows
 However, it's important to note that the "\_s" versions of these functions are part of the optional Annex K of the ISO C11 standard, and may not be available on all platforms or compilers. Therefore, when using these functions in iOS, especially when using Objective-C or Swift, the traditional versions of these functions might be the only ones available. In such cases, additional care should be taken to use these functions in a secure manner, such as by ensuring proper size checks and error handling.
 
 The specific remediation steps will depend on the nature of the native code, the iOS app's functionality, and the specific usage of these insecure functions within the context of the app. It's crucial to review the code carefully to determine the best mitigation strategy for each instance of insecure API usage.
+
+## Dynamic Analysis
+
+#### 1. Input Validation Checks
+
+**1.1 Test for Injection Attacks**
+
+To test for injection attacks, you can use fuzzing techniques which involve providing unexpected input to the application and monitoring for exceptions or failures.
+
+**Remediation:** Always use parameterized queries or prepared statements to prevent SQL or command injection attacks. Validate, sanitize, and encode user inputs as necessary.
+
+#### 2. Authentication and Session Management Checks
+
+**2.1 Test Authentication Mechanisms**
+
+Try to bypass the login mechanism by providing malformed inputs. Try common or weak credentials to test for weak password policy.
+
+**2.2 Test Session Management**
+
+After authenticating, look for session identifiers. Check if they change after logging out and logging back in, to make sure the session is properly invalidated.
+
+**Remediation:** Implement strong password policies and use secure, server-side session management. Session identifiers should be securely generated and should expire after a period of inactivity.
+
+#### 3. Network Communication Checks
+
+**3.1 Test SSL/TLS Implementation**
+
+You can intercept the network traffic using proxy tools like Charles or Burp Suite to check if the application is properly using SSL/TLS. Try to use an invalid certificate and see if the application accepts it.
+
+**Remediation:** Always use secure connections for transmitting sensitive data. Implement SSL pinning to prevent man-in-the-middle attacks.
+
+#### 4. Data Storage and Privacy Checks
+
+**4.1 Test Data Storage Mechanisms**
+
+You can use the iOS file explorer tools like iExplorer to explore the app's files stored on the device. Check if any sensitive data is stored insecurely.
+
+**Remediation:** Sensitive data should not be stored on the device without proper security measures. Use the iOS Keychain for storing small pieces of sensitive data.
+
+#### 5. Inter-process Communication (IPC) Checks
+
+**5.1 Test IPC Mechanisms**
+
+Check if the application is using insecure IPC mechanisms, such as insecure custom URL schemes. Use Frida to hook into IPC methods and manipulate data.
+
+**Remediation:** Implement proper permission checks and data validation for IPC mechanisms. Do not expose sensitive functionalities through IPC.
+
+#### 6. Environment Interaction Checks
+
+**6.1 Test Code Execution in the Background**
+
+Check if the app continues to run code or keep sensitive data in memory while in the background. You can use Xcode's debug and memory analysis tools for this.
+
+**Remediation:** Sensitive operations should be paused or terminated when the app goes into the background. Sensitive data should be removed from memory.
