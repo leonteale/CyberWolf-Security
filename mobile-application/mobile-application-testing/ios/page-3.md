@@ -2,6 +2,72 @@
 
 ## Checklist
 
+### Static Analysis
+
+Static analysis involves inspecting the app's code and configuration without running it. It checks for coding and design issues that may lead to security vulnerabilities.
+
+#### 1. Code Quality Checks
+
+* Check for coding standards adherence.
+* Look for common coding errors and insecure coding practices.
+* Identify hardcoded sensitive data such as passwords, API keys, and tokens.
+
+#### 2. Security Configuration Checks
+
+* Review the app's configuration settings for any insecure default or inappropriate settings.
+* Check for appropriate permissions requested by the app.
+* Inspect the app for any insecure file storage.
+
+#### 3. Cryptography Checks
+
+* Review the usage of cryptographic protocols and algorithms.
+* Look for hard-coded cryptographic keys.
+
+#### 4. Privacy Checks
+
+* Inspect the code for any violation of user privacy.
+* Look for proper handling of personally identifiable information (PII).
+
+#### 5. Third-Party Libraries Checks
+
+* Inspect the use of third-party libraries and frameworks.
+* Check the versions of the libraries for known vulnerabilities.
+
+### Dynamic Analysis
+
+Dynamic analysis involves testing the app while it is running. It helps to identify security vulnerabilities at runtime, interactions with the environment, and user input handling issues.
+
+#### 1. Input Validation Checks
+
+* Check for proper validation of user-provided inputs.
+* Test for common injection attacks such as SQL injection, command injection, etc.
+
+#### 2. Authentication and Session Management Checks
+
+* Verify proper implementation of authentication mechanisms.
+* Check for proper session management.
+* Test for potential bypass of authentication mechanism.
+
+#### 3. Network Communication Checks
+
+* Verify the security of network communications.
+* Check for proper use of SSL/TLS and certificate pinning.
+
+#### 4. Data Storage and Privacy Checks
+
+* Inspect how the app handles data storage.
+* Test for insecure data storage vulnerabilities.
+* Verify proper implementation of data encryption.
+
+#### 5. Inter-process Communication (IPC) Checks
+
+* Test for vulnerabilities related to IPC mechanisms.
+
+#### 6. Environment Interaction Checks
+
+* Check for vulnerabilities related to the interaction with the mobile environment.
+* Test for code execution in the background.
+
 ## Methodology
 
 
