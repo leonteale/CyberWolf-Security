@@ -8,64 +8,76 @@ description: >-
 
 ## Checklist
 
-**App Package Structure Analysis:**
+### Static Analysis
 
-* [ ] Analyse the APK file with tools such as APKTool, Jadx, or similar.
-* [ ] Look for embedded secrets, such as API keys, in the decompiled code.
-* [ ] Review the AndroidManifest.xml for sensitive data or misconfigurations.
+Static analysis involves inspecting the app's code and configuration without running it. It checks for coding and design issues that may lead to security vulnerabilities.
 
-**Insecure Data Storage:**
+#### App Package Structure Analysis:
 
-* [ ] Check shared preferences for sensitive data stored in clear text.
-* [ ] Check SQLite databases for sensitive data.
-* [ ] Review the internal & external storage directories for insecurely stored data.
+* Analyse the APK file with tools such as APKTool, Jadx, or similar.
+* Look for embedded secrets, such as API keys, in the decompiled code.
+* Review the AndroidManifest.xml for sensitive data or misconfigurations.
 
-**Network Analysis:**
+#### Insecure Data Storage:
 
-* [ ] Use Wireshark or similar tools to analyse network traffic.
-* [ ] Check if the app is transmitting sensitive data in plain text over the network.
-* [ ] Verify if the app is implementing certificate pinning to prevent man-in-the-middle attacks.
+* Check shared preferences for sensitive data stored in clear text.
+* Check SQLite databases for sensitive data.
+* Review the internal & external storage directories for insecurely stored data.
 
-**Log Analysis:**
+#### Reverse Engineering and Code Analysis:
 
-* [ ] Use Logcat to collect system logs and analyse them for sensitive data leakage.
+* Use tools such as Jadx or JD-GUI to decompile the APK and analyze the source code.
+* Check for hard-coded secrets, insecure functions, or insecure implementations.
 
-**Reverse Engineering and Code Analysis:**
+#### App Permissions:
 
-* [ ] Use tools such as Jadx or JD-GUI to decompile the APK and analyse the source code.
-* [ ] Check for hard-coded secrets, insecure functions, or insecure implementations.
+* Review the permissions requested by the app.
+* Check if the app requests more permissions than necessary.
 
-**Runtime Analysis:**
+#### Additional points:
 
-* [ ] Use Frida, Xposed, or similar frameworks to hook into the app's methods during runtime for dynamic analysis.
-* [ ] Test the app's behaviour and response to certain inputs or manipulated environment variables.
+* Check if the app has any mechanisms to detect if the device is rooted or jailbroken.
+* Verify if the app has proper error handling, ensuring it doesn't reveal sensitive information when errors occur.
+* Check the resiliency against reverse engineering and tampering by using tools like Objection or APKtool.
 
-**Authentication Mechanisms:**
+### Dynamic Analysis
 
-* [ ] Check for user enumeration vulnerabilities.
-* [ ] Verify if the app uses secure protocols during authentication.
-* [ ] Check for weak password policies.
+Dynamic analysis involves testing the app while it is running. It helps to identify security vulnerabilities at runtime, interactions with the environment, and user input handling issues.
 
-**Session Management:**
+#### Network Analysis:
 
-* [ ] Check if sessions expire appropriately.
-* [ ] Check if the app handles multiple simultaneous sessions correctly.
+* Use Wireshark or similar tools to analyze network traffic.
+* Check if the app is transmitting sensitive data in plain text over the network.
+* Verify if the app is implementing certificate pinning to prevent man-in-the-middle attacks.
 
-**Data Encryption:**
+#### Log Analysis:
 
-* [ ] Verify if data at rest is encrypted.
-* [ ] Check if data in transit is encrypted.
+* Use Logcat to collect system logs and analyze them for sensitive data leakage.
 
-**App Permissions:**
+#### Runtime Analysis:
 
-* [ ] Review the permissions requested by the app.
-* [ ] Check if the app requests more permissions than necessary.
+* Use Frida, Xposed, or similar frameworks to hook into the app's methods during runtime for dynamic analysis.
+* Test the app's behavior and response to certain inputs or manipulated environment variables.
 
-**Additional points:**
+#### Authentication Mechanisms:
 
-* [ ] Check if the app has any mechanisms to detect if the device is rooted or jailbroken.
-* [ ] Verify if the app has proper error handling, ensuring it doesn't reveal sensitive information when errors occur.
-* [ ] Check the resiliency against reverse engineering and tampering by using tools like Objection or APKtool.
+* Check for user enumeration vulnerabilities.
+* Verify if the app uses secure protocols during authentication.
+* Check for weak password policies.
+
+#### Session Management:
+
+* Check if sessions expire appropriately.
+* Check if the app handles multiple simultaneous sessions correctly.
+
+#### Data Encryption:
+
+* Verify if data at rest is encrypted.
+* Check if data in transit is encrypted.
+
+#### Additional points:
+
+* Verify if the app has proper error handling, ensuring it doesn't reveal sensitive information when errors occur.
 
 Remember, the above points form a general checklist, and testing methods might change based on the app's functionality, architecture, and the kind of data it handles.
 
