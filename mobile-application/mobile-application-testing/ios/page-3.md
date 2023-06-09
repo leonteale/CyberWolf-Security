@@ -103,7 +103,7 @@ brew install class-dump
 
 Now, let's move on to how to perform individual parts of the static analysis.
 
-## Dynamic Analysis
+## Static Analysis
 
 ### Code Quality Checks
 
@@ -206,17 +206,17 @@ The specific remediation steps will depend on the nature of the native code, the
 
 ## Dynamic Analysis
 
-#### 1. Input Validation Checks
+### Input Validation Checks
 
-**1.1 Test for Injection Attacks**
+#### **Test for Injection Attacks**
 
 To test for injection attacks, you can use fuzzing techniques which involve providing unexpected input to the application and monitoring for exceptions or failures.
 
 **Remediation:** Always use parameterized queries or prepared statements to prevent SQL or command injection attacks. Validate, sanitize, and encode user inputs as necessary.
 
-#### 2. Authentication and Session Management Checks
+### Authentication and Session Management Checks
 
-**2.1 Test Authentication Mechanisms**
+**Test Authentication Mechanisms**
 
 Try to bypass the login mechanism by providing malformed inputs. Try common or weak credentials to test for weak password policy.
 
