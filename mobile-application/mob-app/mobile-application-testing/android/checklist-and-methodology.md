@@ -299,6 +299,12 @@ You can then use the following to view the contents for the proof of concept:
 strings <filename> | grep "_memcpy\|_fopen\|_sscanf\|_printf"
 ```
 
+You can use the following command to combine the two, in order to check for false possitives.
+
+```bash
+grep -rl "_memcpy\|_fopen\|_sscanf\|_printf" . | while read -r filename; do for func in _memcpy _fopen _sscanf _printf; do match=$(strings "$filename" | grep "$func"); if [ ! -z "$match" ]; then echo "$filename: $match"; fi; done; done
+```
+
 Alternatively, you could use JADX, a more powerful tool that produces Java source code from Android Dex and Apk files:
 
 ```bash
@@ -342,6 +348,12 @@ Using tools like JADX or apktool, you can decompile the APK file to obtain the s
 ```bash
 jadx -d output/ app.apk
 grep -ri "AES/CBC/PKCS5Padding" output/
+```
+
+Or you can run the following command to showthe instances within the found files
+
+```bash
+grep -ril "AES/CBC/PKCS5Padding" . | while read -r filename; do for func in AES CBC PKCS5Padding; do match=$(strings "$filename" | grep "$func"); if [ ! -z "$match" ]; then echo "$filename: $match"; fi; done; done
 ```
 
 **Dynamic Analysis**
