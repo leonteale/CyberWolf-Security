@@ -103,6 +103,8 @@ brew install class-dump
 
 Now, let's move on to how to perform individual parts of the static analysis.
 
+## Dynamic Analysis
+
 ### Code Quality Checks
 
 ### **Checking for Adherence to Coding Standards**
