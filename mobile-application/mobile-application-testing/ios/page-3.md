@@ -81,7 +81,17 @@ Dynamic analysis involves testing the app while it is running. It helps to ident
 
 Get the .IPA file onto the device. you could use services such as:
 
-[https://www.installonair.com/home](https://www.installonair.com/home)
+[https://www.installonair.com/home](https://www.installonair.com/home)\
+\
+If your rooted iPhone doesn't trust the source of the .ipa file you're trying to install, you may encounter issues during the installation process. By default, iOS devices only allow the installation of apps from trusted sources, typically from the App Store or sources explicitly trusted by Apple.
+
+To bypass this restriction, you can follow these steps:
+
+1. On your rooted iPhone, open the Settings app.
+2. Navigate to "General" and then "Device Management" or "Profiles & Device Management."
+3. Look for the profile associated with the app or the developer of the .ipa file you want to install.
+4. Tap on the profile and then tap "Trust \[Profile Name]" or "Verify App."
+5. Confirm your trust for the developer or app when prompted.
 
 #### **Install and Configure Necessary Tools**
 
