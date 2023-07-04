@@ -105,7 +105,6 @@
   * [Mobile Application Testing](mobile-application/mobile-application-testing/README.md)
     * [Android](mobile-application/mobile-application-testing/android/README.md)
       * [Checklist and Methodology](mobile-application/mob-app/mobile-application-testing/android/checklist-and-methodology.md)
-      * [Methodology](mobile-application/mobile-application-testing/android/methodology.md)
       * [ADB](mobile-application/mobile-application-testing/android/page-1.md)
     * [IOS](mobile-application/mobile-application-testing/ios/README.md)
       * [Checklist and Methodology](mobile-application/mobile-application-testing/ios/page-3.md)
