@@ -8,9 +8,9 @@ Jailbreaking your iPhone can give you additional control and customisation optio
 
 Before you begin, ensure that you meet the following requirements:
 
-* Your device is running iOS 15 to iOS 16.4.1.
+* Your device is running iOS 15 to iOS 16.5
 * Your device model is one of the following: iPhone X, iPhone 8, iPhone 8 Plus, iPhone 7, iPhone 7 Plus, iPhone SE (1st), iPhone 6S, iPhone 6S Plus, iPhone 6, iPhone 6 Plus, iPad Mini 2, iPad Mini 3, iPad Mini 4, iPad 5th, iPad 6th, iPad 7th, iPad Air, iPad Air 2, iPad Pro 1st, iPad Pro 2nd, iPod Touches 6 & 7.
-* If you have an A11 device on iOS 16 with a passcode set, you will need to erase all content and settings before jailbreaking.
+* If you have an A11 device on iOS 16 with a passcode set, you will need to erase all content and settings before jailbreaking and ensure that no passcode is set.&#x20;
 
 ### Step 1: Download Palera1n
 

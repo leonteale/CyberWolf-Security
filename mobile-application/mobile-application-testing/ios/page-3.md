@@ -77,7 +77,13 @@ Dynamic analysis involves testing the app while it is running. It helps to ident
 * A macOS-based system, as some tools used for iOS app testing are only available on macOS.
 * An iOS device or a simulator for running the app, available in Xcode.
 
-**Install and Configure Necessary Tools**
+#### Install the .IPA file
+
+Get the .IPA file onto the device. you could use services such as:
+
+[https://www.installonair.com/home](https://www.installonair.com/home)
+
+#### **Install and Configure Necessary Tools**
 
 * **Xcode**: This is Apple's Integrated Development Environment (IDE). You can download it from the Mac App Store. It comes with the iOS Simulator and other necessary tools for iOS development and testing.
 * **Homebrew**: This is a package manager for macOS. Open Terminal and run the following command to install it:
