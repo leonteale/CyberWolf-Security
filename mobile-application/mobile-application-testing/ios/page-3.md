@@ -273,3 +273,9 @@ Check if the application is using insecure IPC mechanisms, such as insecure cust
 Check if the app continues to run code or keep sensitive data in memory while in the background. You can use Xcode's debug and memory analysis tools for this.
 
 **Remediation:** Sensitive operations should be paused or terminated when the app goes into the background. Sensitive data should be removed from memory.
+
+
+
+## useful links:
+
+[https://aupsham98.medium.com/practical-ios-penetration-testing-a-step-by-step-guide-8214d35aaf3c](https://aupsham98.medium.com/practical-ios-penetration-testing-a-step-by-step-guide-8214d35aaf3c)
