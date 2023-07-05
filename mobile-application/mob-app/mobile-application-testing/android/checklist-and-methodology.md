@@ -150,8 +150,17 @@ Remember, the above points form a general checklist, and testing methods might c
 
 
     You might also search for common terms that might indicate sensitive information, such as "secret", "token", "key", "admin", "user", "login", "credential", etc.\
+    \
+    This can be done in a 1 liner:\
 
 
+    {% code overflow="wrap" %}
+    ```shell
+    search_dir="/path/to/apk/files/" && keyword_list=("API_KEY" "SECRET_KEY" "PASSWORD" "USERNAME" "AUTH_TOKEN" "ACCESS_TOKEN" "PRIVATE_KEY" "DATABASE_PASSWORD" "CREDENTIALS" "API_SECRET" "API_TOKEN" "CLIENT_SECRET" "CLIENT_ID" "AWS_ACCESS_KEY_ID" "AWS_SECRET_ACCESS_KEY" "TOKEN" "OAUTH" "AUTHENTICATION_KEY" "SIGNING_KEY" "SALT" "ENCRYPTION_KEY" "CRYPTO_KEY" "SSL_KEY" "CERTIFICATE" "PASSPHRASE" "DATABASE_URL" "DATABASE_NAME" "DATABASE_USERNAME" "DATABASE_PASSWORD" "SMTP_USERNAME" "SMTP_PASSWORD" "SMTP_HOST" "SMTP_PORT" "MAIL_USERNAME" "MAIL_PASSWORD" "MAIL_SERVER" "MAIL_PORT"); for keyword in "${keyword_list[@]}"; do find "$search_dir" -type f -exec grep -i "$keyword" {} + >> hardcoded_search_"$keyword".txt; done
+    ```
+    {% endcode %}
+
+    \
     Remember, this is just a basic example and may not catch every instance of hardcoded sensitive information.
 7. **Check for Insecure Storage**
 
