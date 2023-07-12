@@ -1,39 +1,39 @@
 # Useful Commands
 
-### Extract domain users from winscanx dcenum
+## Extract domain users from winscanx dcenum
 
 ```
 cat dcenum.txt | grep "Domain Users" -C 2 | grep Username | awk {'print $2'}
 ```
 
-### extract domain users from enum4linux dcenum
+## extract domain users from enum4linux dcenum
 
 ```
 cat dcenum.txt | grep "Domain Users" | awk {'print $8'} | cut -d \\ -f 2
 ```
 
-### Extract domain users from 'net user'
+## Extract domain users from 'net user'
 
-On the windows DC/DS, cmd.exe:
+### On the windows DC/DS, cmd.exe:
 
 ```
 net user > output.txt
 ```
 
-Using bash:
+### Using bash:
 
 ```
 cat output.txt |awk {'print $1,"\n",$2,"\n",$3'} | awk {'print $1'} > users.txt
 ```
 
-### Add a local user and add to administrators group
+## Add a local user and add to administrators group
 
 ```
 net user leon password /add
 net localgroup administrators /add
 ```
 
-### Compile c scripts
+## Compile c scripts
 
 ```
 gcc -s hello.c -o exploit
@@ -41,19 +41,19 @@ gcc -s hello.c -o exploit
 
 If the machine does not have GCC installed, it can be compiled on the attacker machine, taking note of the system architecture first, using the following syntax:
 
-For x64 bit:
+### For x64 bit:
 
 ```
 gcc -m64 hello.c -o exploit
 ```
 
-For x32 bit:
+### For x32 bit:
 
 ```
 gcc -m32 hello.c -o exploit
 ```
 
-### Find text between 2 strings
+## Find text between 2 strings
 
 ```
 echo "Here is a string" | grep -o -P '(?<=Here).*(?=string)'
@@ -65,18 +65,29 @@ echo "Here is a string" | grep -o -P '(?<=Here).*(?=string)'
 grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" file.txt
 ```
 
-### find users with specific weak passwords from pipal
+## find users with specific weak passwords from pipal
 
 ```
 grep -E '(Password1|Password1Password1|Hire123!|Trucks123Trucks123|PasswordPassword1\.|Service1Service1|Winteriscoming@23|Cryingfr33m@n23|Password1!)' crackedhashes.txt | awk -F: '{print $3 ":" $1}' | sort | awk -F: '{print $2 " : " $1}' > weakpasses_output.txt
 ```
 
-### Add new entries to password leak (combs) for h8mail
+## Add new entries to password leak (combs) for h8mail
 
 This will take a file with the content format of\
 email:password\
-and then put it inside of the COMBS password leak into the relevent folder structure format.&#x20;
+and then put it inside of the COMBS password leak into the relevant folder structure format.&#x20;
+
+### Linux:
 
 ```
 while IFS=: read -r email password; do echo "$email:$password" >> /Wordlists/COMB/CompilationOfManyBreaches/data/${email:0:1}/${email:1:1}/${email:2:1}; done < your_file.txt
+```
+
+### Windows:
+
+```
+@echo off
+for /F "usebackq tokens=1,2 delims=:" %%a in (your_file.txt) do (
+    echo %%a:%%b >> D:\CompilationOfManyBreaches\data\%%a\%%b\%%c
+)
 ```
