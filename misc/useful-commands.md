@@ -70,3 +70,13 @@ grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" file.txt
 ```
 grep -E '(Password1|Password1Password1|Hire123!|Trucks123Trucks123|PasswordPassword1\.|Service1Service1|Winteriscoming@23|Cryingfr33m@n23|Password1!)' crackedhashes.txt | awk -F: '{print $3 ":" $1}' | sort | awk -F: '{print $2 " : " $1}' > weakpasses_output.txt
 ```
+
+### Add new entries to password leak (combs) for h8mail
+
+This will take a file with the content format of\
+email:password\
+and then put it inside of the COMBS password leak into the relevent folder structure format.&#x20;
+
+```
+while IFS=: read -r email password; do echo "$email:$password" >> /Wordlists/COMB/CompilationOfManyBreaches/data/${email:0:1}/${email:1:1}/${email:2:1}; done < your_file.txt
+```
