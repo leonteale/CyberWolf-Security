@@ -36,6 +36,7 @@
   * [1433 - MSSQL](services/mssql.md)
   * [1521 - Oracle DB](services/ports-services/1521-oracle-db.md)
   * [3389 - RDP](services/rdp.md)
+  * [3260 - iSCSI](services/services-ports/3260-iscsi.md)
   * [2049 - NFS](services/services-ports/2049-nfs.md)
   * [5900 - VNC](services/vnc.md)
   * [5985 - WinRM](services/winrm.md)
