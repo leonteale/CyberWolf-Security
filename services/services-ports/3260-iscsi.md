@@ -8,3 +8,9 @@ This command initiates the iSCSI discovery process for the specified IP address,
 sudo iscsiadm -m discovery -t st -p <IP>
 ```
 
+Then we try login
+
+```
+ sudo iscsiadm --mode node --targetname iqn.2004-04.com.qnap:ts-453bu:iscsi.berwinsveeam.3914ef --portal 172.20.0.165 --login
+```
+
