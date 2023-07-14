@@ -91,3 +91,21 @@ for /F "usebackq tokens=1,2 delims=:" %%a in (your_file.txt) do (
     echo %%a:%%b >> D:\CompilationOfManyBreaches\data\%%a\%%b\%%c
 )
 ```
+
+## Searching shares for passwords
+
+1.  To find files with "password" in the file name, use the `find` command:
+
+    ```bash
+    find /tmp/shared/ -type f -iname "*password*"
+    ```
+
+    \
+    This command will search the `/tmp/shared/` directory and all of its subdirectories for files (`-type f`) with "password" in the name. The `-iname` option makes the search case-insensitive.
+2.  To find files that contain "password" in their contents, use `find` in combination with `grep`:
+
+    ```bash
+    find /tmp/shared/ -type f -exec grep -il "password" {} \;
+    ```
+
+    This command searches all files in the `/tmp/shared/` directory and its su
