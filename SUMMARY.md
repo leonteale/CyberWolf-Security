@@ -94,6 +94,7 @@
   * [Dumping domain hashes](internals/internals/dumping-domain-hashes.md)
   * [Active Directory](internals/internals/active-directory.md)
   * [Getting local hashes](internals/internals/getting-local-hashes.md)
+  * [service principle names (SPNs)](internals/internals/service-principle-names-spns.md)
 
 ## Mobile Application
 
