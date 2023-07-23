@@ -4,6 +4,10 @@
 
 ## Download Nessus
 
+{% embed url="https://www.tenable.com/downloads/nessus" %}
+
+licence: [https://community.tenable.com/s/products](https://community.tenable.com/s/products)
+
 Windows
 
 ```
