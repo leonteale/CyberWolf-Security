@@ -38,5 +38,14 @@ Linux
 sudo dpkg -i Nessus.deb
 ```
 
+## Start the nessus service
+
+Windows
+
+Linux
+
+<pre><code><strong>sudo /bin/systemctl start nessusd.service
+</strong></code></pre>
+
 ## Update Nessus
 
