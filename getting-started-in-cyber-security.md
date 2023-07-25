@@ -1,6 +1,13 @@
 # Getting Started in Cyber Security
 
-Here is a youtube video to start with, helps explain some ways to get started in cyber security. It starts with giving the opinion to learn programming as it will help, but not rquired, especially if youre not into that thing, but if you do want to do that then it will always help.
+
+
+Quick start: [https://tryhackme.com/room/introtooffensivesecurity](https://tryhackme.com/room/introtooffensivesecurity)\
+the above link is for those who know what cyber security is and just want to start trying it.&#x20;
+
+
+
+Below is a youtube video to start with, it helps explain some ways to get started in cyber security. It starts with giving the opinion to learn programming as it will help, but not rquired, especially if youre not into that thing, but if you do want to do that then it will always help.
 
 {% embed url="https://www.youtube.com/watch?v=mS7qWC3CbOU" %}
 
