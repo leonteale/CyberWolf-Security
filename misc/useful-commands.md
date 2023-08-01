@@ -110,6 +110,30 @@ for /F "usebackq tokens=1,2 delims=:" %%a in (your_file.txt) do (
 
     This command searches all files in the `/tmp/shared/` directory and its su
 
+### Mount the share
+
+1.  **Create a Mount Point**: Decide where you want to mount the share and create a directory for it. For example:
+
+    ```bash
+    sudo mkdir /mnt/netlogon
+    ```
+2.  **Mount the Share**: Use the `mount` command to mount the share. You'll need to know the username and password for the share. Replace `USERNAME` and `PASSWORD` with your credentials:
+
+    ```bash
+    sudo mount -t cifs //domainserver.local/NETLOGON /mnt/netlogon -o username=USERNAME,password=PASSWORD
+    ```
+
+    If you need to specify a domain, you can add the `domain` option:
+
+    ```bash
+    sudo mount -t cifs //domainserver.local/NETLOGON /mnt/netlogon -o username=USERNAME,password=PASSWORD,domain=DOMAIN
+    ```
+3.  **Unmounting**: When you're done, you can unmount the share using:
+
+    ```bash
+    sudo umount /mnt/netlogon
+    ```
+
 ## Find what groups a user is a member of
 
 It will look like this
