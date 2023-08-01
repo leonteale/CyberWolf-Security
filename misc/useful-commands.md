@@ -139,3 +139,8 @@ awk -v user="leont" 'BEGIN {print "\033[0m--------------------------------------
 
 ### enum4linux
 
+{% code overflow="wrap" %}
+```bash
+awk -v user="leont" 'BEGIN {print "\033[0m--------------------------------------------\n\033[32mUser: " user "\033[0m"} $0 ~ "has member: .+\\\\" user {split($0, a, "'\''"); print "Group Name:", a[2]} END {print "--------------------------------------------"}' dcenum.txt | grep --color=always 'admin\|'
+```
+{% endcode %}
