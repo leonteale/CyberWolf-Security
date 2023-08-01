@@ -116,7 +116,7 @@ This command will search the `/tmp/shared/` directory and all of its subdirector
 1.  To find files that contain "password" in their contents, use `find` in combination with `grep`:
 
     ```bash
-    find /tmp/shared/ -type f -exec grep -il "password" {} \;
+    find . -type f -exec grep -iHn "password" {} \;
     ```
 
     This command searches all files in the `/tmp/shared/` directory and its su
