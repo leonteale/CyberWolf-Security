@@ -115,11 +115,21 @@ This command will search the `/tmp/shared/` directory and all of its subdirector
 
 1.  To find files that contain "password" in their contents, use `find` in combination with `grep`:
 
+    {% code overflow="wrap" %}
     ```bash
     find . -type f -exec grep -iHn "password" {} \;
     ```
+    {% endcode %}
 
     This command searches all files in the `/tmp/shared/` directory and its su
+
+You can ignore/suppress the 'binary file matches' lines by adding -I to the grep. such as:
+
+{% code overflow="wrap" %}
+```bash
+find . -type f -exec grep -iIHn "password" {} \;
+```
+{% endcode %}
 
 ### Mount the share
 
