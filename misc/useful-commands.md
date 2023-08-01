@@ -133,7 +133,7 @@ Group Name: XEN-ACCESS
 
 {% code overflow="wrap" %}
 ```bash
-awk -v user="leont" 'BEGIN {print "\033[0m--------------------------------------------\n\033[32mUser: " user "\033[0m"} /Username:/ {if ($0 ~ "Username:   " user) {print group_name}} {group_name=last; last=$0} END {print "--------------------------------------------"}' winscanx.txt | grep --color=always 'admin\|'
+awk -v user="leont" 'BEGIN {print "\033[0m--------------------------------------------\n\033[32mUser: " user "\033[0m"} /Username:/ {if ($0 ~ "Username:   " user) {print group_name}} {group_name=last; last=$0} END {print "--------------------------------------------"}' winscanx.txt | grep -i --color=always 'admin\|'
 ```
 {% endcode %}
 
@@ -141,6 +141,14 @@ awk -v user="leont" 'BEGIN {print "\033[0m--------------------------------------
 
 {% code overflow="wrap" %}
 ```bash
-awk -v user="leont" 'BEGIN {print "\033[0m--------------------------------------------\n\033[32mUser: " user "\033[0m"} $0 ~ "has member: .+\\\\" user {split($0, a, "'\''"); print "Group Name:", a[2]} END {print "--------------------------------------------"}' dcenum.txt | grep --color=always 'admin\|'
+awk -v user="leont" 'BEGIN {print "\033[0m--------------------------------------------\n\033[32mUser: " user "\033[0m"} $0 ~ "has member: .+\\\\" user {split($0, a, "'\''"); print "Group Name:", a[2]} END {print "--------------------------------------------"}' dcenum.txt | grep -i --color=always 'admin\|'
+```
+{% endcode %}
+
+For loop
+
+{% code overflow="wrap" %}
+```bash
+for i in $(cat admins.txt); do awk -v user="$i" 'BEGIN {print "\033[0m--------------------------------------------\n\033[32mUser: " user "\033[0m"} $0 ~ "has member: .+\\\\" user {split($0, a, "'\''"); print "Group Name:", a[2]} END {print "--------------------------------------------"}' dcenum.txt | grep -i --color=always 'admin\|';done
 ```
 {% endcode %}
