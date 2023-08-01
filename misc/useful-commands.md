@@ -109,3 +109,33 @@ for /F "usebackq tokens=1,2 delims=:" %%a in (your_file.txt) do (
     ```
 
     This command searches all files in the `/tmp/shared/` directory and its su
+
+## Find what groups a user is a member of
+
+It will look like this
+
+```
+--------------------------------------------
+User: leont
+Group Name: Domain Users
+Group Name: LT-DAVY_JONES_DATA-RW
+Group Name: LT-DAVYPRESS-F-RW
+Group Name: LT-SPACE-D-RO
+Group Name: LT-SPACEPROCESSDATA-RO
+Group Name: LT-Data
+Group Name: LT-RECORDERS
+Group Name: Site-Halifax
+Group Name: XEN-ACCESS
+--------------------------------------------
+```
+
+### winscanx
+
+{% code overflow="wrap" %}
+```bash
+awk -v user="leont" 'BEGIN {print "\033[0m--------------------------------------------\n\033[32mUser: " user "\033[0m"} /Username:/ {if ($0 ~ "Username:   " user) {print group_name}} {group_name=last; last=$0} END {print "--------------------------------------------"}' winscanx.txt | grep --color=always 'admin\|'
+```
+{% endcode %}
+
+### enum4linux
+
