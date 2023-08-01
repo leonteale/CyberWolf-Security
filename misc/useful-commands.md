@@ -131,6 +131,16 @@ find . -type f -exec grep -iIHn "password" {} \;
 ```
 {% endcode %}
 
+To read the contents of the binary though, you can simply use 'strings'
+
+{% code overflow="wrap" %}
+```bash
+strings ./file.msi | grep -i password
+
+strings .file.msi | grep -A 1 -B 1 -i password
+```
+{% endcode %}
+
 ### Mount the share
 
 1.  **Create a Mount Point**: Decide where you want to mount the share and create a directory for it. For example:
