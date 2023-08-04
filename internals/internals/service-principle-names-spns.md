@@ -28,7 +28,7 @@ Replace `<domain>.local` with the Fully Qualified Domain Name (FQDN) of your tar
 Once you've gathered the SPNs, you can then attempt to crack the passwords offline using a tool like Hashcat. Here's an example of how to use Hashcat for this:
 
 ```bash
-bahashcat -m 13100 hashes.txt /mnt/hgfs/Host_Desktop/ -o cracked.txt
+hashcat -m 13100 hashes.txt /mnt/hgfs/Host_Desktop/ -o cracked.txt
 ```
 
 In this example, `-m 13100` specifies the mode (in this case, Kerberos 5 TGS-REP etype 23), `hashes.txt` is the file containing the SPN hashes you've exported, and `-o cracked.txt` is the output file for any cracked passwords.
