@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashcat Results</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #333; /* Change this to your desired dark color */
+            color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .section {
+            flex: 1;
+            margin: 10px;
+            overflow: hidden;
+        }
+        .divider {
+            border-right: 2px solid #666;
+            height: 100%;
+            margin: 0 10px;
+        }
+        h1 {
+            font-size: 1.2em;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+        h2 {
+            font-size: 1em;
+            color: #ccc;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+            table-layout: fixed;
+        }
+        th, td {
+            border: 1px solid #666;
+            padding: 5px 10px;
+            text-align: left;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        th {
+            background-color: #444;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #3a3a3a;
+        }
+        .days-or-less { color: red; }
+        .months { color: orange; }
+        .years-or-more { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Hashcat Results</h1>
+    <div class="container">
+        <div class="section">
+            <h2>NVIDIA T4</h2>
+            <table>
+                <tr>
+                    <th>GPU Model</th>
+                    <th>Algorithm</th>
+                    <th style="text-align: left">Characters</th>
+                    <th>Time</th>
+                </tr>
+                <!-- NVIDIA T4 -->
+                <tr>
+                    <td rowspan="8">NVIDIA T4</td>
+                    <td rowspan="8">Kerberos 5 TGS-REP etype 23</td>
+                    <td style="text-align: left">5</td>
+                    <td class="days-or-less">few seconds</td>
+                </tr>
+                <tr><td>6</td><td class="days-or-less">38 minutes</td></tr>
+                <tr><td>7</td><td class="days-or-less">3 days</td></tr>
+                <tr><td>8</td><td class="months">3 months</td></tr>
+                <tr><td>9</td><td class="years-or-more">22 years</td></tr>
+                <tr><td>10</td><td class="years-or-more">2,066 years</td></tr>
+                <tr><td>11</td><td class="years-or-more">196,275 years</td></tr>
+                <tr><td>12</td><td class="years-or-more">end of humanity</td></tr>
+                <!-- NTLMv1 -->
+                <tr>
+                    <td rowspan="8">NVIDIA T4</td>
+                    <td rowspan="8">NTLMv1</td>
+                    <td style="text-align: left">5</td>
+                    <td class="days-or-less">instant</td>
+                </tr>
+                <tr><td>6</td><td class="days-or-less">few seconds</td></tr>
+                <tr><td>7</td><td class="days-or-less">30 seconds</td></tr>
+                <tr><td>8</td><td class="days-or-less">2 days</td></tr>
+                <tr><td>9</td><td class="months">6 months</td></tr>
+                <tr><td>10</td><td class="years-or-more">48 years</td></tr>
+                <tr><td>11</td><td class="years-or-more">4,594 years</td></tr>
+                <tr><td>12</td><td class="years-or-more">end of humanity</td></tr>
+                <!-- NetNTLMv2 -->
+                <tr>
+                    <td rowspan="8">NVIDIA T4</td>
+                    <td rowspan="8">NetNTLMv2</td>
+                    <td style="text-align: left">5</td>
+                    <td class="days-or-less">A few seconds</td>
+                </tr>
+                <tr><td>6</td><td class="days-or-less">8 minutes</td></tr>
+                <tr><td>7</td><td class="days-or-less">13 hours</td></tr>
+                <tr><td>8</td><td class="months">2 months</td></tr>
+                <tr><td>9</td><td class="years-or-more">13 years</td></tr>
+                <tr><td>10</td><td class="years-or-more">1,272 years</td></tr>
+                <tr><td>11</td><td class="years-or-more">120,849 years</td></tr>
+                <tr><td>12</td><td class="years-or-more">end of humanity</td></tr>
+            </table>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+            <h2>NVIDIA A10G</h2>
+            <table>
+                <tr>
+                    <th>GPU Model</th>
+                    <th>Algorithm</th>
+                    <th style="text-align: left">Characters</th>
+                    <th>Time</th>
+                </tr>
+                <!-- NVIDIA A10G -->
+                <tr>
+                    <td rowspan="8">NVIDIA A10G</td>
+                    <td rowspan="8">Kerberos 5 TGS-REP etype 23</td>
+                    <td style="text-align: left">5</td>
+                    <td class="days-or-less">A few seconds</td>
+                </tr>
+                <tr><td>6</td><td class="days-or-less">9 minutes</td></tr>
+                <tr><td>7</td><td class="days-or-less">14 hours</td></tr>
+                <tr><td>8</td><td class="months">2 months</td></tr>
+                <tr><td>9</td><td class="years-or-more">14 years</td></tr>
+                <tr><td>10</td><td class="years-or-more">1,376 years</td></tr>
+                <tr><td>11</td><td class="years-or-more">130,688 years</td></tr>
+                <tr><td>12</td><td class="years-or-more">end of humanity</td></tr>
+                <!-- NTLMv1 -->
+                <tr>
+                    <td rowspan="8">NVIDIA A10G</td>
+                    <td rowspan="8">NTLMv1</td>
+                    <td style="text-align: left">5</td>
+                    <td class="days-or-less">instant</td>
+                </tr>
+                <tr><td>6</td><td class="days-or-less">few seconds</td></tr>
+                <tr><td>7</td><td class="days-or-less">15 seconds</td></tr>
+                <tr><td>8</td><td class="days-or-less">1 day</td></tr>
+                <tr><td>9</td><td class="months">3 months</td></tr>
+                <tr><td>10</td><td class="years-or-more">24 years</td></tr>
+                <tr><td>11</td><td class="years-or-more">2,297 years</td></tr>
+                <tr><td>12</td><td class="years-or-more">end of humanity</td></tr>
+                <!-- NetNTLMv2 -->
+                <tr>
+                    <td rowspan="8">NVIDIA A10G</td>
+                    <td rowspan="8">NetNTLMv2</td>
+                    <td style="text-align: left">5</td>
+                    <td class="days-or-less">A few seconds</td>
+                </tr>
+                <tr><td>6</td><td class="days-or-less">4 minutes</td></tr>
+                <tr><td>7</td><td class="days-or-less">7 hours</td></tr>
+                <tr><td>8</td><td class="months">1 month</td></tr>
+                <tr><td>9</td><td class="years-or-more">7 years</td></tr>
+                <tr><td>10</td><td class="years-or-more">636 years</td></tr>
+                <tr><td>11</td><td class="years-or-more">60,424 years</td></tr>
+                <tr><td>12</td><td class="years-or-more">end of humanity</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
