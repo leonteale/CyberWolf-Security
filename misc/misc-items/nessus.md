@@ -18,11 +18,11 @@ curl --request GET \
 
 Linux
 
+{% code overflow="wrap" %}
 ```
-curl --request GET \
-  --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.5.3-ubuntu1404_amd64.deb' \
-  --output 'Nessus-10.5.3-ubuntu1404_amd64.deb'
+wget "https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/20393/download?i_agree_to_tenable_license_agreement=true" -O nessus.deb
 ```
+{% endcode %}
 
 
 
