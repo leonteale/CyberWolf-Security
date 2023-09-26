@@ -1,5 +1,9 @@
 # 3260 - iSCSI
 
+### Automation
+
+I have a script that automates this process which can be found on my pentestpackage github. direct link here [https://github.com/leonteale/pentestpackage/blob/master/Automation/fresh\_install\_automated\_changes.sh](https://github.com/leonteale/pentestpackage/blob/master/Automation/fresh\_install\_automated\_changes.sh)
+
 ### Discovery
 
 This command initiates the iSCSI discovery process for the specified IP address, allowing the system to find and list available iSCSI targets on that address.
