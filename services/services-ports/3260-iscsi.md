@@ -1,6 +1,6 @@
 # 3260 - iSCSI
 
-## Discovery
+### Discovery
 
 This command initiates the iSCSI discovery process for the specified IP address, allowing the system to find and list available iSCSI targets on that address.
 
