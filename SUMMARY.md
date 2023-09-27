@@ -64,7 +64,7 @@
 
 * [Wireless](wireless-testing/wireless/README.md)
   * [Converting handshake to .hccapx for Hashcat](wireless-testing/converting-handshake-to-.hccapx-for-hashcat.md)
-  * [Cracking WPA/WPA2 with Hashcat](wireless-testing/cracking-wpa-wpa2-with-hashcat.md)
+  * [Cracking WPA/WPA2 hashes](wireless-testing/cracking-wpa-wpa2-with-hashcat.md)
   * [Hacking Wireless](wireless-testing/hacking-wireless.md)
   * [Get Wireless password from Windows CMD](wireless-testing/wireless/get-wireless-password-from-windows-cmd.md)
 

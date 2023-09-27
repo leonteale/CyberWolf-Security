@@ -1,4 +1,4 @@
-# Cracking WPA/WPA2 with Hashcat
+# Cracking WPA/WPA2 hashes
 
 ## Handshake .cap
 
@@ -18,7 +18,13 @@ john --wordlist=wordlist.txt --format=wpapsk capture.hccapx
 
 John the Ripper also requires the handshake to be in a specific format, often a converted .hccapx or directly in John's own 'netntlm' format.
 
-hashcat.exe -m 22000 .\wpa-to-crack .\rockyou.txt
+
+
+{% code overflow="wrap" %}
+```bash
+aircrack-ng -a 2 -w /usr/share/dict/wordlist-probable.txt --bssid CC:D0:83:70:22:E2 -l /tmp/wifitejrkm_0dh/wpakey.txt hs/handshake_wifi13-43-05.cap
+```
+{% endcode %}
 
 ## PMKID hash
 
