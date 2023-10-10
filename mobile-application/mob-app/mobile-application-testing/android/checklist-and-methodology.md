@@ -108,6 +108,23 @@ Remember, the above points form a general checklist, and testing methods might c
    2. Download it direct to the target device via the google play store
    3. Use a 3rd party to retrieve the .apk file from the google play store, such as [https://apkcombo.com/downloader](https://apkcombo.com/downloader)
 
+If using Android Studio, you can fire up a rooted AV using
+
+{% code overflow="wrap" %}
+```batch
+c: > AppData\Local\Android\Sdk\emulator\emulator.exe -avd <AVD-name-here> -writable-system -selinux disabled -qemu
+
+```
+{% endcode %}
+
+Also, you can use ADB from windows with:
+
+{% code overflow="wrap" %}
+```batch
+c: > AppData\Local\Android\Sdk\platform-tools\adb.exe
+```
+{% endcode %}
+
 ## Static Analysis
 
 3.  **Obtain the APK File**
