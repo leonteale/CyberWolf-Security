@@ -87,19 +87,26 @@ Remember, the above points form a general checklist, and testing methods might c
 
 1. **Setup Testing Environment**
    * Prepare a suitable testing environment, which can be an actual Android device or an Android emulator like Genymotion.
-2. **Install and Configure Necessary Tools**
-   * ADB (Android Debug Bridge)
-   * APKTool
-   * JADX
-   * Burp Suite
-   * Drozer
-   * dex2jar
-   * JD-GUI
-   * tcpdump
-   * Wireshark
-   * Frida
-   * Objection
-   * [scrcpy](https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md) - Mirror and control your phone screen using ADB
+2.  **Install and Configure Necessary Tools**
+
+    * ADB (Android Debug Bridge)
+    * APKTool
+    * JADX
+    * Burp Suite
+    * Drozer
+    * dex2jar
+    * JD-GUI
+    * tcpdump
+    * Wireshark
+    * Frida
+    * Objection
+    * [scrcpy](https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md) - Mirror and control your phone screen using AD
+
+
+3. Obtain the .APK file
+   1. Have the client send you the .apk file
+   2. Download it direct to the target device via the google play store
+   3. Use a 3rd party to retrieve the .apk file from the google play store, such as [https://apkcombo.com/downloader](https://apkcombo.com/downloader)
 
 ## Static Analysis
 
