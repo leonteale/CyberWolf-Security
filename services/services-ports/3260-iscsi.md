@@ -2,7 +2,7 @@
 
 ### Automation
 
-I have a script that automates this process which can be found on my pentestpackage github. direct link here [https://github.com/leonteale/pentestpackage/blob/master/Automation/fresh\_install\_automated\_changes.sh](https://github.com/leonteale/pentestpackage/blob/master/Automation/fresh\_install\_automated\_changes.sh)
+I have a script that automates this process which can be found on my pentestpackage github. direct link here [https://github.com/leonteale/pentestpackage/blob/master/Utilities/auto-iscsi.sh](https://github.com/leonteale/pentestpackage/blob/master/Utilities/auto-iscsi.sh)
 
 ### Discovery
 
