@@ -34,12 +34,15 @@ and it includes the passwords for the community and private string
 
 #### onesixtyone
 
+{% code overflow="wrap" %}
 ```
-./onesixtyone -c /opt/SecLists/Discovery/SNMP/common-snmp-community-strings.txt 10.10.10.92 
+./onesixtyone -c /opt/SecLists/Discovery/SNMP/common-snmp-community-strings.txt <IP> 
+
 Scanning 1 hosts, 122 communities 
 10.10.10.92 [public] Linux Mischief 4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018 x86_64 
 10.10.10.92 [public] Linux Mischief 4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018 x86_64
 ```
+{% endcode %}
 
 #### NMAP
 
@@ -49,9 +52,11 @@ nmap -p 161 --script snmp-brute <target>
 
 #### Metasploit
 
+{% code overflow="wrap" %}
 ```
-msfconsole -qx "use auxiliary/scanner/snmp/snmp_enum; set RHOSTS file:scope.txt; run"
+msfconsole -qx 'use auxiliary/scanner/snmp/snmp_login; set RHOSTS file:scope.txt; run'
 ```
+{% endcode %}
 
 ### **Metasploit - Enumerate users**
 
