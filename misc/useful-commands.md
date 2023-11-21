@@ -207,3 +207,11 @@ For loop
 for i in $(cat admins.txt); do awk -v user="$i" 'BEGIN {print "\033[0m--------------------------------------------\n\033[32mUser: " user "\033[0m"} $0 ~ "has member: .+\\\\" user {split($0, a, "'\''"); print "Group Name:", a[2]} END {print "--------------------------------------------"}' dcenum.txt | grep -i --color=always 'admin\|';done
 ```
 {% endcode %}
+
+### Responder - found users unique
+
+{% code overflow="wrap" %}
+```bash
+find /usr/share/responder/logs -name '*.txt' -newerct 'today 00:00:00' -exec cat {} \; | grep -vE '\$' | awk -F':' '!seen[$1]++'
+```
+{% endcode %}
