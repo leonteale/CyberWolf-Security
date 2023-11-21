@@ -47,7 +47,7 @@ Scanning 1 hosts, 122 communities
 #### NMAP
 
 ```
-nmap -p 161 --script snmp-brute <target>
+sudo nmap -sU -p 161 --script snmp-brute -iL scope.txt --open
 ```
 
 #### Metasploit
