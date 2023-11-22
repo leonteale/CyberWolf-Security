@@ -215,3 +215,15 @@ for i in $(cat admins.txt); do awk -v user="$i" 'BEGIN {print "\033[0m----------
 find /usr/share/responder/logs -name '*.txt' -newerct 'today 00:00:00' -exec cat {} \; | grep -vE '\$' | awk -F':' '!seen[$1]++'
 ```
 {% endcode %}
+
+
+
+### Query LDAP about a user
+
+
+
+{% code overflow="wrap" %}
+```bash
+ldapsearch -x -D "user@domain" -W -C -H ldap://192.168.1.20 -b "dc=domain,dc=gov,dc=uk" "(&(objectClass=user)(samaccountname=USERTOQUERY))"
+```
+{% endcode %}
