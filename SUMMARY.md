@@ -6,6 +6,7 @@
 ## Misc
 
 * [Misc Items](misc/misc-items/README.md)
+  * [Powershell commands](misc/misc-items/powershell-commands.md)
   * [Reverse Shells](misc/reverse-shells.md)
   * [Web Shells](misc/web-shells.md)
   * [File Sharing](misc/file-sharing.md)
