@@ -180,7 +180,7 @@ c: > AppData\Local\Android\Sdk\platform-tools\adb.exe
 
     {% code overflow="wrap" %}
     ```shell
-    search_dir="/path/to/apk/files/" && keyword_list=("API_KEY" "SECRET_KEY" "PASSWORD" "USERNAME" "AUTH_TOKEN" "ACCESS_TOKEN" "PRIVATE_KEY" "DATABASE_PASSWORD" "CREDENTIALS" "API_SECRET" "API_TOKEN" "CLIENT_SECRET" "CLIENT_ID" "AWS_ACCESS_KEY_ID" "AWS_SECRET_ACCESS_KEY" "TOKEN" "OAUTH" "AUTHENTICATION_KEY" "SIGNING_KEY" "SALT" "ENCRYPTION_KEY" "CRYPTO_KEY" "SSL_KEY" "CERTIFICATE" "PASSPHRASE" "DATABASE_URL" "DATABASE_NAME" "DATABASE_USERNAME" "DATABASE_PASSWORD" "SMTP_USERNAME" "SMTP_PASSWORD" "SMTP_HOST" "SMTP_PORT" "MAIL_USERNAME" "MAIL_PASSWORD" "MAIL_SERVER" "MAIL_PORT"); for keyword in "${keyword_list[@]}"; do find "$search_dir" -type f -exec grep -i "$keyword" {} + >> hardcoded_search_"$keyword".txt; done
+    ssearch_dir="/path/to/decompiled_apk/" && keyword_list=("API_KEY" "SECRET_KEY" "PASSWORD" "USERNAME" "AUTH_TOKEN" "ACCESS_TOKEN" "PRIVATE_KEY" "DATABASE_PASSWORD" "CREDENTIALS" "API_SECRET" "API_TOKEN" "CLIENT_SECRET" "CLIENT_ID" "AWS_ACCESS_KEY_ID" "AWS_SECRET_ACCESS_KEY" "TOKEN" "OAUTH" "AUTHENTICATION_KEY" "SIGNING_KEY" "SALT" "ENCRYPTION_KEY" "CRYPTO_KEY" "SSL_KEY" "CERTIFICATE" "PASSPHRASE" "DATABASE_URL" "DATABASE_NAME" "DATABASE_USERNAME" "DATABASE_PASSWORD" "SMTP_USERNAME" "SMTP_PASSWORD" "SMTP_HOST" "SMTP_PORT" "MAIL_USERNAME" "MAIL_PASSWORD" "MAIL_SERVER" "MAIL_PORT"); for keyword in "${keyword_list[@]}"; do find "$search_dir" -type f -exec grep -i "$keyword" {} + >> hardcoded_search_"$keyword".txt; done; find "$search_dir" -type f -name "hardcoded_search_*.txt" -size 0 -delete
     ```
     {% endcode %}
 
