@@ -230,9 +230,17 @@ ldapsearch -x -D "user@domain" -W -C -H ldap://192.168.1.20 -b "dc=domain,dc=gov
 
 ### Search for exploits from CVEs
 
-If you export 'vulns' from msfconsole (if you have imported things such as Nessus) you can extract all the CVEs that are identified using the following command:
+If you export 'vulns' from msfconsole (if you have imported things such as Nessus):
 
 
+
+{% code overflow="wrap" %}
+```bash
+msf6 > vulns -o vulns.csv
+```
+{% endcode %}
+
+&#x20;You can then extract all the CVEs that are identified using the following command:
 
 {% code overflow="wrap" %}
 ```bash
