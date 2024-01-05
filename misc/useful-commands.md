@@ -227,3 +227,25 @@ find /usr/share/responder/logs -name '*.txt' -newerct 'today 00:00:00' -exec cat
 ldapsearch -x -D "user@domain" -W -C -H ldap://192.168.1.20 -b "dc=domain,dc=gov,dc=uk" "(&(objectClass=user)(samaccountname=USERTOQUERY))"
 ```
 {% endcode %}
+
+### Search for exploits from CVEs
+
+If you export 'vulns' from msfconsole (if you have imported things such as Nessus) you can extract all the CVEs that are identified using the following command:
+
+
+
+{% code overflow="wrap" %}
+```bash
+cat vulns.csv | awk -F ',' '{gsub(/"/, "", $0); for (i=1; i<=NF; i++) {if ($i ~ /^CVE-/) print $i}}' | sort -u
+```
+{% endcode %}
+
+You can go 1 step further and automate Searchsploit to try find exploits relating to those CVEs using my script here: [https://raw.githubusercontent.com/leonteale/pentestpackage/master/Utilities/CVE-exploit-finder.sh](https://raw.githubusercontent.com/leonteale/pentestpackage/master/Utilities/CVE-exploit-finder.sh)
+
+This is what a found exploit will look like (you'll recognise it from Searchsploit)
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+or no findings will look like this:
+
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
