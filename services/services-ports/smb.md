@@ -51,7 +51,7 @@ Set responder.conf to:
 Then run responder:
 
 ```
-sudo python3.9 /usr/share/responder/Responder.py -I eth0 -w -f -v
+sudo python3.9 /usr/share/responder/Responder.py -I eth0 -w -F -v
 ```
 
 Then run the following in another terminal session
