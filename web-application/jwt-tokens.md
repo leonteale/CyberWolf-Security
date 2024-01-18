@@ -14,10 +14,19 @@ The three main ways to bypass JWT validation:
 
 {% embed url="https://lmammino.github.io/jwt-cracker" %}
 
-* ```
+* {% code overflow="wrap" %}
+  ```bash
   jwt-cracker "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ" "abcdefghijklmnopqrstuwxyz" 6
   ```
-* #### ddd
+  {% endcode %}
+
+### Jwt2john
+
+&#x20;jwt2john.py JWT
+
+&#x20;Convert a JWT to a format John the Ripper can understand.
+
+&#x20;John the Ripper now supports the JWT format, so converting the token is no longer necessary. John has a size limit on the data it will take. If you run into this limit, consider changing SALT\_LIMBS in the source code.
 
 ### Local file inclusion
 
