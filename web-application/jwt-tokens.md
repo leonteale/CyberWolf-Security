@@ -14,13 +14,11 @@ The three main ways to bypass JWT validation:
 
 {% embed url="https://lmammino.github.io/jwt-cracker" %}
 
-* {% code overflow="wrap" %}
-  ```bash
-  jwt-cracker -t <token> [-a <alphabet>] [--max <maxLength>] [-d <dictionaryFilePath>] [-f]
-
-  jwt-cracker "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ" "abcdefghijklmnopqrstuwxyz" 6
-  ```
-  {% endcode %}
+{% code overflow="wrap" %}
+```bash
+jwt-cracker -t eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ -d /usr/share/seclists/Passwords/500-worst-passwords.txt
+```
+{% endcode %}
 
 ### Jwt2john
 
