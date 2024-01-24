@@ -17,6 +17,7 @@
   * [Intercept Linux CLI Traffic](misc/misc-items/intercept-linux-cli-traffic.md)
   * [Nessus](misc/misc-items/nessus.md)
 * [Frequency stuff](misc/frequency-stuff.md)
+* [Random stuff - needs sorting](misc/random-stuff-needs-sorting.md)
 
 ## Services
 
