@@ -69,6 +69,7 @@
   * [Cracking WPA/WPA2 hashes](wireless-testing/cracking-wpa-wpa2-with-hashcat.md)
   * [Hacking Wireless](wireless-testing/hacking-wireless.md)
   * [Get Wireless password from Windows CMD](wireless-testing/wireless/get-wireless-password-from-windows-cmd.md)
+  * [Hotspot](wireless-testing/wireless/hotspot.md)
 
 ## Web Application
 
