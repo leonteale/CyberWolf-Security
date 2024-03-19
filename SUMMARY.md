@@ -22,6 +22,7 @@
 ## Services
 
 * [Ports - Services](services/services-ports/README.md)
+  * [123 - NTP](services/services-ports/123-ntp.md)
   * [21 - FTP](services/ports-services/21-ftp.md)
   * [22 - SSH](services/ssh.md)
   * [25 - SMTP](services/ports-services/25-smtp.md)
