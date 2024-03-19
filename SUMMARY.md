@@ -22,13 +22,13 @@
 ## Services
 
 * [Ports - Services](services/services-ports/README.md)
-  * [123 - NTP](services/services-ports/123-ntp.md)
   * [21 - FTP](services/ports-services/21-ftp.md)
   * [22 - SSH](services/ssh.md)
   * [25 - SMTP](services/ports-services/25-smtp.md)
   * [69 - TFTP](services/services-ports/69-tftp.md)
   * [79 - Finger](services/ports-services/79-finger.md)
   * [88 - Kerberos](services/ports-services/88-kerberos.md)
+  * [123 - NTP](services/services-ports/123-ntp.md)
   * [137 - Netbios](services/netbios.md)
   * [161 - SNMP](services/snmp.md)
   * [363 - LDAP](services/services-ports/363-ldap.md)
