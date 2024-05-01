@@ -852,9 +852,11 @@ This command will search all files in the current directory and its subdirectori
 If this finds a few databases, you can quickly dump them all to the /sdcard/ using the following command:\
 
 
+{% code overflow="wrap" %}
 ```shell
 for db in $(find . -type f -exec grep -l "SQLite format 3" {} \;); do sqlite3 $db ".output /sdcard/databases/$(basename $db).dump"; done
 ```
+{% endcode %}
 
 \
 \
