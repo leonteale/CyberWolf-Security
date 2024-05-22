@@ -38,7 +38,7 @@ When performing a penetration test, you can use various payloads to test for upl
        {% endcode %}
 2.  **Uploading .htaccess File**
 
-    *   To change the behavior of the web server, you can upload an `.htaccess` file:
+    *   To change the behaviour of the web server, you can upload an `.htaccess` file:
 
         ```bash
         AddType application/x-httpd-php .jpg
