@@ -91,7 +91,8 @@
   * [Remote Code Execution (RCE)](web-application/web-app/remote-code-execution-rce.md)
   * [Uploads](web-application/web-app/uploads.md)
   * [Subdomain takeover](web-application/web-app/subdomain-takeover.md)
-  * [XLS/CSV Injection](web-application/web-app/xls-csv-injection.md)
+  * [XLS/CSV Injection](web-application/web-app/xml-csv-injection.md)
+  * [XML Injection](web-application/web-app/xml-injection.md)
 
 ## Internals
 
