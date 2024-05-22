@@ -73,6 +73,17 @@ When performing a penetration test, you can use various payloads to test for upl
 * [PayloadsAllTheThings - Jetty RCE](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Upload%20Insecure%20Files/Jetty%20RCE/JettyShell.xml)
 * [PayloadsAllTheThings - Extension ASP](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Upload%20Insecure%20Files/Extension%20ASP/shell.aspx)
 
+## Remote code execution (RCE) using file uploads
+
+If you need to quickly make RCE code from bash disguised as an image for an LFI/malicious upload.
+
+{% code overflow="wrap" %}
+```bash
+echo -n -e '\xFF\xD8\xFF\xE0.' > shell.jpg
+echo -n -e '\x89\x50\x4E\x47.' > shell.png
+```
+{% endcode %}
+
 ### Example bypass upload restrictions.&#x20;
 
 <figure><img src="../../.gitbook/assets/1669794207400.jfif" alt=""><figcaption></figcaption></figure>
