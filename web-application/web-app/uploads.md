@@ -65,7 +65,7 @@ When performing a penetration test, you can use various payloads to test for upl
    * Check if the uploaded files are executable by accessing them directly via a web browser.
    * Use intercepting proxies like Burp Suite or OWASP ZAP to manipulate file uploads and bypass client-side restrictions.
 4. **Monitor Server Behavior**:
-   * Observe any changes in server behavior, error messages, or execution of uploaded files.
+   * Observe any changes in server behaviour, error messages, or execution of uploaded files.
 
 ### References
 
