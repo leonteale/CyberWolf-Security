@@ -2,8 +2,9 @@
 
 ### GoBuster
 
-```
-gobuster dir -u http://horizontall.htb/ -w ~/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt    1 ⨯
+{% code overflow="wrap" %}
+```bash
+gobuster dir -u http://horizontall.htb/ -w ~/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -b 301
 
 
 ===============================================================
@@ -27,16 +28,18 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ~
 ~
 ```
+{% endcode %}
 
 More intense scan
 
-```
+{% code overflow="wrap" %}
+```bash
 gobuster dir -u http://backdoor.htb/ -w /opt/useful/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 100 -e -x php,txt,html,bak,zip
 ```
+{% endcode %}
 
 ## DirBuster
 
 ```
 dirb http://[IP]
 ```
-
