@@ -12,7 +12,7 @@
   * [File Sharing](misc/file-sharing.md)
   * [Useful Commands](misc/useful-commands.md)
   * [Google Dorks](misc/google-dorks.md)
-  * [Proxy Chains](misc/proxy-chains.md)
+  * [Proxy & Proxy Chains](misc/proxy-chains.md)
   * [Port Scanning](misc/port-scanning.md)
   * [Intercept Linux CLI Traffic](misc/misc-items/intercept-linux-cli-traffic.md)
   * [Nessus](misc/misc-items/nessus.md)
