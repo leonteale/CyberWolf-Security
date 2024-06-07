@@ -6,6 +6,8 @@ description: >-
 
 # Uploads
 
+<figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+
 ## What is an Upload Vulnerability?
 
 Upload vulnerabilities occur when an application does not properly validate or sanitize user-uploaded files. This can lead to unauthorized code execution, file inclusion, or other security breaches. Attackers may exploit these vulnerabilities to upload malicious files, such as web shells or configuration files, that can compromise the server or application.
