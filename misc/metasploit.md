@@ -53,4 +53,23 @@ services -S 445 -R
 
 ```
  db_export -f xml /root/msfu/Exported.xml
+
 ```
+
+
+
+## Disable hierarchical search
+
+If you have found that Metasploit does this:
+
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+
+Then run the below to turn it off. dont forget to run the 'save' command after if you want it persistant on next boot.&#x20;
+
+{% code overflow="wrap" %}
+```bash
+features set hierarchical_search_table false
+```
+{% endcode %}
+
+<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
