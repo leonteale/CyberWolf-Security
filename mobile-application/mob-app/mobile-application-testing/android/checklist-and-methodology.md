@@ -108,12 +108,88 @@ Remember, the above points form a general checklist, and testing methods might c
    2. Download it direct to the target device via the google play store
    3. Use a 3rd party to retrieve the .apk file from the google play store, such as [https://apkcombo.com/downloader](https://apkcombo.com/downloader)
 
+### Android Studio
+
+#### How to Connect to Android Studio Android Virtual Device (AVD) Remotely from a Virtual Machine (VM) such as Kali
+
+**On Windows Host Running Android Studio (Requires Admin Permissions to Run This) - This is Persistent**
+
+{% code overflow="wrap" %}
+```batch
+netsh interface portproxy add v4tov4 listenport=1234 connectport=5555 connectaddress=localhost
+```
+{% endcode %}
+
+**Make Sure Kali VM is NAT'd**
+
+**This Will Show You Your Current Portproxies**
+
+{% code overflow="wrap" %}
+```batch
+netsh interface portproxy show all
+```
+{% endcode %}
+
+**Set Your Host Firewall to Allow Inbound 1234**
+
+**Set Your Host Firewall to Allow Outbound 5555**
+
+**Connect to the AVD to the VM**
+
+{% code overflow="wrap" %}
+```sh
+adb connect 192.168.22.1:1234
+adb devices
+```
+{% endcode %}
+
+#### Install Drozer:
+
+{% code overflow="wrap" %}
+```sh
+wget https://github.com/WithSecureLabs/drozer/releases/download/3.0.3/drozer-3.0.3-py3-none-any.whl
+pipx install ./drozer-*.whl
+pipx ensurepath
+```
+{% endcode %}
+
+**Download Drozer Agent for the Phone**
+
+{% code overflow="wrap" %}
+```sh
+wget https://github.com/WithSecureLabs/drozer-agent/releases/download/3.0.0/drozer-agent.apk
+adb install drozer-agent.apk
+```
+{% endcode %}
+
+**Start the Drozer Server in the Drozer App on the Phone**
+
+**Start the Forwarding for Drozer:**
+
+{% code overflow="wrap" %}
+```bash
+adb forward tcp:31415 tcp:31415
+```
+{% endcode %}
+
+**Connect Drozer**
+
+```sh
+drozer console connect
+```
+
+#### Purposely Vulnerable App for Testing Drozer:
+
+```sh
+wget https://github.com/WithSecureLabs/sieve/releases/download/2.0/sieve.apk
+adb install sieve.apk
+```
+
 If using Android Studio, you can fire up a rooted AV using
 
 {% code overflow="wrap" %}
 ```batch
 c: > AppData\Local\Android\Sdk\emulator\emulator.exe -avd <AVD-name-here> -writable-system -selinux disabled -qemu
-
 ```
 {% endcode %}
 
