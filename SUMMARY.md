@@ -110,6 +110,7 @@
   * [MobApp Testing VM](mobile-application/mob-app/mobapp-testing-vm.md)
   * [Jailbreaking IOS](mobile-application/mob-app/jailbreaking-ios.md)
   * [Tools](mobile-application/tools/README.md)
+    * [Frida](mobile-application/mob-app/tools/frida.md)
     * [MobSF](mobile-application/tools/mobsf/README.md)
       * [Installing MobSF](mobile-application/tools/mobsf/installing-mobsf.md)
   * [Mobile Application Testing](mobile-application/mobile-application-testing/README.md)
