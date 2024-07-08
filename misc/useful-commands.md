@@ -257,3 +257,13 @@ This is what a found exploit will look like (you'll recognise it from Searchsplo
 or no findings will look like this:
 
 <figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+
+Change metasploit's search
+
+{% code overflow="wrap" %}
+```bash
+ features set hierarchical_search_table false
+```
+{% endcode %}
+
+&#x20;
