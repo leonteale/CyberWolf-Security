@@ -5,7 +5,8 @@
 Quick start: [https://tryhackme.com/room/introtooffensivesecurity](https://tryhackme.com/room/introtooffensivesecurity)\
 the above link is for those who know what cyber security is and just want to start trying it.&#x20;
 
-
+Here is a hackforum's link about cyber security ,a great source for people wanting to know where to start:\
+[https://hackforums.net/showthread.php?tid=6263412](https://hackforums.net/showthread.php?tid=6263412)
 
 Below is a youtube video to start with, it helps explain some ways to get started in cyber security. It starts with giving the opinion to learn programming as it will help, but not rquired, especially if youre not into that thing, but if you do want to do that then it will always help.
 
