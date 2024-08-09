@@ -228,3 +228,8 @@
 ## Build Review
 
 * [Workstation](build-review/workstation.md)
+
+## Hack the Box
+
+* [Challenges](hack-the-box/challenges/README.md)
+  * [The Needle](hack-the-box/challenges/the-needle.md)
