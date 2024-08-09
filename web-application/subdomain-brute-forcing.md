@@ -37,7 +37,9 @@ A subdomain discovery tool that discovers valid subdomains for websites. Designe
 
 <pre class="language-bash" data-overflow="wrap"><code class="lang-bash">git clone https://github.com/danielmiessler/SecLists.git
 <strong>sudo gobuster vhost -u http://horizontall.htb -w ~/SecLists/Discovery/DNS/subdomains-top1million-110000.txt
-</strong></code></pre>
+</strong><strong>
+</strong>gobuster vhost -u http://boardlight.htb -w /usr/share/wordlists/seclists/Discovery/DNS/combined_subdomains.txt --append-domain
+</code></pre>
 
 vhost = virtual hosts running on the same IP. \
 DNS = seperate DNS entries that point to other IPs.&#x20;
