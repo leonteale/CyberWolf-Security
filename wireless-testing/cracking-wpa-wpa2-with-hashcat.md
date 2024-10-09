@@ -43,3 +43,9 @@ john --format=wpapsk pmkid_john_hash.txt
 ```
 
 Here, `--format=wpapsk` specifies the hash type, and `pmkid_john_hash.txt` would be the John-readable hash.
+
+## Other resources
+
+There is a website for cracking th pcap files that may be of use:
+
+{% embed url="https://www.onlinehashcrack.com/" %}
