@@ -12,6 +12,22 @@ cat dcenum.txt | grep "Domain Users" -C 2 | grep Username | awk {'print $2'}
 cat dcenum.txt | grep "Domain Users" | awk {'print $8'} | cut -d \\ -f 2
 ```
 
+## List a user's groups
+
+## Winscanx
+
+{% code overflow="wrap" %}
+```bash
+grep -B 2 "user" dcenum.txt | grep "Group Name" | awk -F ': ' '{print $2}'
+```
+{% endcode %}
+
+### enum4linux
+
+```
+// Some code
+```
+
 ## Extract domain users from 'net user'
 
 ### On the windows DC/DS, cmd.exe:
