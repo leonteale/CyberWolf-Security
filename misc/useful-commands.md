@@ -18,7 +18,7 @@ cat dcenum.txt | grep "Domain Users" | awk {'print $8'} | cut -d \\ -f 2
 
 {% code overflow="wrap" %}
 ```bash
-grep -B 2 "user" dcenum.txt | grep "Group Name" | awk -F ': ' '{print $2}'
+grep -i -B 2 "user" dcenum.txt | grep "Group Name" | awk -F ': ' '{print $2}'
 ```
 {% endcode %}
 
