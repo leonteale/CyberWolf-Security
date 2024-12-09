@@ -541,6 +541,106 @@ If an application must continue to use CBC mode, it should be used in combinatio
 
 **Please note:** The way encryption is being used in the application is more important than which exact encryption mode and padding are being used. It is crucial to ensure keys are being managed securely, IVs are used correctly, and data is authenticated in addition to being encrypted. Encryption should not be the only defence mechanism for sensitive data.
 
+### Root Detection and Bypass
+
+#### **1. Prepare the Environment**
+
+* **Rooted Device:** Use a rooted Android device or emulator.
+  * Recommended tools: Magisk (with modules), Frida, or Xposed Framework.
+* **Root Hiding Apps/Modules:**
+  * Install Magisk Manager and configure its Hide feature.
+  * Use modules like "MagiskHide Props Config" or "Universal SafetyNet Fix" for bypassing SafetyNet and related checks.
+  * Apps like RootCloak (Xposed Module) can also help.
+* **Testing Frameworks:** Ensure you have tools like Frida, objection, or Inspeckage to dynamically analyze the app.
+
+***
+
+#### **2. Analyze the App**
+
+* **Inspect APK for Root Detection Logic:**
+  * Decompile the APK using tools like jadx or apktool.
+  * Search for methods or libraries related to root detection (e.g., checking for `su` binaries, `busybox`, or Magisk).
+  * Common libraries to look out for:
+    * RootBeer
+    * SafetyNet API
+
+***
+
+#### **3. Dynamic Debugging**
+
+* **Use Frida for Hooking:**
+  *   Attach Frida to the app:
+
+      ```bash
+      bashCopy codefrida -U -n <app_name>
+      ```
+  *   Use scripts to bypass specific root detection methods. Example:
+
+      ```javascript
+      javascriptCopy codeJava.perform(function () {
+          var RootBeerClass = Java.use("com.scottyab.rootbeer.RootBeer");
+          RootBeerClass.isRooted.implementation = function () {
+              return false; // Override root check
+          };
+      });
+      ```
+  * Explore and hook relevant functions identified in the APK analysis.
+* **Use Objection for Automated Bypassing:**
+  *   Launch Objection with the app:
+
+      ```bash
+      bashCopy codeobjection -g <app_name> explore
+      ```
+  *   Run the following command:
+
+      ```bash
+      bashCopy codeandroid root disable
+      ```
+
+***
+
+#### **4. Static Bypassing**
+
+* **Modify and Repack APK:**
+  *   Use apktool to decompile the APK.
+
+      ```bash
+      bashCopy codeapktool d <app_name.apk>
+      ```
+  * Identify root detection checks and modify logic to always return false.
+  *   Repack and resign the APK:
+
+      ```bash
+      bashCopy codeapktool b <folder_name>
+      jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore <keystore_name> <apk_name.apk> <alias_name>
+      ```
+
+      Ensure the device accepts the new APK.
+
+***
+
+#### **5. Network Traffic Analysis**
+
+* Use a proxy tool like Burp Suite with Android to intercept network calls.
+* Check for server-side responses that indicate root detection and manipulate them.
+
+***
+
+#### **6. Advanced Techniques**
+
+* **Hook Native Libraries (JNI/NDK):**
+  * If root detection is implemented in native code (C/C++), use Frida or Ghidra to reverse-engineer shared objects (.so files).
+  * Hook JNI calls to bypass checks dynamically.
+* **Code Patching (Smali):**
+  * Modify the Smali code of the app after decompiling it to neutralize root detection logic.
+
+***
+
+#### **7. Validate the Bypass**
+
+* Test the app on a rooted device to confirm root detection is bypassed.
+* Log actions and verify that bypassing does not break other app functionality.
+
 ## Dynamic Analysis
 
 10. **Install the APK on the Device**
@@ -811,7 +911,7 @@ If you get issue with tcpdump not being installed on the device then you an do t
 
             Additionally, it's very uncommon and highly insecure for passwords or PINs to be sent over the network in plaintext. In a secure setup, sensitive information like passwords or PINs would be sent over an encrypted connection, so `tcpdump` would not be able to recover them.\
             \
-            For more tcpdump commands, refer to the following: [tcpdump](https://app.gitbook.com/s/uuomMqs69rpH2Wnxhc3O/\~/changes/321/tools/tools/tcpdump)
+            For more tcpdump commands, refer to the following: [tcpdump](https://app.gitbook.com/s/uuomMqs69rpH2Wnxhc3O/~/changes/321/tools/tools/tcpdump)
 2.  **Use an alternative tool**
 
     If you can't install `tcpdump` on your device, you can use an alternative tool. For example, you could use [`tPacketCapture`](https://play.google.com/store/apps/details?id=jp.co.taosoftware.android.packetcapture\&hl=en\&gl=US) app from the Play Store, which doesn't require root. However, please note that using such apps might not give you the level of control you would get with `tcpdump`.
