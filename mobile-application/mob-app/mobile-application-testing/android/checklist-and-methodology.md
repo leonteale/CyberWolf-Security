@@ -572,12 +572,12 @@ If an application must continue to use CBC mode, it should be used in combinatio
   *   Attach Frida to the app:
 
       ```bash
-      bashCopy codefrida -U -n <app_name>
+      frida -U -n <app_name>
       ```
   *   Use scripts to bypass specific root detection methods. Example:
 
       ```javascript
-      javascriptCopy codeJava.perform(function () {
+      Java.perform(function () {
           var RootBeerClass = Java.use("com.scottyab.rootbeer.RootBeer");
           RootBeerClass.isRooted.implementation = function () {
               return false; // Override root check
@@ -589,12 +589,12 @@ If an application must continue to use CBC mode, it should be used in combinatio
   *   Launch Objection with the app:
 
       ```bash
-      bashCopy codeobjection -g <app_name> explore
+      objection -g <app_name> explore
       ```
   *   Run the following command:
 
       ```bash
-      bashCopy codeandroid root disable
+      android root disable
       ```
 
 ***
@@ -605,13 +605,13 @@ If an application must continue to use CBC mode, it should be used in combinatio
   *   Use apktool to decompile the APK.
 
       ```bash
-      bashCopy codeapktool d <app_name.apk>
+      apktool d <app_name.apk>
       ```
   * Identify root detection checks and modify logic to always return false.
   *   Repack and resign the APK:
 
       ```bash
-      bashCopy codeapktool b <folder_name>
+      apktool b <folder_name>
       jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore <keystore_name> <apk_name.apk> <alias_name>
       ```
 
