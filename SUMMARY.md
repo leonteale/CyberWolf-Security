@@ -138,6 +138,11 @@
   * [Useful commands](privilege-escalation/linux/useful-commands.md)
   * [Spawn a TTY shell](privilege-escalation/linux/spawn-a-tty-shell.md)
 
+***
+
+* [CTF-stuff](ctf-stuff/README.md)
+  * [.Git](ctf-stuff/.git.md)
+
 ## Steganography
 
 * [Tools](steganography/tools.md)
