@@ -138,6 +138,10 @@
   * [Useful commands](privilege-escalation/linux/useful-commands.md)
   * [Spawn a TTY shell](privilege-escalation/linux/spawn-a-tty-shell.md)
 
+## CTF-stuff
+
+* [.Git](ctf-stuff/.git.md)
+
 ## Steganography
 
 * [Tools](steganography/tools.md)
@@ -225,10 +229,6 @@
 
 * [Install ALFA AWUS1900 on Kali](faq/install-alfa-awus1900-on-kali.md)
 * [Update and upgrade Linux](faq/update-and-upgrade-linux.md)
-
-## CTF-stuff
-
-* [.Git](ctf-stuff/.git.md)
 
 ## Build Review
 
